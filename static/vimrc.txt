@@ -1,0 +1,10 @@
+" ***** vundle插件 *****
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#rc()
+Plugin 'VundleVim/Vundle.vim'
+Bundle 'kien/ctrlp.vim'
+Plugin 'ervandew/supertab'
+Plugin 'wilon/vim-tips'
+Plugin 'wilon/vim-myvimrc'
+filetype plugin indent on
