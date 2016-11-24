@@ -20,8 +20,9 @@
     */30 * * * * /usr/sbin/ntpdate 210.72.145.44    # 每半小时同步一下时间
 ```
 
-### oh-my-zsh
+### zsh + oh-my-zsh
 ```shell
+    yum install zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     chsh -s /bin/zsh    # 修改默认zsh，需重启
 ```

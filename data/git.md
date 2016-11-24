@@ -16,6 +16,19 @@
     git push --set-upstream origin master
 ```
 
+### 分支
+```shell
+    # 分支的增删改查
+    git branch -a    # 查看所有分支
+    git branch test    # 创建分支
+    git checkout test    # 切换到分支
+    git branch -d gh-pages    # 删除一个本地分支
+    git push origin :gh-pages    # 删除一个远程分支，其实是推送一个空分支给远程
+    # 修改默认HEAD指向分支
+    vim .git/refs/remotes/origin/HEAD
+    `ref: refs/remotes/origin/master`
+```
+
 ### 私钥与公钥
 ```shell
     TortoiseGit 使用 id_rsa
