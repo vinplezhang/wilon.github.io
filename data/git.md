@@ -18,15 +18,34 @@
 
 ### 分支
 ```shell
-    # 分支的增删改查
+    # 本地分支操作
+    git branch    # 查看本地分支
+    git branch -r    # 查看远程分支
     git branch -a    # 查看所有分支
-    git branch test    # 创建分支
-    git checkout test    # 切换到分支
-    git branch -d gh-pages    # 删除一个本地分支
-    git push origin :gh-pages    # 删除一个远程分支，其实是推送一个空分支给远程
+    git branch [name]     # 创建本地分支
+    git branch -d [name]     # 删除分支
+    git checkout [name]    # 切换分支
+    git checkout -b [name]    # 创建新分支并立即切换到新分支
+    git merge [name]     # 合并name分支到当前分支
+    # 远程分支操作
+    git push origin [name]    # 创建远程分支(本地分支push到远程)
+    git push origin :heads/[name]    # 删除远程分支
+    git push origin test:master    # 提交本地test分支作为远程的master分支，远程的github就会自动创建一个test分支
+    git push origin test:test    # 提交本地test分支作为远程的test分支
+    git push origin :test    # 删除远程分支，刚提交到远程的test将被删除，但是本地还会保存的，不用担心
     # 修改默认HEAD指向分支
     vim .git/refs/remotes/origin/HEAD
     `ref: refs/remotes/origin/master`
+```
+### 远程仓库
+```shell
+    git clone git://github.com/jquery/jquery.git    # 检出仓库
+    git remote -v    # 查看远程仓库
+    git remote add [name] [url]    # 添加远程仓库
+    git remote rm [name]    # 删除远程仓库
+    git remote set-url --push[name][newUrl]    # 修改远程仓库
+    git pull [remoteName] [localBranchName]    # 拉取远程仓库
+    git push [remoteName] [localBranchName]    # 推送远程仓库
 ```
 
 ### 私钥与公钥
