@@ -1,4 +1,17 @@
 
+### zsh + oh-my-zsh
+```shell
+    yum install zsh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    chsh -s /bin/zsh    # 修改默认zsh，需重启。或修改 /etc/passwd
+    zsh    # 手动切换
+```
+
+### php命令加入path
+```shell
+    export PATH=$PATH:PHP安装目录/php/bin
+```
+
 ### 定时任务crontab
 ```shell
     # 安装配置
@@ -18,13 +31,6 @@
     0 11 4 * mon-wed /usr/local/etc/rc.d/lighttpd restart    # 每月的4号与每周一到周三的11点重启apache
     0 4 1 jan * /usr/local/etc/rc.d/lighttpd restart    # 一月一号的4点重启apache
     */30 * * * * /usr/sbin/ntpdate 210.72.145.44    # 每半小时同步一下时间
-```
-
-### zsh + oh-my-zsh
-```shell
-    yum install zsh
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-    chsh -s /bin/zsh    # 修改默认zsh，需重启
 ```
 
 ### 重启

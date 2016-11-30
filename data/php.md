@@ -4,11 +4,6 @@
     file_put_contents(dirname(__FILE__) . '/params.log', json_encode($data), FILE_APPEND);
 ```
 
-### 5.4 run tool
-```php
-    <iframe src="http://www.shucunwang.com/RunCode/php7/" style="width: 100%; height: 100%;" frameborder="0"></iframe>
-```
-
 ### 比较好的密码存储处理
 ```php
     // sha1/md5都行
@@ -95,24 +90,66 @@
     php -i | grep -i extension  // 查看php扩展信息
 ```
 
-### cURL基本使用
+### simple curl
 ```php
-    $url  = 'http://baidu.com';
-    $post_data = array('user' => 'weilong');
-    $headers = array(
-            'Content-type: text/xml;charset=\"utf-8\"',
-            'Accept: text/xml',
-        );
-    $ch = curl_init();    // 初始化
-    curl_setopt($ch, CURLOPT_URL, $url);    // url地址
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);    // http请求头
-    curl_setopt($ch, CURLOPT_HEADER, 0);    // 是否显示头信息
-    curl_setopt($ch, CURLOPT_TIMEOUT, 1);    // 最长秒数
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);    // 是否获取文本，不获取文本则以文件流形式输出
-    curl_setopt($ch, CURLOPT_POST, 1);    // 数据发送方式post
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);    // post数据
-    $response = curl_exec($ch);    // 获取文本为1则得到字串
-    curl_close($ch);    // 关闭
+    /**
+     * simple curl
+     * @param  string $url
+     * @param  array  $param = [
+     *                  'method' => 'get',    // get\post，默认get
+     *                  'data' => [    // get\post data
+     *                      'user' => 'weilong', ...
+     *                  ],
+     *                  'header' = [
+     *                      'Content-type: text/xml;charset=\"utf-8\"',
+     *                      'Accept: text/xml',
+     *                  ]
+     *                  'return' => 'body',    // all\header，默认body
+     *              ]
+     * @return mix
+     */
+    function simpleCurl($url = '', $param = [])
+    {
+        // url
+        if (!$url) return false;
+        if (strtolower($param['method']) != 'post' && $param['data']) {
+            $joint = parse_url($url)['query'] ? '&' : '?';
+            $url .= $joint . http_build_query($param['data']);
+        }
+        // 初始化curl
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        // 设置https
+        if (preg_match('/^https\:\/\/(.*)$/i', $url)) {
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        }
+        // 设置超时
+        $timeout = intval($param['timeout']);
+        curl_setopt($ch, CURLOPT_TIMEOUT, $timeout > 0 ? $timeout: 15);
+        // http请求头
+        if ($param['header']) {
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $param['header']);
+        }
+        // post发送数据
+        if (strtolower($param['method']) == 'post' && $param['data']) {
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $param['data']);
+        }
+        // 返回信息
+        curl_setopt($ch, CURLOPT_HEADER, true);    // 显示头信息
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);    // 获取所有文本，不获取文本则以文件流形式输出
+        $response = curl_exec($ch);    // 获取文本为true则得到字串
+        // body header 分离
+        $headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+        $header = trim(substr($response, 0, $headerSize));
+        $body = trim(substr($response, $headerSize));
+        // 结束，返回信息
+        curl_close($ch);
+        $return = $param['return'] == 'header' ? $header :
+            ($param['return'] == 'all' ? [$header, $body] : $body);
+        return $return;
+    }
 ```
 
 ### Windows安装php扩展
@@ -126,25 +163,25 @@
 ```php
     /**
     * html字符串处理
-    *|————————————————————————————————————|
-    *|字符 |  描述   | html实体 |         |
+    *|———————————————————————————————————————|
+    *| 字符 |  描述   |  html实体    |         |
     *|     |  空格   |  &amp;nbsp;  |         |
     *|  <  |  小于号 |  &amp;lt;    | special |
     *|  >  |  大于号 |  &amp;gt;    | special |
     *|  &  |  和号   |  &amp;amp;   | special |
-    *|  \"  |  引号   |  &amp;quot;  | special |
+    *|  \" |  引号   |  &amp;quot;  | special |
     *|  '  |  撇号   |  &amp;apos;  | special |
     *|  ￠ |  分     |  &amp;cent;  |         |
     *|  £  |  镑     |  &amp;pound; |         |
     *|  ¥  |  日圆   |  &amp;yen;   |         |
-    *|  € |  欧元   |  &amp;euro;  |         |
-    *|  § |  小节   |  &amp;sect;  |         |
+    *|  €  |  欧元   |  &amp;euro;  |         |
+    *|  §  |  小节   |  &amp;sect;  |         |
     *|  ©  |  版权   |  &amp;copy;  |         |
     *|  ®  |  商标   |  &amp;reg;   |         |
     *|  ™  |  商标   |  &amp;trade; |         |
-    *|  × |  乘号   |  &amp;times; |         |
-    *|  ÷ |  除号   |  &amp;divide;|         |
-    *|————————————————————————————————————|
+    *|  ×  |  乘号   |  &amp;times; |         |
+    *|  ÷  |  除号   |  &amp;divide;|         |
+    *|———————————————————————————————————————|
     */
     $str1 = html_entity_decode($str);       // html实体 --> 字符
     $str2 = htmlentities($str);             // 字符 --> html实体
