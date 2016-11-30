@@ -1,6 +1,7 @@
 
-### 记住一些常量
+### 记住一些常量、常用函数
 ```php
+    date_default_timezone_set('PRC');    // 同php.ini设置 date.timezone = PRC
     file_put_contents(dirname(__FILE__) . '/params.log', json_encode($data), FILE_APPEND);
 ```
 
