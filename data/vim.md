@@ -13,8 +13,10 @@
 ### 配置安装.vimrc
 ```shell
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    wget http://wilon.github.io/static/vimrc.txt -O ~/.vimrc
+    wget https://wilon.github.io/static/vimrc.txt -O ~/.vimrc
     vim +PluginInstall +qall
+    # 一键脚本
+    curl -sSL https://wilon.github.io/static/vim.sh | sh
 ```
 
 ### 浏览文件netrw
