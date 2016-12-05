@@ -219,6 +219,7 @@
 ```php
     $a = $b ?: $c;    // php-v >= 5.3
     $arr = [];    // php-v >= 5.4
+    foo()[0];    // php-v >= 5.4
     function writeFileLog($file, ...$params) {}    // 动态参数 php-v >= 5.6
     // 正则修饰符e，自 PHP 5.5.0 起废弃。改用 preg_replace_callback
     namespace Foo\Bar\somenamespace;    // php-v >= 5.3

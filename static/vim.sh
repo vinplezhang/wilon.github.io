@@ -15,10 +15,14 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'wilon/vim-myvimrc'
+Plugin 'wilon/vim-auto-session'
 Bundle 'kien/ctrlp.vim'
 Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-surround'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'haya14busa/incsearch.vim'
 Plugin 'wilon/vim-tips'
-Plugin 'wilon/vim-myvimrc'
 filetype plugin indent on
 EOF
 
