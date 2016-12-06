@@ -7,7 +7,10 @@ set -e
 #   'wget -qO- https://wilon.github.io/static/vim.sh | sh'
 #
 
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+VundlePath="~/.vim/bundle/Vundle.vim/"
+if [ ! -x "$VundlePath"]; then
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
 
 cat > ~/.vimrc << EOF
 " ***** vundle插件 *****
