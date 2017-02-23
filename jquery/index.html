@@ -1,0 +1,2246 @@
+<!DOCTYPE html>
+<!--
+Designed and developed by:
+┌─┐┌─┐┌─┐┌─┐┬─┐  ┌─┐┌┬┐┌─┐┬─┐┌─┐
+│ │└─┐│  ├─┤├┬┘  │ │ │ ├┤ ├┬┘│ │
+└─┘└─┘└─┘┴ ┴┴└─  └─┘ ┴ └─┘┴└─└─┘
+https://oscarotero.com
+中文by：https://wilon.github.io
+-->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>jQuery 速查文档</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="wilon - https://wilon.github.io">
+        <meta name="title" content="jQuery 速查文档">
+        <meta name="description" content="jQuery 速查文档。Created by Oscar Otero.中文@牙弋">
+        <meta name="keywords" content="jQuery, javascript, cheatsheet, api, resource, web developer">
+        <meta property="og:title" content="jQuery 速查文档">
+        <meta property="og:description" content="jQuery 速查文档。Created by Oscar Otero">
+        <meta property="og:image" content="/jquery/jquery.png">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@misteroom">
+        <meta name="twitter:creator" content="@misteroom">
+        <meta name="twitter:title" content="jQuery 速查文档">
+        <meta name="twitter:description" content="jQuery 速查文档。Created by Oscar Otero">
+        <meta name="twitter:image" content="/jquery/jquery.png">
+        <link rel="stylesheet" href="/jquery/css/styles.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="/jquery/css/styles-print.css" type="text/css" media="print">
+        <script type="text/javascript" src="/jquery/js/main.js"></script>
+        <html:base server="http://wilon.github.io/jquery"  target="_blank" >
+        </head>
+        <body>
+            <header class="main-header">
+                <h1>
+                <strong><a href="http://wilon.github.io/jquery/" title="jQuery 速查文档">jQuery 速查文档</a></strong>
+                </h1>
+                <div class="filter-group">
+                    <div class="filter filter-version">
+                        <select id="version" data-placeholder="Version...">
+                            <option data-source="git" value="3.0">3.0</option>
+                            <option data-source="2.0.3" value="1.10">1.10 / 2.0</option>
+                            <option data-source="1.9.1" value="1.9">1.9</option>
+                            <option data-source="1.8.3" value="1.8">1.8</option>
+                            <option data-source="1.7.2" value="1.7">1.7</option>
+                            <option data-source="1.6.2" value="1.6">1.6</option>
+                            <option data-source="1.5" value="1.5">1.5</option>
+                            <option data-source="1.4.3" value="1.4.4">1.4.4</option>
+                            <option data-source="1.4.3" value="1.4.3">1.4.3</option>
+                            <option data-source="1.4.2" value="1.4.2">1.4.2</option>
+                            <option data-source="1.4.1" value="1.4.1">1.4.1</option>
+                            <option data-source="1.4.1" value="1.4">1.4</option>
+                            <option data-source="1.3.2" value="1.3">1.3</option>
+                            <option data-source="1.2.6" value="1.2.6">1.2.6</option>
+                            <option data-source="" value="1.2.3">1.2.3</option>
+                            <option data-source="" value="1.2">1.2</option>
+                            <option data-source="" value="1.1.3">1.1.3</option>
+                            <option data-source="" value="1.1.3">1.1.3</option>
+                            <option data-source="" value="1.1.2">1.1.2</option>
+                            <option data-source="" value="1.1">1.1</option>
+                            <option data-source="" value="1.0.4">1.0.4</option>
+                            <option data-source="" value="1.0">1.0</option>
+                        </select>
+                    </div>
+                    <div class="filter filter-search">
+                        <select id="search" placeholder="Search...">
+                            <option></option>
+                            <option data-data="{&quot;sort&quot;:&quot;&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="all-selector">*</option>
+                            <option data-data="{&quot;sort&quot;:&quot;class&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="class-selector">.class</option>
+                            <option data-data="{&quot;sort&quot;:&quot;element&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="element-selector">element</option>
+                            <option data-data="{&quot;sort&quot;:&quot;id&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="id-selector">#id</option>
+                            <option data-data="{&quot;sort&quot;:&quot;selector1 selectorN, ...&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="multiple-selector">selector1, selectorN, ...</option>
+                            <option data-data="{&quot;sort&quot;:&quot;parent&amp;gt; child&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="child-selector">parent &amp;gt; child</option>
+                            <option data-data="{&quot;sort&quot;:&quot;ancestordescendant&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="descendant-selector">ancestor descendant</option>
+                            <option data-data="{&quot;sort&quot;:&quot;prev+ next&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="next-adjacent-Selector">prev + next</option>
+                            <option data-data="{&quot;sort&quot;:&quot;prev~ siblings&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="next-siblings-selector">prev ~ siblings</option>
+                            <option data-data="{&quot;sort&quot;:&quot;animated&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="animated-selector">:animated</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eq()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="eq-selector">:eq()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;even&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="even-selector">:even</option>
+                            <option data-data="{&quot;sort&quot;:&quot;first&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="first-selector">:first</option>
+                            <option data-data="{&quot;sort&quot;:&quot;gt()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="gt-selector">:gt()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;header&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="header-selector">:header</option>
+                            <option data-data="{&quot;sort&quot;:&quot;lang()&quot;,&quot;from&quot;:&quot;1.9&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="lang-selector">:lang()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;last&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="last-selector">:last</option>
+                            <option data-data="{&quot;sort&quot;:&quot;lt()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="lt-selector">:lt()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;not()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="not-selector">:not()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;odd&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="odd-selector">:odd</option>
+                            <option data-data="{&quot;sort&quot;:&quot;root&quot;,&quot;from&quot;:&quot;1.9&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="root-selector">:root</option>
+                            <option data-data="{&quot;sort&quot;:&quot;target&quot;,&quot;from&quot;:&quot;1.9&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="target-selector">:target</option>
+                            <option data-data="{&quot;sort&quot;:&quot;contains()&quot;,&quot;from&quot;:&quot;1.1.4&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="contains-selector">:contains()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;empty&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="empty-selector">:empty</option>
+                            <option data-data="{&quot;sort&quot;:&quot;has()&quot;,&quot;from&quot;:&quot;1.1.4&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="has-selector">:has()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;parent&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="parent-selector">:parent</option>
+                            <option data-data="{&quot;sort&quot;:&quot;hidden&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="hidden-selector">:hidden</option>
+                            <option data-data="{&quot;sort&quot;:&quot;visible&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="visible-selector">:visible</option>
+                            <option data-data="{&quot;sort&quot;:&quot;name|&#x3D;\&quot;value\&quot;]&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="attribute-contains-prefix-selector">[name|&#x3D;&quot;value&quot;]</option>
+                            <option data-data="{&quot;sort&quot;:&quot;name*&#x3D;\&quot;value\&quot;]&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="attribute-contains-selector">[name*&#x3D;&quot;value&quot;]</option>
+                            <option data-data="{&quot;sort&quot;:&quot;name~&#x3D;\&quot;value\&quot;]&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="attribute-contains-word-selector">[name~&#x3D;&quot;value&quot;]</option>
+                            <option data-data="{&quot;sort&quot;:&quot;name$&#x3D;\&quot;value\&quot;]&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="attribute-ends-with-selector">[name$&#x3D;&quot;value&quot;]</option>
+                            <option data-data="{&quot;sort&quot;:&quot;name&#x3D;\&quot;value\&quot;]&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="attribute-equals-selector">[name&#x3D;&quot;value&quot;]</option>
+                            <option data-data="{&quot;sort&quot;:&quot;name!&#x3D;\&quot;value\&quot;]&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="attribute-not-equal-selector">[name!&#x3D;&quot;value&quot;]</option>
+                            <option data-data="{&quot;sort&quot;:&quot;name^&#x3D;\&quot;value\&quot;]&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="attribute-starts-with-selector">[name^&#x3D;&quot;value&quot;]</option>
+                            <option data-data="{&quot;sort&quot;:&quot;name]&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="has-attribute-selector">[name]</option>
+                            <option data-data="{&quot;sort&quot;:&quot;name&#x3D;\&quot;value\&quot;][name2&#x3D;\&quot;value2\&quot;]&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="multiple-attribute-selector">[name&#x3D;&quot;value&quot;][name2&#x3D;&quot;value2&quot;]</option>
+                            <option data-data="{&quot;sort&quot;:&quot;first-child&quot;,&quot;from&quot;:&quot;1.1.4&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="first-child-selector">:first-child</option>
+                            <option data-data="{&quot;sort&quot;:&quot;first-of-type&quot;,&quot;from&quot;:&quot;1.9&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="first-of-type-selector">:first-of-type</option>
+                            <option data-data="{&quot;sort&quot;:&quot;last-child&quot;,&quot;from&quot;:&quot;1.1.4&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="last-child-selector">:last-child</option>
+                            <option data-data="{&quot;sort&quot;:&quot;last-of-type&quot;,&quot;from&quot;:&quot;1.9&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="last-of-type-selector">:last-of-type</option>
+                            <option data-data="{&quot;sort&quot;:&quot;nth-child()&quot;,&quot;from&quot;:&quot;1.1.4&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="nth-child-selector">:nth-child()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;nth-last-child()&quot;,&quot;from&quot;:&quot;1.9&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="nth-last-child-selector">:nth-last-child()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;nth-last-of-type()&quot;,&quot;from&quot;:&quot;1.9&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="nth-last-of-type-selector">:nth-last-of-type()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;nth-of-type()&quot;,&quot;from&quot;:&quot;1.9&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="nth-of-type-selector">:nth-of-type()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;only-child&quot;,&quot;from&quot;:&quot;1.1.4&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="only-child-selector">:only-child</option>
+                            <option data-data="{&quot;sort&quot;:&quot;only-of-type()&quot;,&quot;from&quot;:&quot;1.9&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="only-of-type-selector">:only-of-type()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;button&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="button-selector">:button</option>
+                            <option data-data="{&quot;sort&quot;:&quot;checkbox&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="checkbox-selector">:checkbox</option>
+                            <option data-data="{&quot;sort&quot;:&quot;checked&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="checked-selector">:checked</option>
+                            <option data-data="{&quot;sort&quot;:&quot;disabled&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="disabled-selector">:disabled</option>
+                            <option data-data="{&quot;sort&quot;:&quot;enabled&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="enabled-selector">:enabled</option>
+                            <option data-data="{&quot;sort&quot;:&quot;focus&quot;,&quot;from&quot;:&quot;1.6&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="focus-selector">:focus</option>
+                            <option data-data="{&quot;sort&quot;:&quot;file&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="file-selector">:file</option>
+                            <option data-data="{&quot;sort&quot;:&quot;image&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="image-selector">:image</option>
+                            <option data-data="{&quot;sort&quot;:&quot;input&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="input-selector">:input</option>
+                            <option data-data="{&quot;sort&quot;:&quot;password&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="password-selector">:password</option>
+                            <option data-data="{&quot;sort&quot;:&quot;radio&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="radio-selector">:radio</option>
+                            <option data-data="{&quot;sort&quot;:&quot;reset&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="reset-selector">:reset</option>
+                            <option data-data="{&quot;sort&quot;:&quot;selected&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="selected-selector">:selected</option>
+                            <option data-data="{&quot;sort&quot;:&quot;submit&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="submit-selector">:submit</option>
+                            <option data-data="{&quot;sort&quot;:&quot;text&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;selectors&quot;}" value="text-selector">:text</option>
+                            <option data-data="{&quot;sort&quot;:&quot;attr()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="attr">.attr()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;prop()&quot;,&quot;from&quot;:&quot;1.6&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="prop">.prop()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;removeAttr()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="removeAttr">.removeAttr()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;removeProp()&quot;,&quot;from&quot;:&quot;1.6&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="removeProp">.removeProp()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;val()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="val">.val()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;addClass()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="addClass">.addClass()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;css()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="css">.css()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerycssHooks&quot;,&quot;from&quot;:&quot;1.4.3&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="jQuery.cssHooks">jQuery.cssHooks</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerycssNumber&quot;,&quot;from&quot;:&quot;1.4.3&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="jQuery.cssNumber">jQuery.cssNumber</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryescapeSelector()&quot;,&quot;from&quot;:&quot;3.0&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="jQuery.escapeSelector">jQuery.escapeSelector()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;hasClass()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="hasClass">.hasClass()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;removeClass()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="removeClass">.removeClass()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;toggleClass()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="toggleClass">.toggleClass()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;height()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="height">.height()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;innerHeight()&quot;,&quot;from&quot;:&quot;1.2.6&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="innerHeight">.innerHeight()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;innerWidth()&quot;,&quot;from&quot;:&quot;1.2.6&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="innerWidth">.innerWidth()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;outerHeight()&quot;,&quot;from&quot;:&quot;1.2.6&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="outerHeight">.outerHeight()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;outerWidth()&quot;,&quot;from&quot;:&quot;1.2.6&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="outerWidth">.outerWidth()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;width()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="width">.width()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;offset()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="offset">.offset()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;offsetParent()&quot;,&quot;from&quot;:&quot;1.2.6&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="offsetParent">.offsetParent()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;position()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="position">.position()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;scrollLeft()&quot;,&quot;from&quot;:&quot;1.2.6&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="scrollLeft">.scrollLeft()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;scrollTop()&quot;,&quot;from&quot;:&quot;1.2.6&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="scrollTop">.scrollTop()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerydata()&quot;,&quot;from&quot;:&quot;1.2.3&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="jQuery.data">jQuery.data()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;data()&quot;,&quot;from&quot;:&quot;1.2.3&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="data">.data()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryhasData()&quot;,&quot;from&quot;:&quot;1.5&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="jQuery.hasData">jQuery.hasData()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryremoveData()&quot;,&quot;from&quot;:&quot;1.2.3&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="jQuery.removeData">jQuery.removeData()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;removeData()&quot;,&quot;from&quot;:&quot;1.2.3&quot;,&quot;type&quot;:&quot;attributes&quot;}" value="removeData">.removeData()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;clone()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;manipulation&quot;}" value="clone">.clone()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;wrap()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;manipulation&quot;}" value="wrap">.wrap()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;wrapAll()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;manipulation&quot;}" value="wrapAll">.wrapAll()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;wrapInner()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;manipulation&quot;}" value="wrapInner">.wrapInner()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;append()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;manipulation&quot;}" value="append">.append()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;appendTo()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;manipulation&quot;}" value="appendTo">.appendTo()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;html()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;manipulation&quot;}" value="html">.html()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;prepend()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;manipulation&quot;}" value="prepend">.prepend()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;prependTo()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;manipulation&quot;}" value="prependTo">.prependTo()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;text()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;manipulation&quot;}" value="text">.text()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;after()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;manipulation&quot;}" value="after">.after()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;before()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;manipulation&quot;}" value="before">.before()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;insertAfter()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;manipulation&quot;}" value="insertAfter">.insertAfter()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;insertBefore()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;manipulation&quot;}" value="insertBefore">.insertBefore()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;detach()&quot;,&quot;from&quot;:&quot;1.4&quot;,&quot;type&quot;:&quot;manipulation&quot;}" value="detach">.detach()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;empty()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;manipulation&quot;}" value="empty">.empty()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;remove()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;manipulation&quot;}" value="remove">.remove()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;unwrap()&quot;,&quot;from&quot;:&quot;1.4&quot;,&quot;type&quot;:&quot;manipulation&quot;}" value="unwrap">.unwrap()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;replaceAll()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;manipulation&quot;}" value="replaceAll">.replaceAll()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;replaceWith()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;manipulation&quot;}" value="replaceWith">.replaceWith()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eq()&quot;,&quot;from&quot;:&quot;1.1.2&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="eq">.eq()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;filter()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="filter">.filter()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;first()&quot;,&quot;from&quot;:&quot;1.4&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="first">.first()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;has()&quot;,&quot;from&quot;:&quot;1.4&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="has">.has()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;is()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="is">.is()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;last()&quot;,&quot;from&quot;:&quot;1.4&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="last">.last()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;map()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="map">.map()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;not()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="not">.not()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;slice()&quot;,&quot;from&quot;:&quot;1.1.4&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="slice">.slice()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;add()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="add">.add()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;addBack()&quot;,&quot;from&quot;:&quot;1.8&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="addBack">.addBack()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;andSelf()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;traversing&quot;,&quot;deprecated&quot;:&quot;1.8&quot;}" value="andSelf">.andSelf()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;contents()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="contents">.contents()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;each()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="each">.each()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;end()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="end">.end()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;children()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="children">.children()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;closest()&quot;,&quot;from&quot;:&quot;1.3&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="closest">.closest()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;find()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="find">.find()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;next()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="next">.next()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;nextAll()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="nextAll">.nextAll()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;nextUntil()&quot;,&quot;from&quot;:&quot;1.4&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="nextUntil">.nextUntil()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;parent()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="parent">.parent()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;parents()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="parents">.parents()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;parentsUntil()&quot;,&quot;from&quot;:&quot;1.4&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="parentsUntil">.parentsUntil()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;prev()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="prev">.prev()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;prevAll()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="prevAll">.prevAll()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;prevUntil()&quot;,&quot;from&quot;:&quot;1.4&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="prevUntil">.prevUntil()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;siblings()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;traversing&quot;}" value="siblings">.siblings()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;error()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;,&quot;deprecated&quot;:&quot;1.8&quot;,&quot;removed&quot;:&quot;3.0&quot;}" value="error">.error()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;resize()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="resize">.resize()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;scroll()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="scroll">.scroll()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;load()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;,&quot;deprecated&quot;:&quot;1.8&quot;,&quot;removed&quot;:&quot;3.0&quot;}" value="load-event">.load()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;ready()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="ready">.ready()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;unload()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;,&quot;deprecated&quot;:&quot;1.8&quot;,&quot;removed&quot;:&quot;3.0&quot;}" value="unload">.unload()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;bind()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="bind">.bind()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;delegate()&quot;,&quot;from&quot;:&quot;1.4.2&quot;,&quot;type&quot;:&quot;events&quot;}" value="delegate">.delegate()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;die()&quot;,&quot;from&quot;:&quot;1.3&quot;,&quot;type&quot;:&quot;events&quot;,&quot;deprecated&quot;:&quot;1.7&quot;,&quot;removed&quot;:&quot;1.9&quot;}" value="die">.die()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;live()&quot;,&quot;from&quot;:&quot;1.3&quot;,&quot;type&quot;:&quot;events&quot;,&quot;deprecated&quot;:&quot;1.7&quot;,&quot;removed&quot;:&quot;1.9&quot;}" value="live">.live()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;off()&quot;,&quot;from&quot;:&quot;1.7&quot;,&quot;type&quot;:&quot;events&quot;}" value="off">.off()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;on()&quot;,&quot;from&quot;:&quot;1.7&quot;,&quot;type&quot;:&quot;events&quot;}" value="on">.on()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;one()&quot;,&quot;from&quot;:&quot;1.1&quot;,&quot;type&quot;:&quot;events&quot;}" value="one">.one()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;trigger()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="trigger">.trigger()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;triggerHandler()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;events&quot;}" value="triggerHandler">.triggerHandler()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;unbind()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="unbind">.unbind()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;undelegate()&quot;,&quot;from&quot;:&quot;1.4.2&quot;,&quot;type&quot;:&quot;events&quot;}" value="undelegate">.undelegate()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;blur()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="blur">.blur()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;change()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="change">.change()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;focus()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="focus">.focus()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;focusin()&quot;,&quot;from&quot;:&quot;1.4&quot;,&quot;type&quot;:&quot;events&quot;}" value="focusin">.focusin()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;focusout()&quot;,&quot;from&quot;:&quot;1.4&quot;,&quot;type&quot;:&quot;events&quot;}" value="focusout">.focusout()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;select()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="select">.select()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;submit()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="submit">.submit()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;keydown()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="keydown">.keydown()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;keypress()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="keypress">.keypress()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;keyup()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="keyup">.keyup()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;click()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="click">.click()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;contextMenu()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="contextmenu">.contextMenu()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;dblclick()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="dblclick">.dblclick()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;hover()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="hover">.hover()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;mousedown()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="mousedown">.mousedown()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;mouseenter()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="mouseenter">.mouseenter()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;mouseleave()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="mouseleave">.mouseleave()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;mousemove()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="mousemove">.mousemove()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;mouseout()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="mouseout">.mouseout()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;mouseover()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="mouseover">.mouseover()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;mouseup()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="mouseup">.mouseup()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;toggle()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;,&quot;deprecated&quot;:&quot;1.8&quot;,&quot;removed&quot;:&quot;1.9&quot;}" value="toggle-event">.toggle()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eventcurrentTarget&quot;,&quot;from&quot;:&quot;1.3&quot;,&quot;type&quot;:&quot;events&quot;}" value="event.currentTarget">event.currentTarget</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eventdelegateTarget&quot;,&quot;from&quot;:&quot;1.7&quot;,&quot;type&quot;:&quot;events&quot;}" value="event.delegateTarget">event.delegateTarget</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eventdata&quot;,&quot;from&quot;:&quot;1.1&quot;,&quot;type&quot;:&quot;events&quot;}" value="event.data">event.data</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eventisDefaultPrevented()&quot;,&quot;from&quot;:&quot;1.3&quot;,&quot;type&quot;:&quot;events&quot;}" value="event.isDefaultPrevented">event.isDefaultPrevented()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eventisImmediatePropagationStopped()&quot;,&quot;from&quot;:&quot;1.3&quot;,&quot;type&quot;:&quot;events&quot;}" value="event.isImmediatePropagationStopped">event.isImmediatePropagationStopped()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eventisPropagationStopped()&quot;,&quot;from&quot;:&quot;1.3&quot;,&quot;type&quot;:&quot;events&quot;}" value="event.isPropagationStopped">event.isPropagationStopped()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eventmetaKey&quot;,&quot;from&quot;:&quot;1.0.4&quot;,&quot;type&quot;:&quot;events&quot;}" value="event.metaKey">event.metaKey</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eventnamespace&quot;,&quot;from&quot;:&quot;1.4.3&quot;,&quot;type&quot;:&quot;events&quot;}" value="event.namespace">event.namespace</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eventpageX&quot;,&quot;from&quot;:&quot;1.0.4&quot;,&quot;type&quot;:&quot;events&quot;}" value="event.pageX">event.pageX</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eventpageY&quot;,&quot;from&quot;:&quot;1.0.4&quot;,&quot;type&quot;:&quot;events&quot;}" value="event.pageY">event.pageY</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eventpreventDefault()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="event.preventDefault">event.preventDefault()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eventrelatedTarget&quot;,&quot;from&quot;:&quot;1.1.4&quot;,&quot;type&quot;:&quot;events&quot;}" value="event.relatedTarget">event.relatedTarget</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eventresult&quot;,&quot;from&quot;:&quot;1.3&quot;,&quot;type&quot;:&quot;events&quot;}" value="event.result">event.result</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eventstopImmediatePropagation()&quot;,&quot;from&quot;:&quot;1.3&quot;,&quot;type&quot;:&quot;events&quot;}" value="event.stopImmediatePropagation">event.stopImmediatePropagation()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eventstopPropagation()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="event.stopPropagation">event.stopPropagation()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eventtarget&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="event.target">event.target</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eventtimeStamp&quot;,&quot;from&quot;:&quot;1.2.6&quot;,&quot;type&quot;:&quot;events&quot;}" value="event.timeStamp">event.timeStamp</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eventtype&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;events&quot;}" value="event.type">event.type</option>
+                            <option data-data="{&quot;sort&quot;:&quot;eventwhich&quot;,&quot;from&quot;:&quot;1.1.3&quot;,&quot;type&quot;:&quot;events&quot;}" value="event.which">event.which</option>
+                            <option data-data="{&quot;sort&quot;:&quot;hide()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;effects&quot;}" value="hide">.hide()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;show()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;effects&quot;}" value="show">.show()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;toggle()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;effects&quot;}" value="toggle">.toggle()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;animate()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;effects&quot;}" value="animate">.animate()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;clearQueue()&quot;,&quot;from&quot;:&quot;1.4&quot;,&quot;type&quot;:&quot;effects&quot;}" value="clearQueue">.clearQueue()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;delay()&quot;,&quot;from&quot;:&quot;1.4&quot;,&quot;type&quot;:&quot;effects&quot;}" value="delay">.delay()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;dequeue()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;effects&quot;}" value="dequeue">.dequeue()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerydequeue()&quot;,&quot;from&quot;:&quot;1.3&quot;,&quot;type&quot;:&quot;effects&quot;}" value="jQuery.dequeue">jQuery.dequeue()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;finish()&quot;,&quot;from&quot;:&quot;1.9&quot;,&quot;type&quot;:&quot;effects&quot;}" value="finish">.finish()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryfx.interval&quot;,&quot;from&quot;:&quot;1.4.3&quot;,&quot;type&quot;:&quot;effects&quot;}" value="jQuery.fx.interval">jQuery.fx.interval</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryfx.off&quot;,&quot;from&quot;:&quot;1.3&quot;,&quot;type&quot;:&quot;effects&quot;}" value="jQuery.fx.off">jQuery.fx.off</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryspeed&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;effects&quot;}" value="jQuery.speed">jQuery.speed</option>
+                            <option data-data="{&quot;sort&quot;:&quot;queue()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;effects&quot;}" value="queue">.queue()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryqueue()&quot;,&quot;from&quot;:&quot;1.3&quot;,&quot;type&quot;:&quot;effects&quot;}" value="jQuery.queue">jQuery.queue()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;stop()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;effects&quot;}" value="stop">.stop()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;fadeIn()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;effects&quot;}" value="fadeIn">.fadeIn()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;fadeOut()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;effects&quot;}" value="fadeOut">.fadeOut()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;fadeTo()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;effects&quot;}" value="fadeTo">.fadeTo()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;fadeToggle()&quot;,&quot;from&quot;:&quot;1.4.4&quot;,&quot;type&quot;:&quot;effects&quot;}" value="fadeToggle">.fadeToggle()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;slideDown()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;effects&quot;}" value="slideDown">.slideDown()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;slideToggle()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;effects&quot;}" value="slideToggle">.slideToggle()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;slideUp()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;effects&quot;}" value="slideUp">.slideUp()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;ajaxComplete()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;ajax&quot;}" value="ajaxComplete">.ajaxComplete()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;ajaxError()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;ajax&quot;}" value="ajaxError">.ajaxError()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;ajaxSend()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;ajax&quot;}" value="ajaxSend">.ajaxSend()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;ajaxStart()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;ajax&quot;}" value="ajaxStart">.ajaxStart()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;ajaxStop()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;ajax&quot;}" value="ajaxStop">.ajaxStop()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;ajaxSuccess()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;ajax&quot;}" value="ajaxSuccess">.ajaxSuccess()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryparam()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;ajax&quot;}" value="jQuery.param">jQuery.param()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;serialize()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;ajax&quot;}" value="serialize">.serialize()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;serializeArray()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;ajax&quot;}" value="serializeArray">.serializeArray()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryajax()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;ajax&quot;}" value="jQuery.ajax">jQuery.ajax()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryprefilter()&quot;,&quot;from&quot;:&quot;1.5&quot;,&quot;type&quot;:&quot;ajax&quot;}" value="jQuery.ajaxPrefilter">jQuery.prefilter()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryajaxSetup()&quot;,&quot;from&quot;:&quot;1.1&quot;,&quot;type&quot;:&quot;ajax&quot;}" value="jQuery.ajaxSetup">jQuery.ajaxSetup()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryajaxTransport()&quot;,&quot;from&quot;:&quot;1.5&quot;,&quot;type&quot;:&quot;ajax&quot;}" value="jQuery.ajaxTransport">jQuery.ajaxTransport()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryget()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;ajax&quot;}" value="jQuery.get">jQuery.get()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerygetJSON()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;ajax&quot;}" value="jQuery.getJSON">jQuery.getJSON()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerygetScript()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;ajax&quot;}" value="jQuery.getScript">jQuery.getScript()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerypost()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;ajax&quot;}" value="jQuery.post">jQuery.post()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;load()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;ajax&quot;}" value="load">.load()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuery)&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery">jQuery()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerynoConflict()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.noConflict">jQuery.noConflict()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerysub()&quot;,&quot;from&quot;:&quot;1.5&quot;,&quot;type&quot;:&quot;core&quot;,&quot;deprecated&quot;:&quot;1.7&quot;,&quot;removed&quot;:&quot;1.9&quot;}" value="jQuery.sub">jQuery.sub()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryholdReady()&quot;,&quot;from&quot;:&quot;1.6&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.holdReady">jQuery.holdReady()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerywhen()&quot;,&quot;from&quot;:&quot;1.5&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.when">jQuery.when()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryDeferred()&quot;,&quot;from&quot;:&quot;1.5&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.Deferred">jQuery.Deferred()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;deferredalways()&quot;,&quot;from&quot;:&quot;1.6&quot;,&quot;type&quot;:&quot;core&quot;}" value="deferred.always">deferred.always()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;deferreddone()&quot;,&quot;from&quot;:&quot;1.5&quot;,&quot;type&quot;:&quot;core&quot;}" value="deferred.done">deferred.done()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;deferredfail()&quot;,&quot;from&quot;:&quot;1.5&quot;,&quot;type&quot;:&quot;core&quot;}" value="deferred.fail">deferred.fail()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;deferredisRejected()&quot;,&quot;from&quot;:&quot;1.5&quot;,&quot;type&quot;:&quot;core&quot;,&quot;deprecated&quot;:&quot;1.7&quot;,&quot;removed&quot;:&quot;1.8&quot;}" value="deferred.isRejected">deferred.isRejected()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;deferredisResolved()&quot;,&quot;from&quot;:&quot;1.5&quot;,&quot;type&quot;:&quot;core&quot;,&quot;deprecated&quot;:&quot;1.7&quot;,&quot;removed&quot;:&quot;1.8&quot;}" value="deferred.isResolved">deferred.isResolved()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;deferrednotify()&quot;,&quot;from&quot;:&quot;1.7&quot;,&quot;type&quot;:&quot;core&quot;}" value="deferred.notify">deferred.notify()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;deferrednotifyWith()&quot;,&quot;from&quot;:&quot;1.7&quot;,&quot;type&quot;:&quot;core&quot;}" value="deferred.notifyWith">deferred.notifyWith()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;deferredpipe()&quot;,&quot;from&quot;:&quot;1.6&quot;,&quot;type&quot;:&quot;core&quot;,&quot;deprecated&quot;:&quot;1.8&quot;}" value="deferred.pipe">deferred.pipe()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;deferredprogress()&quot;,&quot;from&quot;:&quot;1.7&quot;,&quot;type&quot;:&quot;core&quot;}" value="deferred.progress">deferred.progress()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;deferredpromise()&quot;,&quot;from&quot;:&quot;1.5&quot;,&quot;type&quot;:&quot;core&quot;}" value="deferred.promise">deferred.promise()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;deferredreject()&quot;,&quot;from&quot;:&quot;1.5&quot;,&quot;type&quot;:&quot;core&quot;}" value="deferred.reject">deferred.reject()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;deferredrejectWith()&quot;,&quot;from&quot;:&quot;1.5&quot;,&quot;type&quot;:&quot;core&quot;}" value="deferred.rejectWith">deferred.rejectWith()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;deferredresolve()&quot;,&quot;from&quot;:&quot;1.5&quot;,&quot;type&quot;:&quot;core&quot;}" value="deferred.resolve">deferred.resolve()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;deferredresolveWith()&quot;,&quot;from&quot;:&quot;1.5&quot;,&quot;type&quot;:&quot;core&quot;}" value="deferred.resolveWith">deferred.resolveWith()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;deferredstate()&quot;,&quot;from&quot;:&quot;1.7&quot;,&quot;type&quot;:&quot;core&quot;}" value="deferred.state">deferred.state()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;deferredthen()&quot;,&quot;from&quot;:&quot;1.5&quot;,&quot;type&quot;:&quot;core&quot;}" value="deferred.then">deferred.then()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;promise()&quot;,&quot;from&quot;:&quot;1.6&quot;,&quot;type&quot;:&quot;core&quot;}" value="promise">.promise()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryboxModel&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;core&quot;,&quot;deprecated&quot;:&quot;1.3&quot;,&quot;removed&quot;:&quot;1.8&quot;}" value="jQuery.boxModel">jQuery.boxModel</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerybrowser&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;core&quot;,&quot;deprecated&quot;:&quot;1.3&quot;,&quot;removed&quot;:&quot;1.9&quot;}" value="jQuery.browser">jQuery.browser</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerycontains()&quot;,&quot;from&quot;:&quot;1.4&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.contains">jQuery.contains()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryeach()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.each">jQuery.each()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryextend()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.extend">jQuery.extend()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryglobalEval()&quot;,&quot;from&quot;:&quot;1.0.4&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.globalEval">jQuery.globalEval()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerygrep()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.grep">jQuery.grep()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryinArray()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.inArray">jQuery.inArray()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryisArray()&quot;,&quot;from&quot;:&quot;1.3&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.isArray">jQuery.isArray()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryisEmptyObject()&quot;,&quot;from&quot;:&quot;1.4&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.isEmptyObject">jQuery.isEmptyObject()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryisFunction()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.isFunction">jQuery.isFunction()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryisNumeric()&quot;,&quot;from&quot;:&quot;1.7&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.isNumeric">jQuery.isNumeric()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryisPlainObject()&quot;,&quot;from&quot;:&quot;1.4&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.isPlainObject">jQuery.isPlainObject()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryisWindow()&quot;,&quot;from&quot;:&quot;1.4.3&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.isWindow">jQuery.isWindow()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryisXMLDoc()&quot;,&quot;from&quot;:&quot;1.1.4&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.isXMLDoc">jQuery.isXMLDoc()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerymakeArray()&quot;,&quot;from&quot;:&quot;1.2&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.makeArray">jQuery.makeArray()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerymap()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.map">jQuery.map()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerymerge()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.merge">jQuery.merge()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerynoop()&quot;,&quot;from&quot;:&quot;1.4&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.noop">jQuery.noop()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerynow()&quot;,&quot;from&quot;:&quot;1.4.3&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.now">jQuery.now()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryparseHTML()&quot;,&quot;from&quot;:&quot;1.8&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.parseHTML">jQuery.parseHTML()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryparseJSON()&quot;,&quot;from&quot;:&quot;1.4.1&quot;,&quot;type&quot;:&quot;core&quot;,&quot;deprecated&quot;:&quot;3.0&quot;}" value="jQuery.parseJSON">jQuery.parseJSON()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryparseXML()&quot;,&quot;from&quot;:&quot;1.5&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.parseXML">jQuery.parseXML()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryproxy()&quot;,&quot;from&quot;:&quot;1.4&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.proxy">jQuery.proxy()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerysupport&quot;,&quot;from&quot;:&quot;1.3&quot;,&quot;type&quot;:&quot;core&quot;,&quot;deprecated&quot;:&quot;1.9&quot;}" value="jQuery.support">jQuery.support</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerytrim()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.trim">jQuery.trim()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQuerytype()&quot;,&quot;from&quot;:&quot;1.4.3&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.type">jQuery.type()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryunique()&quot;,&quot;from&quot;:&quot;1.1.3&quot;,&quot;type&quot;:&quot;core&quot;,&quot;deprecated&quot;:&quot;3.0&quot;}" value="jQuery.unique">jQuery.unique()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryuniqueSort()&quot;,&quot;from&quot;:&quot;3.0&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.uniqueSort">jQuery.uniqueSort()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;get()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;core&quot;}" value="get">.get()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;index()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;core&quot;}" value="index">.index()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;size()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;core&quot;,&quot;deprecated&quot;:&quot;1.8&quot;}" value="size">.size()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;toArray()&quot;,&quot;from&quot;:&quot;1.4&quot;,&quot;type&quot;:&quot;core&quot;}" value="toArray">.toArray()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jquery&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;core&quot;}" value="jquery-2">.jquery</option>
+                            <option data-data="{&quot;sort&quot;:&quot;context&quot;,&quot;from&quot;:&quot;1.3&quot;,&quot;type&quot;:&quot;core&quot;,&quot;deprecated&quot;:&quot;1-10&quot;,&quot;removed&quot;:&quot;3.0&quot;}" value="context">.context</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryerror()&quot;,&quot;from&quot;:&quot;1.4.1&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.error">jQuery.error()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;length&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;core&quot;}" value="length">.length</option>
+                            <option data-data="{&quot;sort&quot;:&quot;pushStack()&quot;,&quot;from&quot;:&quot;1.0&quot;,&quot;type&quot;:&quot;core&quot;}" value="pushStack">.pushStack()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;selector&quot;,&quot;from&quot;:&quot;1.3&quot;,&quot;type&quot;:&quot;core&quot;,&quot;deprecated&quot;:&quot;1.7&quot;,&quot;removed&quot;:&quot;3.0&quot;}" value="selector">.selector</option>
+                            <option data-data="{&quot;sort&quot;:&quot;jQueryCallbacks()&quot;,&quot;from&quot;:&quot;1.7&quot;,&quot;type&quot;:&quot;core&quot;}" value="jQuery.Callbacks">jQuery.Callbacks()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;callbacksadd()&quot;,&quot;from&quot;:&quot;1.7&quot;,&quot;type&quot;:&quot;core&quot;}" value="callbacks.add">callbacks.add()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;callbacksdisable()&quot;,&quot;from&quot;:&quot;1.7&quot;,&quot;type&quot;:&quot;core&quot;}" value="callbacks.disable">callbacks.disable()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;callbacksdisabled()&quot;,&quot;from&quot;:&quot;1.7&quot;,&quot;type&quot;:&quot;core&quot;}" value="callbacks.disabled">callbacks.disabled()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;callbacksempty()&quot;,&quot;from&quot;:&quot;1.7&quot;,&quot;type&quot;:&quot;core&quot;}" value="callbacks.empty">callbacks.empty()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;callbacksfire()&quot;,&quot;from&quot;:&quot;1.7&quot;,&quot;type&quot;:&quot;core&quot;}" value="callbacks.fire">callbacks.fire()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;callbacksfired()&quot;,&quot;from&quot;:&quot;1.7&quot;,&quot;type&quot;:&quot;core&quot;}" value="callbacks.fired">callbacks.fired()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;callbacksfireWith()&quot;,&quot;from&quot;:&quot;1.7&quot;,&quot;type&quot;:&quot;core&quot;}" value="callbacks.fireWith">callbacks.fireWith()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;callbackshas()&quot;,&quot;from&quot;:&quot;1.7&quot;,&quot;type&quot;:&quot;core&quot;}" value="callbacks.has">callbacks.has()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;callbackslock()&quot;,&quot;from&quot;:&quot;1.7&quot;,&quot;type&quot;:&quot;core&quot;}" value="callbacks.lock">callbacks.lock()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;callbackslocked()&quot;,&quot;from&quot;:&quot;1.7&quot;,&quot;type&quot;:&quot;core&quot;}" value="callbacks.locked">callbacks.locked()</option>
+                            <option data-data="{&quot;sort&quot;:&quot;callbacksremove()&quot;,&quot;from&quot;:&quot;1.7&quot;,&quot;type&quot;:&quot;core&quot;}" value="callbacks.remove">callbacks.remove()</option>
+                        </select>
+                    </div>
+                </div>
+                <a class="about" href="#about" id="about-link">选项</a>
+                <a class="about" href="#about" id="about-link">Preferences...</a>
+            </header>
+            <div class="main-content ly-horizontal">
+                <article id="selectors" class="selectors">
+                    <h1>选择器</h1>
+                    <div>
+                        <div>
+                            <section>
+                                <h2>基本</h2>
+                                <ul>
+                                    <li>
+                                        <a class="v1-0 all-selector" title="Selects all elements." href="http://www.jquery123.com/all-selector/" data-src="">
+                                            *
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-0 class-selector" title="Selects all elements with the given class." href="http://www.jquery123.com/class-selector/" data-src="">
+                                            .class
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-0 element-selector" title="Selects all elements with the given tag name." href="http://www.jquery123.com/element-selector/" data-src="">
+                                            element
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-0 id-selector" title="Selects a single element with the given id attribute." href="http://www.jquery123.com/id-selector/" data-src="">
+                                            #id
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-0 multiple-selector" title="Selects the combined results of all the specified selectors." href="http://www.jquery123.com/multiple-selector/" data-src="">
+                                            selector1, selectorN, ...
+                                        </a>
+                                    </li>
+                                </ul>
+                            </section>
+                            <section>
+                                <h2>层级</h2>
+                                <ul>
+                                    <li>
+                                        <a class="v1-0 child-selector" title="Selects all direct child elements specified by &#x27;child&#x27; of elements specified by &#x27;parent&#x27;." href="http://www.jquery123.com/child-selector/" data-src="">
+                                            parent &amp;gt; child
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-0 descendant-selector" title="Selects all elements that are descendants of a given ancestor." href="http://www.jquery123.com/descendant-selector/" data-src="">
+                                            ancestor descendant
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-0 next-adjacent-Selector" title="Selects all next elements matching &#x27;next&#x27; that are immediately preceded by a sibling &#x27;prev&#x27;." href="http://www.jquery123.com/next-adjacent-Selector/" data-src="">
+                                            prev + next
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-0 next-siblings-selector" title="Selects all sibling elements that follow after the &#x27;prev&#x27; element, have the same parent, and match the filtering &#x27;siblings&#x27; selector." href="http://www.jquery123.com/next-siblings-selector/" data-src="">
+                                            prev ~ siblings
+                                        </a>
+                                    </li>
+                                </ul>
+                            </section>
+                            <section>
+                                <h2>基本筛选</h2>
+                                <ul>
+                                    <li>
+                                        <a class="v1-2 animated-selector" title="Select all elements that are in the progress of an animation at the time the selector is run." href="http://www.jquery123.com/animated-selector/" data-src="">
+                                            :animated
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-0 eq-selector" title="Select the element at index n within the matched set." href="http://www.jquery123.com/eq-selector/" data-src="">
+                                            :eq()
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-0 even-selector" title="Selects even elements, zero-indexed. See also odd." href="http://www.jquery123.com/even-selector/" data-src="">
+                                            :even
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-0 first-selector" title="Selects the first matched element." href="http://www.jquery123.com/first-selector/" data-src="">
+                                            :first
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-0 gt-selector" title="Select all elements at an index greater than index within the matched set." href="http://www.jquery123.com/gt-selector/" data-src="">
+                                            :gt()
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-2 header-selector" title="Selects all elements that are headers, like h1, h2, h3 and so on." href="http://www.jquery123.com/header-selector/" data-src="">
+                                            :header
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-9 lang-selector" title="Selects all elements of the specified language." href="http://www.jquery123.com/lang-selector/" data-src="">
+                                            :lang()
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-0 last-selector" title="Selects the last matched element." href="http://www.jquery123.com/last-selector/" data-src="">
+                                            :last
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-0 lt-selector" title="Select all elements at an index less than index within the matched set." href="http://www.jquery123.com/lt-selector/" data-src="">
+                                            :lt()
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-0 not-selector" title="Selects all elements that do not match the given selector." href="http://www.jquery123.com/not-selector/" data-src="">
+                                            :not()
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-0 odd-selector" title="Selects odd elements, zero-indexed. See also even." href="http://www.jquery123.com/odd-selector/" data-src="">
+                                            :odd
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-9 root-selector" title="Selects the element that is the root of the document." href="http://www.jquery123.com/root-selector/" data-src="">
+                                            :root
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-9 target-selector" title="Selects the target element indicated by the fragment identifier of the document&#x27;s URI." href="http://www.jquery123.com/target-selector/" data-src="">
+                                            :target
+                                        </a>
+                                    </li>
+                                </ul>
+                            </section>
+                            <section>
+                                <h2>内容筛选</h2>
+                                <ul>
+                                    <li>
+                                        <a class="v1-1.4 contains-selector" title="Select all elements that contain the specified text." href="http://www.jquery123.com/contains-selector/" data-src="">
+                                            :contains()
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-0 empty-selector" title="Select all elements that have no children (including text nodes)." href="http://www.jquery123.com/empty-selector/" data-src="">
+                                            :empty
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-1.4 has-selector" title="Selects elements which contain at least one element that matches the specified selector." href="http://www.jquery123.com/has-selector/" data-src="">
+                                            :has()
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="v1-0 parent-selector" title="Select all elements that are the parent of another element, including text nodes." href="http://www.jquery123.com/parent-selector/" data-src="">
+                                            :parent
+                                        </a>
+                                    </li>
+                                </ul>
+                            </section>
+                        </div><div>
+                        <section>
+                            <h2>可见性筛选</h2>
+                            <ul>
+                                <li>
+                                    <a class="v1-0 hidden-selector" title="Selects all elements that are hidden." href="http://www.jquery123.com/hidden-selector/" data-src="">
+                                        :hidden
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="v1-0 visible-selector" title="Selects all elements that are visible." href="http://www.jquery123.com/visible-selector/" data-src="">
+                                        :visible
+                                    </a>
+                                </li>
+                            </ul>
+                        </section>
+                        <section>
+                            <h2>Attribute</h2>
+                            <ul>
+                                <li>
+                                    <a class="v1-0 attribute-contains-prefix-selector" title="Selects elements that have the specified attribute with a value either equal to a given string or starting with that string followed by a hyphen (-)." href="http://www.jquery123.com/attribute-contains-prefix-selector/" data-src="">
+                                        [name|&#x3D;&quot;value&quot;]
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="v1-0 attribute-contains-selector" title="Selects elements that have the specified attribute with a value containing the a given substring." href="http://www.jquery123.com/attribute-contains-selector/" data-src="">
+                                        [name*&#x3D;&quot;value&quot;]
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="v1-0 attribute-contains-word-selector" title="Selects elements that have the specified attribute with a value containing a given word, delimited by spaces." href="http://www.jquery123.com/attribute-contains-word-selector/" data-src="">
+                                        [name~&#x3D;&quot;value&quot;]
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="v1-0 attribute-ends-with-selector" title="Selects elements that have the specified attribute with a value ending exactly with a given string. The comparison is case sensitive." href="http://www.jquery123.com/attribute-ends-with-selector/" data-src="">
+                                        [name$&#x3D;&quot;value&quot;]
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="v1-0 attribute-equals-selector" title="Selects elements that have the specified attribute with a value exactly equal to a certain value." href="http://www.jquery123.com/attribute-equals-selector/" data-src="">
+                                        [name&#x3D;&quot;value&quot;]
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="v1-0 attribute-not-equal-selector" title="Select elements that either don&#x27;t have the specified attribute, or do have the specified attribute but not with a certain value." href="http://www.jquery123.com/attribute-not-equal-selector/" data-src="">
+                                        [name!&#x3D;&quot;value&quot;]
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="v1-0 attribute-starts-with-selector" title="Selects elements that have the specified attribute with a value beginning exactly with a given string." href="http://www.jquery123.com/attribute-starts-with-selector/" data-src="">
+                                        [name^&#x3D;&quot;value&quot;]
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="v1-0 has-attribute-selector" title="Selects elements that have the specified attribute, with any value." href="http://www.jquery123.com/has-attribute-selector/" data-src="">
+                                        [name]
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="v1-0 multiple-attribute-selector" title="Matches elements that match all of the specified attribute filters." href="http://www.jquery123.com/multiple-attribute-selector/" data-src="">
+                                        [name&#x3D;&quot;value&quot;][name2&#x3D;&quot;value2&quot;]
+                                    </a>
+                                </li>
+                            </ul>
+                        </section>
+                        <section>
+                            <h2>Child Filters</h2>
+                            <ul>
+                                <li>
+                                    <a class="v1-1.4 first-child-selector" title="Selects all elements that are the first child of their parent." href="http://www.jquery123.com/first-child-selector/" data-src="">
+                                        :first-child
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="v1-9 first-of-type-selector" title="Selects all elements that are the first among siblings of the same element name." href="http://www.jquery123.com/first-of-type-selector/" data-src="">
+                                        :first-of-type
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="v1-1.4 last-child-selector" title="Selects all elements that are the last child of their parent." href="http://www.jquery123.com/last-child-selector/" data-src="">
+                                        :last-child
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="v1-9 last-of-type-selector" title="Selects all elements that are the last among siblings of the same element name." href="http://www.jquery123.com/last-of-type-selector/" data-src="">
+                                        :last-of-type
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="v1-1.4 nth-child-selector" title="Selects all elements that are the nth-child of their parent." href="http://www.jquery123.com/nth-child-selector/" data-src="">
+                                        :nth-child()
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="v1-9 nth-last-child-selector" title="Selects all elements that are the nth-child of their parent, counting from the last element to the first." href="http://www.jquery123.com/nth-last-child-selector/" data-src="">
+                                        :nth-last-child()
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="v1-9 nth-last-of-type-selector" title="Selects all elements that are the nth-child of their parent, counting from the last element to the first." href="http://www.jquery123.com/nth-last-of-type-selector/" data-src="">
+                                        :nth-last-of-type()
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="v1-9 nth-of-type-selector" title="Selects all elements that are the nth child of their parent in relation to siblings with the same element name." href="http://www.jquery123.com/nth-of-type-selector/" data-src="">
+                                        :nth-of-type()
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="v1-1.4 only-child-selector" title="Selects all elements that are the only child of their parent." href="http://www.jquery123.com/only-child-selector/" data-src="">
+                                        :only-child
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="v1-9 only-of-type-selector" title="Selects all elements that have no siblings with the same element name." href="http://www.jquery123.com/only-of-type-selector/" data-src="">
+                                        :only-of-type()
+                                    </a>
+                                </li>
+                            </ul>
+                        </section>
+                    </div><div>
+                    <section>
+                        <h2>Forms</h2>
+                        <ul>
+                            <li>
+                                <a class="v1-0 button-selector" title="Selects all button elements and elements of type button." href="http://www.jquery123.com/button-selector/" data-src="">
+                                    :button
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-0 checkbox-selector" title="Selects all elements of type checkbox." href="http://www.jquery123.com/checkbox-selector/" data-src="">
+                                    :checkbox
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-0 checked-selector" title="Matches all elements that are checked." href="http://www.jquery123.com/checked-selector/" data-src="">
+                                    :checked
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-0 disabled-selector" title="Selects all elements that are disabled." href="http://www.jquery123.com/disabled-selector/" data-src="">
+                                    :disabled
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-0 enabled-selector" title="Selects all elements that are enabled." href="http://www.jquery123.com/enabled-selector/" data-src="">
+                                    :enabled
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-6 focus-selector" title="Selects element if it is currently focused." href="http://www.jquery123.com/focus-selector/" data-src="">
+                                    :focus
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-0 file-selector" title="Selects all elements of type file." href="http://www.jquery123.com/file-selector/" data-src="">
+                                    :file
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-0 image-selector" title="Selects all elements of type image." href="http://www.jquery123.com/image-selector/" data-src="">
+                                    :image
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-0 input-selector" title="Selects all input, textarea, select and button elements." href="http://www.jquery123.com/input-selector/" data-src="">
+                                    :input
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-0 password-selector" title="Selects all elements of type password." href="http://www.jquery123.com/password-selector/" data-src="">
+                                    :password
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-0 radio-selector" title="Selects all elements of type radio." href="http://www.jquery123.com/radio-selector/" data-src="">
+                                    :radio
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-0 reset-selector" title="Selects all elements of type reset." href="http://www.jquery123.com/reset-selector/" data-src="">
+                                    :reset
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-0 selected-selector" title="Selects all elements that are selected." href="http://www.jquery123.com/selected-selector/" data-src="">
+                                    :selected
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-0 submit-selector" title="Selects all elements of type submit." href="http://www.jquery123.com/submit-selector/" data-src="">
+                                    :submit
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-0 text-selector" title="Selects all elements of type text." href="http://www.jquery123.com/text-selector/" data-src="">
+                                    :text
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </article>
+        <article id="attributes" class="attributes">
+            <h1>Attributes / CSS</h1>
+            <div>
+                <div>
+                    <section>
+                        <h2>Attributes</h2>
+                        <ul>
+                            <li>
+                                <a class="v1-0 attr" title="Get the value of an attribute for the first element in the set of matched elements or set one or more attributes for every matched element." href="http://www.jquery123.com/attr/" data-src="jQuery.fn.attr">
+                                    .attr()
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-6 prop" title="Get the value of a property for the first element in the set of matched elements or set one or more properties for every matched element." href="http://www.jquery123.com/prop/" data-src="jQuery.fn.prop">
+                                    .prop()
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-0 removeAttr" title="Remove an attribute from each element in the set of matched elements." href="http://www.jquery123.com/removeAttr/" data-src="jQuery.fn.removeAttr">
+                                    .removeAttr()
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-6 removeProp" title="Remove a property for the set of matched elements." href="http://www.jquery123.com/removeProp/" data-src="jQuery.fn.removeProp">
+                                    .removeProp()
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-0 val" title="Get the current value of the first element in the set of matched elements or set the value of every matched element." href="http://www.jquery123.com/val/" data-src="jQuery.fn.val">
+                                    .val()
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>CSS</h2>
+                        <ul>
+                            <li>
+                                <a class="v1-0 addClass" title="Adds the specified class(es) to each of the set of matched elements." href="http://www.jquery123.com/addClass/" data-src="jQuery.fn.addClass">
+                                    .addClass()
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-0 css" title="Get the value of a style property for the first element in the set of matched elements or set one or more CSS properties for every matched element." href="http://www.jquery123.com/css/" data-src="jQuery.fn.css">
+                                    .css()
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-4.3 jQuery-cssHooks" title="Provides a way to hook directly into jQuery to override how particular CSS properties are retrieved or set. Amongst other uses, cssHooks can be used to create custom, browser-normalized properties for CSS3 features such as box-shadows and gradients." href="http://www.jquery123.com/jQuery.cssHooks/" data-src="jQuery.cssHooks">
+                                    jQuery.cssHooks
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-4.3 jQuery-cssNumber" title="An object containing all CSS properties that may be used without a unit. The .css() method uses this object to see if it may append px to unitless values.." href="http://www.jquery123.com/jQuery.cssNumber/" data-src="jQuery.cssNumber">
+                                    jQuery.cssNumber
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v3-0 jQuery-escapeSelector" title="Escapes any character that has a special meaning in a CSS selector." href="http://www.jquery123.com/jQuery.escapeSelector/" data-src="jQuery.escapeSelector">
+                                    jQuery.escapeSelector()
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-2 hasClass" title="Determine whether any of the matched elements are assigned the given class." href="http://www.jquery123.com/hasClass/" data-src="jQuery.fn.hasClass">
+                                    .hasClass()
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-0 removeClass" title="Remove a single class, multiple classes, or all classes from each element in the set of matched elements." href="http://www.jquery123.com/removeClass/" data-src="jQuery.fn.removeClass">
+                                    .removeClass()
+                                </a>
+                            </li>
+                            <li>
+                                <a class="v1-0 toggleClass" title="Add or remove one or more classes from each element in the set of matched elements, depending on either the class&#x27;s presence or the value of the switch argument." href="http://www.jquery123.com/toggleClass/" data-src="jQuery.fn.toggleClass">
+                                    .toggleClass()
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+                </div><div>
+                <section>
+                    <h2>Dimensions</h2>
+                    <ul>
+                        <li>
+                            <a class="v1-0 height" title="Get the current computed height for the first element in the set of matched elements or set the height of every matched element." href="http://www.jquery123.com/height/" data-src="jQuery.fn.height">
+                                .height()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-2.6 innerHeight" title="Get the current computed height for the first element in the set of matched elements, including padding but not border." href="http://www.jquery123.com/innerHeight/" data-src="jQuery.fn.innerHeight">
+                                .innerHeight()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-2.6 innerWidth" title="Get the current computed width for the first element in the set of matched elements, including padding but not border." href="http://www.jquery123.com/innerWidth/" data-src="jQuery.fn.innerWidth">
+                                .innerWidth()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-2.6 outerHeight" title="Get the current computed height for the first element in the set of matched elements, including padding, border, and optionally margin." href="http://www.jquery123.com/outerHeight/" data-src="jQuery.fn.outerHeight">
+                                .outerHeight()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-2.6 outerWidth" title="Get the current computed width for the first element in the set of matched elements, including padding and border." href="http://www.jquery123.com/outerWidth/" data-src="jQuery.fn.outerWidth">
+                                .outerWidth()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 width" title="Get the current computed width for the first element in the set of matched elements or set the width of every matched element." href="http://www.jquery123.com/width/" data-src="jQuery.fn.width">
+                                .width()
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Offset</h2>
+                    <ul>
+                        <li>
+                            <a class="v1-2 offset" title="Get the current coordinates of the first element, or set the coordinates of every element, in the set of matched elements, relative to the document." href="http://www.jquery123.com/offset/" data-src="jQuery.fn.offset">
+                                .offset()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-2.6 offsetParent" title="Get the closest ancestor element that is positioned." href="http://www.jquery123.com/offsetParent/" data-src="jQuery.fn.offsetParent">
+                                .offsetParent()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-2 position" title="Get the current coordinates of the first element in the set of matched elements, relative to the offset parent." href="http://www.jquery123.com/position/" data-src="jQuery.fn.position">
+                                .position()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-2.6 scrollLeft" title="Get the current horizontal position of the scroll bar for the first element in the set of matched elements or set the horizontal position of the scroll bar for every matched element." href="http://www.jquery123.com/scrollLeft/" data-src="jQuery.fn.scrollLeft">
+                                .scrollLeft()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-2.6 scrollTop" title="Get the current vertical position of the scroll bar for the first element in the set of matched elements or set the vertical position of the scroll bar for every matched element." href="http://www.jquery123.com/scrollTop/" data-src="jQuery.fn.scrollTop">
+                                .scrollTop()
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Data</h2>
+                    <ul>
+                        <li>
+                            <a class="v1-2.3 jQuery-data" title="Store arbitrary data associated with the specified element and/or return the value that was set." href="http://www.jquery123.com/jQuery.data/" data-src="jQuery.data">
+                                jQuery.data()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-2.3 data" title="Store arbitrary data associated with the matched elements or return the value at the named data store for the first element in the set of matched elements." href="http://www.jquery123.com/data/" data-src="jQuery.fn.data">
+                                .data()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-5 jQuery-hasData" title="Determine whether an element has any jQuery data associated with it." href="http://www.jquery123.com/jQuery.hasData/" data-src="jQuery.hasData">
+                                jQuery.hasData()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-2.3 jQuery-removeData" title="Remove a previously-stored piece of data." href="http://www.jquery123.com/jQuery.removeData/" data-src="jQuery.removeData">
+                                jQuery.removeData()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-2.3 removeData" title="Remove a previously-stored piece of data." href="http://www.jquery123.com/removeData/" data-src="jQuery.fn.removeData">
+                                .removeData()
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </article>
+    <article id="manipulation" class="manipulation">
+        <h1>Manipulation</h1>
+        <div>
+            <div>
+                <section>
+                    <h2>Copying</h2>
+                    <ul>
+                        <li>
+                            <a class="v1-0 clone" title="Create a deep copy of the set of matched elements." href="http://www.jquery123.com/clone/" data-src="jQuery.fn.clone">
+                                .clone()
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>DOM Insertion, Around</h2>
+                    <ul>
+                        <li>
+                            <a class="v1-0 wrap" title="Wrap an HTML structure around each element in the set of matched elements." href="http://www.jquery123.com/wrap/" data-src="jQuery.fn.wrap">
+                                .wrap()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-2 wrapAll" title="Wrap an HTML structure around all elements in the set of matched elements." href="http://www.jquery123.com/wrapAll/" data-src="jQuery.fn.wrapAll">
+                                .wrapAll()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-2 wrapInner" title="Wrap an HTML structure around the content of each element in the set of matched elements." href="http://www.jquery123.com/wrapInner/" data-src="jQuery.fn.wrapInner">
+                                .wrapInner()
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>DOM Insertion, Inside</h2>
+                    <ul>
+                        <li>
+                            <a class="v1-0 append" title="Insert content, specified by the parameter, to the end of each element in the set of matched elements." href="http://www.jquery123.com/append/" data-src="jQuery.fn.append">
+                                .append()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 appendTo" title="Insert every element in the set of matched elements to the end of the target." href="http://www.jquery123.com/appendTo/" data-src="jQuery.fn.appendTo">
+                                .appendTo()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 html" title="Get the HTML contents of the first element in the set of matched elements or set the HTML contents of every matched element." href="http://www.jquery123.com/html/" data-src="jQuery.fn.html">
+                                .html()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 prepend" title="Insert content, specified by the parameter, to the beginning of each element in the set of matched elements." href="http://www.jquery123.com/prepend/" data-src="jQuery.fn.prepend">
+                                .prepend()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 prependTo" title="Insert every element in the set of matched elements to the beginning of the target." href="http://www.jquery123.com/prependTo/" data-src="jQuery.fn.prependTo">
+                                .prependTo()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 text" title="Get the combined text contents of each element in the set of matched elements, including their descendants, or set the text contents of the matched elements." href="http://www.jquery123.com/text/" data-src="jQuery.fn.text">
+                                .text()
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>DOM Insertion, Outside</h2>
+                    <ul>
+                        <li>
+                            <a class="v1-0 after" title="Insert content, specified by the parameter, after each element in the set of matched elements." href="http://www.jquery123.com/after/" data-src="jQuery.fn.after">
+                                .after()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 before" title="Insert content, specified by the parameter, before each element in the set of matched elements." href="http://www.jquery123.com/before/" data-src="jQuery.fn.before">
+                                .before()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 insertAfter" title="Insert every element in the set of matched elements after the target." href="http://www.jquery123.com/insertAfter/" data-src="jQuery.fn.insertAfter">
+                                .insertAfter()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 insertBefore" title="Insert every element in the set of matched elements before the target." href="http://www.jquery123.com/insertBefore/" data-src="jQuery.fn.insertBefore">
+                                .insertBefore()
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>DOM Removal</h2>
+                    <ul>
+                        <li>
+                            <a class="v1-4 detach" title="Remove the set of matched elements from the DOM." href="http://www.jquery123.com/detach/" data-src="jQuery.fn.detach">
+                                .detach()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 empty" title="Remove all child nodes of the set of matched elements from the DOM." href="http://www.jquery123.com/empty/" data-src="jQuery.fn.empty">
+                                .empty()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 remove" title="Remove the set of matched elements from the DOM." href="http://www.jquery123.com/remove/" data-src="jQuery.fn.remove">
+                                .remove()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-4 unwrap" title="Remove the parents of the set of matched elements from the DOM, leaving the matched elements in their place." href="http://www.jquery123.com/unwrap/" data-src="jQuery.fn.unwrap">
+                                .unwrap()
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>DOM Replacement</h2>
+                    <ul>
+                        <li>
+                            <a class="v1-2 replaceAll" title="Replace each target element with the set of matched elements." href="http://www.jquery123.com/replaceAll/" data-src="jQuery.fn.replaceAll">
+                                .replaceAll()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-2 replaceWith" title="Replace each element in the set of matched elements with the provided new content." href="http://www.jquery123.com/replaceWith/" data-src="jQuery.fn.replaceWith">
+                                .replaceWith()
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </article>
+    <article id="traversing" class="traversing">
+        <h1>Traversing</h1>
+        <div>
+            <div>
+                <section>
+                    <h2>Filtering</h2>
+                    <ul>
+                        <li>
+                            <a class="v1-1.2 eq" title="Reduce the set of matched elements to the one at the specified index." href="http://www.jquery123.com/eq/" data-src="jQuery.fn.eq">
+                                .eq()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 filter" title="Reduce the set of matched elements to those that match the selector or pass the function&#x27;s test." href="http://www.jquery123.com/filter/" data-src="jQuery.fn.filter">
+                                .filter()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-4 first" title="Reduce the set of matched elements to the first in the set." href="http://www.jquery123.com/first/" data-src="jQuery.fn.first">
+                                .first()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-4 has" title="Reduce the set of matched elements to those that have a descendant that matches the selector or DOM element." href="http://www.jquery123.com/has/" data-src="jQuery.fn.has">
+                                .has()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 is" title="Check the current matched set of elements against a selector and return true if at least one of these elements matches the selector." href="http://www.jquery123.com/is/" data-src="jQuery.fn.is">
+                                .is()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-4 last" title="Reduce the set of matched elements to the final one in the set." href="http://www.jquery123.com/last/" data-src="jQuery.fn.last">
+                                .last()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-2 map" title="Pass each element in the current matched set through a function, producing a new jQuery object containing the return values." href="http://www.jquery123.com/map/" data-src="jQuery.fn.map">
+                                .map()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 not" title="Remove elements from the set of matched elements." href="http://www.jquery123.com/not/" data-src="jQuery.fn.not">
+                                .not()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-1.4 slice" title="Reduce the set of matched elements to a subset specified by a range of indices." href="http://www.jquery123.com/slice/" data-src="jQuery.fn.slice">
+                                .slice()
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Miscellaneous Traversing</h2>
+                    <ul>
+                        <li>
+                            <a class="v1-0 add" title="Add elements to the set of matched elements." href="http://www.jquery123.com/add/" data-src="jQuery.fn.add">
+                                .add()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-8 addBack" title="Add the previous set of elements on the stack to the current set, optionally filtered by a selector." href="http://www.jquery123.com/addBack/" data-src="jQuery.fn.addBack">
+                                .addBack()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-2 andSelf v1-8-d" title="Add the previous set of elements on the stack to the current set." href="http://www.jquery123.com/andSelf/" data-src="jQuery.fn.andSelf">
+                                .andSelf()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-2 contents" title="Get the children of each element in the set of matched elements, including text and comment nodes." href="http://www.jquery123.com/contents/" data-src="jQuery.fn.contents">
+                                .contents()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 each" title="Iterate over a jQuery object, executing a function for each matched element." href="http://www.jquery123.com/each/" data-src="jQuery.fn.each">
+                                .each()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 end" title="End the most recent filtering operation in the current chain and return the set of matched elements to its previous state." href="http://www.jquery123.com/end/" data-src="jQuery.fn.end">
+                                .end()
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Tree Traversal</h2>
+                    <ul>
+                        <li>
+                            <a class="v1-0 children" title="Get the children of each element in the set of matched elements, optionally filtered by a selector." href="http://www.jquery123.com/children/" data-src="jQuery.fn.children">
+                                .children()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-3 closest" title="Get the first ancestor element that matches the selector, beginning at the current element and progressing up through the DOM tree." href="http://www.jquery123.com/closest/" data-src="jQuery.fn.closest">
+                                .closest()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 find" title="Get the descendants of each element in the current set of matched elements, filtered by a selector." href="http://www.jquery123.com/find/" data-src="jQuery.fn.find">
+                                .find()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 next" title="Get the immediately following sibling of each element in the set of matched elements. If a selector is provided, it retrieves the next sibling only if it matches that selector." href="http://www.jquery123.com/next/" data-src="jQuery.fn.next">
+                                .next()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-2 nextAll" title="Get all following siblings of each element in the set of matched elements, optionally filtered by a selector." href="http://www.jquery123.com/nextAll/" data-src="jQuery.fn.nextAll">
+                                .nextAll()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-4 nextUntil" title="Get all following siblings of each element up to but not including the element matched by the selector." href="http://www.jquery123.com/nextUntil/" data-src="jQuery.fn.nextUntil">
+                                .nextUntil()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 parent" title="Get the parent of each element in the current set of matched elements, optionally filtered by a selector." href="http://www.jquery123.com/parent/" data-src="jQuery.fn.parent">
+                                .parent()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 parents" title="Get the ancestors of each element in the current set of matched elements, optionally filtered by a selector." href="http://www.jquery123.com/parents/" data-src="jQuery.fn.parents">
+                                .parents()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-4 parentsUntil" title="Get the ancestors of each element in the current set of matched elements, up to but not including the element matched by the selector." href="http://www.jquery123.com/parentsUntil/" data-src="jQuery.fn.parentsUntil">
+                                .parentsUntil()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 prev" title="Get the immediately preceding sibling of each element in the set of matched elements, optionally filtered by a selector." href="http://www.jquery123.com/prev/" data-src="jQuery.fn.prev">
+                                .prev()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-2 prevAll" title="Get all preceding siblings of each element in the set of matched elements, optionally filtered by a selector." href="http://www.jquery123.com/prevAll/" data-src="jQuery.fn.prevAll">
+                                .prevAll()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-4 prevUntil" title="Get all preceding siblings of each element up to but not including the element matched by the selector." href="http://www.jquery123.com/prevUntil/" data-src="jQuery.fn.prevUntil">
+                                .prevUntil()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 siblings" title="Get the siblings of each element in the set of matched elements, optionally filtered by a selector." href="http://www.jquery123.com/siblings/" data-src="jQuery.fn.siblings">
+                                .siblings()
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </article>
+    <article id="events" class="events">
+        <h1>Events</h1>
+        <div>
+            <div>
+                <section>
+                    <h2>Browser Events</h2>
+                    <ul>
+                        <li>
+                            <a class="v1-0 error v1-8-d v3-0-r" title="Bind an event handler to the &#x27;error&#x27; JavaScript event." href="http://www.jquery123.com/error/" data-src="jQuery.fn.error">
+                                .error()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 resize" title="Bind an event handler to the &#x27;resize&#x27; JavaScript event, or trigger that event on an element." href="http://www.jquery123.com/resize/" data-src="jQuery.fn.resize">
+                                .resize()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 scroll" title="Bind an event handler to the &#x27;scroll&#x27; JavaScript event, or trigger that event on an element." href="http://www.jquery123.com/scroll/" data-src="jQuery.fn.scroll">
+                                .scroll()
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Document Loading</h2>
+                    <ul>
+                        <li>
+                            <a class="v1-0 load-event v1-8-d v3-0-r" title="Bind an event handler to the &#x27;load&#x27; JavaScript event." href="http://www.jquery123.com/load-event/" data-src="jQuery.fn.load">
+                                .load()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 ready" title="Specify a function to execute when the DOM is fully loaded." href="http://www.jquery123.com/ready/" data-src="jQuery.fn.ready">
+                                .ready()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 unload v1-8-d v3-0-r" title="Bind an event handler to the &#x27;unload&#x27; JavaScript event." href="http://www.jquery123.com/unload/" data-src="jQuery.fn.unload">
+                                .unload()
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Event Handler Attachment</h2>
+                    <ul>
+                        <li>
+                            <a class="v1-0 bind" title="Attach a handler to an event for the elements." href="http://www.jquery123.com/bind/" data-src="jQuery.fn.bind">
+                                .bind()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-4.2 delegate" title="Attach a handler to one or more events for all elements that match the selector, now or in the future, based on a specific set of root elements." href="http://www.jquery123.com/delegate/" data-src="jQuery.fn.delegate">
+                                .delegate()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-3 die v1-7-d v1-9-r" title="Remove all event handlers previously attached using .live() from the elements." href="http://www.jquery123.com/die/" data-src="jQuery.fn.die">
+                                .die()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-3 live v1-7-d v1-9-r" title="Attach a handler to the event for all elements which match the current selector, now and in the future." href="http://www.jquery123.com/live/" data-src="jQuery.fn.live">
+                                .live()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-7 off" title="Remove an event handler." href="http://www.jquery123.com/off/" data-src="jQuery.fn.off">
+                                .off()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-7 on" title="Attach an event handler function for one or more events to the selected elements." href="http://www.jquery123.com/on/" data-src="jQuery.fn.on">
+                                .on()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-1 one" title="Attach a handler to an event for the elements. The handler is executed at most once per element." href="http://www.jquery123.com/one/" data-src="jQuery.fn.one">
+                                .one()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 trigger" title="Execute all handlers and behaviors attached to the matched elements for the given event type." href="http://www.jquery123.com/trigger/" data-src="jQuery.fn.trigger">
+                                .trigger()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-2 triggerHandler" title="Execute all handlers attached to an element for an event." href="http://www.jquery123.com/triggerHandler/" data-src="jQuery.fn.triggerHandler">
+                                .triggerHandler()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 unbind" title="Remove a previously-attached event handler from the elements." href="http://www.jquery123.com/unbind/" data-src="jQuery.fn.unbind">
+                                .unbind()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-4.2 undelegate" title="Remove a handler from the event for all elements which match the current selector, now or in the future, based upon a specific set of root elements." href="http://www.jquery123.com/undelegate/" data-src="jQuery.fn.undelegate">
+                                .undelegate()
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Form Events</h2>
+                    <ul>
+                        <li>
+                            <a class="v1-0 blur" title="Bind an event handler to the &#x27;blur&#x27; JavaScript event, or trigger that event on an element." href="http://www.jquery123.com/blur/" data-src="jQuery.fn.blur">
+                                .blur()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 change" title="Bind an event handler to the &#x27;change&#x27; JavaScript event, or trigger that event on an element." href="http://www.jquery123.com/change/" data-src="jQuery.fn.change">
+                                .change()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 focus" title="Bind an event handler to the &#x27;focus&#x27; JavaScript event, or trigger that event on an element." href="http://www.jquery123.com/focus/" data-src="jQuery.fn.focus">
+                                .focus()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-4 focusin" title="Bind an event handler to the &#x27;focusin&#x27; JavaScript event." href="http://www.jquery123.com/focusin/" data-src="jQuery.fn.focusin">
+                                .focusin()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-4 focusout" title="Bind an event handler to the &#x27;focusout&#x27; JavaScript event." href="http://www.jquery123.com/focusout/" data-src="jQuery.fn.focusout">
+                                .focusout()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 select" title="Bind an event handler to the &#x27;select&#x27; JavaScript event, or trigger that event on an element." href="http://www.jquery123.com/select/" data-src="jQuery.fn.select">
+                                .select()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 submit" title="Bind an event handler to the &#x27;submit&#x27; JavaScript event, or trigger that event on an element." href="http://www.jquery123.com/submit/" data-src="jQuery.fn.submit">
+                                .submit()
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Keyboard Events</h2>
+                    <ul>
+                        <li>
+                            <a class="v1-0 keydown" title="Bind an event handler to the &#x27;keydown&#x27; JavaScript event, or trigger that event on an element." href="http://www.jquery123.com/keydown/" data-src="jQuery.fn.keydown">
+                                .keydown()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 keypress" title="Bind an event handler to the &#x27;keypress&#x27; JavaScript event, or trigger that event on an element." href="http://www.jquery123.com/keypress/" data-src="jQuery.fn.keypress">
+                                .keypress()
+                            </a>
+                        </li>
+                        <li>
+                            <a class="v1-0 keyup" title="Bind an event handler to the &#x27;keyup&#x27; JavaScript event, or trigger that event on an element." href="http://www.jquery123.com/keyup/" data-src="jQuery.fn.keyup">
+                                .keyup()
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+            </div><div>
+            <section>
+                <h2>Mouse Events</h2>
+                <ul>
+                    <li>
+                        <a class="v1-0 click" title="Bind an event handler to the &#x27;click&#x27; JavaScript event, or trigger that event on an element." href="http://www.jquery123.com/click/" data-src="jQuery.fn.click">
+                            .click()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 contextmenu" title="Bind an event handler to the &#x27;contextmenu&#x27; JavaScript event, or trigger that event on an element." href="http://www.jquery123.com/contextmenu/" data-src="jQuery.fn.contextmenu">
+                            .contextMenu()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 dblclick" title="Bind an event handler to the &#x27;dblclick&#x27; JavaScript event, or trigger that event on an element." href="http://www.jquery123.com/dblclick/" data-src="jQuery.fn.dblclick">
+                            .dblclick()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 hover" title="Bind two handlers to the matched elements, to be executed when the mouse pointer enters and leaves the elements." href="http://www.jquery123.com/hover/" data-src="jQuery.fn.hover">
+                            .hover()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 mousedown" title="Bind an event handler to the &#x27;mousedown&#x27; JavaScript event, or trigger that event on an element." href="http://www.jquery123.com/mousedown/" data-src="jQuery.fn.mousedown">
+                            .mousedown()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 mouseenter" title="Bind an event handler to be fired when the mouse enters an element, or trigger that handler on an element." href="http://www.jquery123.com/mouseenter/" data-src="jQuery.fn.mouseenter">
+                            .mouseenter()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 mouseleave" title="Bind an event handler to be fired when the mouse leaves an element, or trigger that handler on an element." href="http://www.jquery123.com/mouseleave/" data-src="jQuery.fn.mouseleave">
+                            .mouseleave()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 mousemove" title="Bind an event handler to the &#x27;mousemove&#x27; JavaScript event, or trigger that event on an element." href="http://www.jquery123.com/mousemove/" data-src="jQuery.fn.mousemove">
+                            .mousemove()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 mouseout" title="Bind an event handler to the &#x27;mouseout&#x27; JavaScript event, or trigger that event on an element." href="http://www.jquery123.com/mouseout/" data-src="jQuery.fn.mouseout">
+                            .mouseout()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 mouseover" title="Bind an event handler to the &#x27;mouseover&#x27; JavaScript event, or trigger that event on an element." href="http://www.jquery123.com/mouseover/" data-src="jQuery.fn.mouseover">
+                            .mouseover()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 mouseup" title="Bind an event handler to the &#x27;mouseup&#x27; JavaScript event, or trigger that event on an element." href="http://www.jquery123.com/mouseup/" data-src="jQuery.fn.mouseup">
+                            .mouseup()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 toggle-event v1-8-d v1-9-r" title="Bind two or more handlers to the matched elements, to be executed on alternate clicks." href="http://www.jquery123.com/toggle-event/" data-src="jQuery.fn.toggle">
+                            .toggle()
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Event Object</h2>
+                <ul>
+                    <li>
+                        <a class="v1-3 event-currentTarget" title="The current DOM element within the event bubbling phase." href="http://www.jquery123.com/event.currentTarget/" data-src="">
+                            event.currentTarget
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-7 event-delegateTarget" title="The element where the currently-called jQuery event handler was attached." href="http://www.jquery123.com/event.delegateTarget/" data-src="">
+                            event.delegateTarget
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-1 event-data" title="The optional data passed to jQuery.fn.bind when the current executing handler was bound." href="http://www.jquery123.com/event.data/" data-src="">
+                            event.data
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-3 event-isDefaultPrevented" title="Returns whether event.preventDefault() was ever called on this event object." href="http://www.jquery123.com/event.isDefaultPrevented/" data-src="">
+                            event.isDefaultPrevented()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-3 event-isImmediatePropagationStopped" title="Returns whether event.stopImmediatePropagation() was ever called on this event object." href="http://www.jquery123.com/event.isImmediatePropagationStopped/" data-src="">
+                            event.isImmediatePropagationStopped()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-3 event-isPropagationStopped" title="Returns whether event.stopPropagation() was ever called on this event object." href="http://www.jquery123.com/event.isPropagationStopped/" data-src="">
+                            event.isPropagationStopped()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0.4 event-metaKey" title="Indicates whether the META key was pressed when the event fired." href="http://www.jquery123.com/event.metaKey/" data-src="">
+                            event.metaKey
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-4.3 event-namespace" title="The namespace specified when the event was triggered." href="http://www.jquery123.com/event.namespace/" data-src="">
+                            event.namespace
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0.4 event-pageX" title="The mouse position relative to the left edge of the document." href="http://www.jquery123.com/event.pageX/" data-src="">
+                            event.pageX
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0.4 event-pageY" title="The mouse position relative to the top edge of the document." href="http://www.jquery123.com/event.pageY/" data-src="">
+                            event.pageY
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 event-preventDefault" title="If this method is called, the default action of the event will not be triggered." href="http://www.jquery123.com/event.preventDefault/" data-src="">
+                            event.preventDefault()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-1.4 event-relatedTarget" title="The other DOM element involved in the event, if any." href="http://www.jquery123.com/event.relatedTarget/" data-src="">
+                            event.relatedTarget
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-3 event-result" title="The last value returned by an event handler that was triggered by this event, unless the value was undefined." href="http://www.jquery123.com/event.result/" data-src="">
+                            event.result
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-3 event-stopImmediatePropagation" title="Prevents other event handlers from being called." href="http://www.jquery123.com/event.stopImmediatePropagation/" data-src="">
+                            event.stopImmediatePropagation()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 event-stopPropagation" title="Prevents the event from bubbling up the DOM tree, preventing any parent handlers from being notified of the event." href="http://www.jquery123.com/event.stopPropagation/" data-src="">
+                            event.stopPropagation()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 event-target" title="The DOM element that initiated the event." href="http://www.jquery123.com/event.target/" data-src="">
+                            event.target
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-2.6 event-timeStamp" title="The difference in milliseconds between the time an event is triggered and January 1, 1970." href="http://www.jquery123.com/event.timeStamp/" data-src="">
+                            event.timeStamp
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 event-type" title="Describes the nature of the event." href="http://www.jquery123.com/event.type/" data-src="">
+                            event.type
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-1.3 event-which" title="For key or button events, this attribute indicates the specific button or key that was pressed." href="http://www.jquery123.com/event.which/" data-src="">
+                            event.which
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</article>
+<article id="effects" class="effects">
+    <h1>Effects</h1>
+    <div>
+        <div>
+            <section>
+                <h2>Basics</h2>
+                <ul>
+                    <li>
+                        <a class="v1-0 hide" title="Hide the matched elements." href="http://www.jquery123.com/hide/" data-src="jQuery.fn.hide">
+                            .hide()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 show" title="Display the matched elements." href="http://www.jquery123.com/show/" data-src="jQuery.fn.show">
+                            .show()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 toggle" title="Display or hide the matched elements." href="http://www.jquery123.com/toggle/" data-src="jQuery.fn.toggle">
+                            .toggle()
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Custom</h2>
+                <ul>
+                    <li>
+                        <a class="v1-0 animate" title="Perform a custom animation of a set of CSS properties." href="http://www.jquery123.com/animate/" data-src="jQuery.fn.animate">
+                            .animate()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-4 clearQueue" title="Remove from the queue all items that have not yet been run." href="http://www.jquery123.com/clearQueue/" data-src="jQuery.fn.clearQueue">
+                            .clearQueue()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-4 delay" title="Set a timer to delay execution of subsequent items in the queue." href="http://www.jquery123.com/delay/" data-src="jQuery.fn.delay">
+                            .delay()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-2 dequeue" title="Execute the next function on the queue for the matched elements." href="http://www.jquery123.com/dequeue/" data-src="jQuery.fn.dequeue">
+                            .dequeue()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-3 jQuery-dequeue" title="Execute the next function on the queue for the matched element." href="http://www.jquery123.com/jQuery.dequeue/" data-src="jQuery.dequeue">
+                            jQuery.dequeue()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-9 finish" title="Stop the currently-running animation, remove all queued animations, and complete all animations for the matched elements." href="http://www.jquery123.com/finish/" data-src="jQuery.fn.finish">
+                            .finish()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-4.3 jQuery-fx.interval" title="The rate (in milliseconds) at which animations fire." href="http://www.jquery123.com/jQuery.fx.interval/" data-src="jQuery.fx.interval">
+                            jQuery.fx.interval
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-3 jQuery-fx.off" title="Globally disable all animations." href="http://www.jquery123.com/jQuery.fx.off/" data-src="jQuery.fx.off">
+                            jQuery.fx.off
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 jQuery-speed" title="Creates an object containing a set of properties ready to be used in the definition of custom animations." href="http://www.jquery123.com/jQuery.speed/" data-src="jQuery.speed">
+                            jQuery.speed
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-2 queue" title="Show or manipulate the queue of functions to be executed on the matched elements." href="http://www.jquery123.com/queue/" data-src="jQuery.fn.queue">
+                            .queue()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-3 jQuery-queue" title="Show or manipulate the queue of functions to be executed on the matched element." href="http://www.jquery123.com/jQuery.queue/" data-src="jQuery.queue">
+                            jQuery.queue()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-2 stop" title="Stop the currently-running animation on the matched elements." href="http://www.jquery123.com/stop/" data-src="jQuery.fn.stop">
+                            .stop()
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Fading</h2>
+                <ul>
+                    <li>
+                        <a class="v1-0 fadeIn" title="Display the matched elements by fading them to opaque." href="http://www.jquery123.com/fadeIn/" data-src="jQuery.fn.fadeIn">
+                            .fadeIn()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 fadeOut" title="Hide the matched elements by fading them to transparent." href="http://www.jquery123.com/fadeOut/" data-src="jQuery.fn.fadeOut">
+                            .fadeOut()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 fadeTo" title="Adjust the opacity of the matched elements." href="http://www.jquery123.com/fadeTo/" data-src="jQuery.fn.fadeTo">
+                            .fadeTo()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-4.4 fadeToggle" title="Display or hide the matched elements by animating their opacity." href="http://www.jquery123.com/fadeToggle/" data-src="jQuery.fn.fadeToggle">
+                            .fadeToggle()
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Sliding</h2>
+                <ul>
+                    <li>
+                        <a class="v1-0 slideDown" title="Display the matched elements with a sliding motion." href="http://www.jquery123.com/slideDown/" data-src="jQuery.fn.slideDown">
+                            .slideDown()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 slideToggle" title="Display or hide the matched elements with a sliding motion." href="http://www.jquery123.com/slideToggle/" data-src="jQuery.fn.slideToggle">
+                            .slideToggle()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 slideUp" title="Hide the matched elements with a sliding motion." href="http://www.jquery123.com/slideUp/" data-src="jQuery.fn.slideUp">
+                            .slideUp()
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</article>
+<article id="ajax" class="ajax">
+    <h1>Ajax</h1>
+    <div>
+        <div>
+            <section>
+                <h2>Global Ajax Event Handlers</h2>
+                <ul>
+                    <li>
+                        <a class="v1-0 ajaxComplete" title="Register a handler to be called when Ajax requests complete. This is an Ajax Event." href="http://www.jquery123.com/ajaxComplete/" data-src="jQuery.fn.ajaxComplete">
+                            .ajaxComplete()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 ajaxError" title="Register a handler to be called when Ajax requests complete with an error. This is an Ajax Event." href="http://www.jquery123.com/ajaxError/" data-src="jQuery.fn.ajaxError">
+                            .ajaxError()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 ajaxSend" title="Attach a function to be executed before an Ajax request is sent. This is an Ajax Event." href="http://www.jquery123.com/ajaxSend/" data-src="jQuery.fn.ajaxSend">
+                            .ajaxSend()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 ajaxStart" title="Register a handler to be called when the first Ajax request begins. This is an Ajax Event." href="http://www.jquery123.com/ajaxStart/" data-src="jQuery.fn.ajaxStart">
+                            .ajaxStart()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 ajaxStop" title="Register a handler to be called when all Ajax requests have completed. This is an Ajax Event." href="http://www.jquery123.com/ajaxStop/" data-src="jQuery.fn.ajaxStop">
+                            .ajaxStop()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 ajaxSuccess" title="Attach a function to be executed whenever an Ajax request completes successfully. This is an Ajax Event." href="http://www.jquery123.com/ajaxSuccess/" data-src="jQuery.fn.ajaxSuccess">
+                            .ajaxSuccess()
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Helper Functions</h2>
+                <ul>
+                    <li>
+                        <a class="v1-2 jQuery-param" title="Create a serialized representation of an array or object, suitable for use in a URL query string or Ajax request." href="http://www.jquery123.com/jQuery.param/" data-src="jQuery.param">
+                            jQuery.param()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 serialize" title="Encode a set of form elements as a string for submission." href="http://www.jquery123.com/serialize/" data-src="jQuery.fn.serialize">
+                            .serialize()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-2 serializeArray" title="Encode a set of form elements as an array of names and values." href="http://www.jquery123.com/serializeArray/" data-src="jQuery.fn.serializeArray">
+                            .serializeArray()
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Low-Level Interface</h2>
+                <ul>
+                    <li>
+                        <a class="v1-0 jQuery-ajax" title="Perform an asynchronous HTTP (Ajax) request." href="http://www.jquery123.com/jQuery.ajax/" data-src="jQuery.ajax">
+                            jQuery.ajax()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-5 jQuery-ajaxPrefilter" title="Handle custom Ajax options or modify existing options before each request is sent and before they are processed by $.ajax()." href="http://www.jquery123.com/jQuery.ajaxPrefilter/" data-src="jQuery.ajaxPrefilter">
+                            jQuery.prefilter()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-1 jQuery-ajaxSetup" title="Set default values for future Ajax requests." href="http://www.jquery123.com/jQuery.ajaxSetup/" data-src="jQuery.ajaxSetup">
+                            jQuery.ajaxSetup()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-5 jQuery-ajaxTransport" title="Creates an object that handles the actual transmission of Ajax data." href="http://www.jquery123.com/jQuery.ajaxTransport/" data-src="jQuery.ajaxTransport">
+                            jQuery.ajaxTransport()
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Shorthand Methods</h2>
+                <ul>
+                    <li>
+                        <a class="v1-0 jQuery-get" title="Load data from the server using a HTTP GET request." href="http://www.jquery123.com/jQuery.get/" data-src="jQuery.get">
+                            jQuery.get()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 jQuery-getJSON" title="Load JSON-encoded data from the server using a GET HTTP request." href="http://www.jquery123.com/jQuery.getJSON/" data-src="jQuery.getJSON">
+                            jQuery.getJSON()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 jQuery-getScript" title="Load a JavaScript file from the server using a GET HTTP request, then execute it." href="http://www.jquery123.com/jQuery.getScript/" data-src="jQuery.getScript">
+                            jQuery.getScript()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 jQuery-post" title="Load data from the server using a HTTP POST request." href="http://www.jquery123.com/jQuery.post/" data-src="jQuery.post">
+                            jQuery.post()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 load" title="Load data from the server and place the returned HTML into the matched element." href="http://www.jquery123.com/load/" data-src="jQuery.fn.load">
+                            .load()
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</article>
+<article id="core" class="core">
+    <h1>Core</h1>
+    <div>
+        <div>
+            <section>
+                <h2>jQuery Object</h2>
+                <ul>
+                    <li>
+                        <a class="v1-0 jQuery" title="Return a collection of matched elements either found in the DOM based on passed argument(s) or created by passing an HTML string." href="http://www.jquery123.com/jQuery/" data-src="jQuery">
+                            jQuery()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-0 jQuery-noConflict" title="Relinquish jQuery&#x27;s control of the $ variable." href="http://www.jquery123.com/jQuery.noConflict/" data-src="jQuery.noConflict">
+                            jQuery.noConflict()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-5 jQuery-sub v1-7-d v1-9-r" title="Creates a new copy of jQuery whose properties and methods can be modified without affecting the original jQuery object." href="http://www.jquery123.com/jQuery.sub/" data-src="jQuery.sub">
+                            jQuery.sub()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-6 jQuery-holdReady" title="Holds or releases the execution of jQuery&#x27;s ready event." href="http://www.jquery123.com/jQuery.holdReady/" data-src="jQuery.holdReady">
+                            jQuery.holdReady()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-5 jQuery-when" title="Provides a way to execute callback functions based on one or more objects, usually Deferred objects that represent asynchronous events." href="http://www.jquery123.com/jQuery.when/" data-src="jQuery.when">
+                            jQuery.when()
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Deferred Object</h2>
+                <ul>
+                    <li>
+                        <a class="v1-5 jQuery-Deferred" title="A factory function that returns a chainable utility object with methods to register multiple callbacks into callback queues, invoke callback queues, and relay the success or failure state of any synchronous or asynchronous function." href="http://www.jquery123.com/jQuery.Deferred/" data-src="">
+                            jQuery.Deferred()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-6 deferred-always" title="Add handlers to be called when the Deferred object is either resolved or rejected." href="http://www.jquery123.com/deferred.always/" data-src="">
+                            deferred.always()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-5 deferred-done" title="Add handlers to be called when the Deferred object is resolved." href="http://www.jquery123.com/deferred.done/" data-src="">
+                            deferred.done()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-5 deferred-fail" title="Add handlers to be called when the Deferred object is rejected." href="http://www.jquery123.com/deferred.fail/" data-src="">
+                            deferred.fail()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-5 deferred-isRejected v1-7-d v1-8-r" title="Determine whether a Deferred object has been rejected." href="http://www.jquery123.com/deferred.isRejected/" data-src="">
+                            deferred.isRejected()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-5 deferred-isResolved v1-7-d v1-8-r" title="Determine whether a Deferred object has been resolved." href="http://www.jquery123.com/deferred.isResolved/" data-src="">
+                            deferred.isResolved()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-7 deferred-notify" title="Call the progressCallbacks on a Deferred object with the given args." href="http://www.jquery123.com/deferred.notify/" data-src="">
+                            deferred.notify()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-7 deferred-notifyWith" title="Call the progressCallbacks on a Deferred object with the given context and args." href="http://www.jquery123.com/deferred.notifyWith/" data-src="">
+                            deferred.notifyWith()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-6 deferred-pipe v1-8-d" title="Utility method to filter and/or chain Deferreds." href="http://www.jquery123.com/deferred.pipe/" data-src="">
+                            deferred.pipe()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-7 deferred-progress" title="Add handlers to be called when the Deferred object generates progress notifications." href="http://www.jquery123.com/deferred.progress/" data-src="">
+                            deferred.progress()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-5 deferred-promise" title="Return a Deferred&#x27;s Promise object." href="http://www.jquery123.com/deferred.promise/" data-src="">
+                            deferred.promise()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-5 deferred-reject" title="Reject a Deferred object and call any failCallbacks with the given args." href="http://www.jquery123.com/deferred.reject/" data-src="">
+                            deferred.reject()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-5 deferred-rejectWith" title="Reject a Deferred object and call any failCallbacks with the given context and args." href="http://www.jquery123.com/deferred.rejectWith/" data-src="">
+                            deferred.rejectWith()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-5 deferred-resolve" title="Resolve a Deferred object and call any doneCallbacks with the given args." href="http://www.jquery123.com/deferred.resolve/" data-src="">
+                            deferred.resolve()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-5 deferred-resolveWith" title="Resolve a Deferred object and call any doneCallbacks with the given context and args." href="http://www.jquery123.com/deferred.resolveWith/" data-src="">
+                            deferred.resolveWith()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-7 deferred-state" title="Determine the current state of a Deferred object." href="http://www.jquery123.com/deferred.state/" data-src="">
+                            deferred.state()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-5 deferred-then" title="Add handlers to be called when the Deferred object is resolved or rejected." href="http://www.jquery123.com/deferred.then/" data-src="">
+                            deferred.then()
+                        </a>
+                    </li>
+                    <li>
+                        <a class="v1-6 promise" title="Return a Promise object to observe when all actions of a certain type bound to the collection, queued or not, have finished." href="http://www.jquery123.com/promise/" data-src="">
+                            .promise()
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </div><div>
+        <section>
+            <h2>Utilities</h2>
+            <ul>
+                <li>
+                    <a class="v1-0 jQuery-boxModel v1-3-d v1-8-r" title="States if the current page, in the user&#x27;s browser, is being rendered using the W3C CSS Box Model." href="http://www.jquery123.com/jQuery.boxModel/" data-src="jQuery.boxModel">
+                        jQuery.boxModel
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-0 jQuery-browser v1-3-d v1-9-r" title="Contains flags for the useragent, read from navigator.userAgent. We recommend against using this property; please try to use feature detection instead (see jQuery.support). jQuery.browser may be moved to a plugin in a future release of jQuery." href="http://www.jquery123.com/jQuery.browser/" data-src="jQuery.browser">
+                        jQuery.browser
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-4 jQuery-contains" title="Check to see if a DOM node is within another DOM node." href="http://www.jquery123.com/jQuery.contains/" data-src="jQuery.contains">
+                        jQuery.contains()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-0 jQuery-each" title="A generic iterator function, which can be used to seamlessly iterate over both objects and arrays. Arrays and array-like objects with a length property (such as a function&#x27;s arguments object) are iterated by numeric index, from 0 to length-1. Other objects are iterated via their named properties." href="http://www.jquery123.com/jQuery.each/" data-src="jQuery.each">
+                        jQuery.each()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-0 jQuery-extend" title="Merge the contents of two or more objects together into the first object." href="http://www.jquery123.com/jQuery.extend/" data-src="jQuery.extend">
+                        jQuery.extend()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-0.4 jQuery-globalEval" title="Execute some JavaScript code globally." href="http://www.jquery123.com/jQuery.globalEval/" data-src="jQuery.globalEval">
+                        jQuery.globalEval()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-0 jQuery-grep" title="Finds the elements of an array which satisfy a filter function. The original array is not affected." href="http://www.jquery123.com/jQuery.grep/" data-src="jQuery.grep">
+                        jQuery.grep()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-2 jQuery-inArray" title="Search for a specified value within an array and return its index (or -1 if not found)." href="http://www.jquery123.com/jQuery.inArray/" data-src="jQuery.inArray">
+                        jQuery.inArray()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-3 jQuery-isArray" title="Determine whether the argument is an array." href="http://www.jquery123.com/jQuery.isArray/" data-src="jQuery.isArray">
+                        jQuery.isArray()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-4 jQuery-isEmptyObject" title="Check to see if an object is empty (contains no properties)." href="http://www.jquery123.com/jQuery.isEmptyObject/" data-src="jQuery.isEmptyObject">
+                        jQuery.isEmptyObject()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-2 jQuery-isFunction" title="Determine if the argument passed is a Javascript function object." href="http://www.jquery123.com/jQuery.isFunction/" data-src="jQuery.isFunction">
+                        jQuery.isFunction()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-7 jQuery-isNumeric" title="Determines whether its argument is a number." href="http://www.jquery123.com/jQuery.isNumeric/" data-src="jQuery.isNumeric">
+                        jQuery.isNumeric()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-4 jQuery-isPlainObject" title="Check to see if an object is a plain object (created using &#x27;{}&#x27; or &#x27;new Object&#x27;)." href="http://www.jquery123.com/jQuery.isPlainObject/" data-src="jQuery.isPlainObject">
+                        jQuery.isPlainObject()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-4.3 jQuery-isWindow" title="Determine whether the argument is a window." href="http://www.jquery123.com/jQuery.isWindow/" data-src="jQuery.isWindow">
+                        jQuery.isWindow()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-1.4 jQuery-isXMLDoc" title="Check to see if a DOM node is within an XML document (or is an XML document)." href="http://www.jquery123.com/jQuery.isXMLDoc/" data-src="jQuery.isXMLDoc">
+                        jQuery.isXMLDoc()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-2 jQuery-makeArray" title="Convert an array-like object into a true JavaScript array." href="http://www.jquery123.com/jQuery.makeArray/" data-src="jQuery.makeArray">
+                        jQuery.makeArray()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-0 jQuery-map" title="Translate all items in an array or array-like object to another array of items." href="http://www.jquery123.com/jQuery.map/" data-src="jQuery.map">
+                        jQuery.map()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-0 jQuery-merge" title="Merge the contents of two arrays together into the first array." href="http://www.jquery123.com/jQuery.merge/" data-src="jQuery.merge">
+                        jQuery.merge()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-4 jQuery-noop" title="An empty function." href="http://www.jquery123.com/jQuery.noop/" data-src="jQuery.noop">
+                        jQuery.noop()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-4.3 jQuery-now" title="Return a number representing the current time." href="http://www.jquery123.com/jQuery.now/" data-src="jQuery.now">
+                        jQuery.now()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-8 jQuery-parseHTML" title="Parses a string into an array of DOM nodes." href="http://www.jquery123.com/jQuery.parseHTML/" data-src="jQuery.parseHTML">
+                        jQuery.parseHTML()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-4.1 jQuery-parseJSON v3-0-d" title="Takes a well-formed JSON string and returns the resulting JavaScript object." href="http://www.jquery123.com/jQuery.parseJSON/" data-src="jQuery.parseJSON">
+                        jQuery.parseJSON()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-5 jQuery-parseXML" title="Parses a string into an XML document." href="http://www.jquery123.com/jQuery.parseXML/" data-src="jQuery.parseXML">
+                        jQuery.parseXML()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-4 jQuery-proxy" title="Takes a function and returns a new one that will always have a particular context." href="http://www.jquery123.com/jQuery.proxy/" data-src="jQuery.proxy">
+                        jQuery.proxy()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-3 jQuery-support v1-9-d" title="A collection of properties that represent the presence of different browser features or bugs." href="http://www.jquery123.com/jQuery.support/" data-src="jQuery.support">
+                        jQuery.support
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-0 jQuery-trim" title="Remove the whitespace from the beginning and end of a string." href="http://www.jquery123.com/jQuery.trim/" data-src="jQuery.trim">
+                        jQuery.trim()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-4.3 jQuery-type" title="Determine the internal JavaScript [[Class]] of an object." href="http://www.jquery123.com/jQuery.type/" data-src="jQuery.type">
+                        jQuery.type()
+                    </a>
+                </li>
+                <li>
+                    <a class="v1-1.3 jQuery-unique v3-0-d" title="Sorts an array of DOM elements, in place, with the duplicates removed. Note that this only works on arrays of DOM elements, not strings or numbers." href="http://www.jquery123.com/jQuery.unique/" data-src="jQuery.unique">
+                        jQuery.unique()
+                    </a>
+                </li>
+                <li>
+                    <a class="v3-0 jQuery-uniqueSort" title="Sorts an array of DOM elements, in place, with the duplicates removed. Note that this only works on arrays of DOM elements, not strings or numbers." href="http://www.jquery123.com/jQuery.uniqueSort/" data-src="jQuery.uniqueSort">
+                        jQuery.uniqueSort()
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </div><div>
+    <section>
+        <h2>DOM Element Methods</h2>
+        <ul>
+            <li>
+                <a class="v1-0 get" title="Retrieve the DOM elements matched by the jQuery object." href="http://www.jquery123.com/get/" data-src="jQuery.fn.get">
+                    .get()
+                </a>
+            </li>
+            <li>
+                <a class="v1-0 index" title="Search for a given element from among the matched elements." href="http://www.jquery123.com/index/" data-src="jQuery.fn.index">
+                    .index()
+                </a>
+            </li>
+            <li>
+                <a class="v1-0 size v1-8-d" title="Return the number of elements in the jQuery object." href="http://www.jquery123.com/size/" data-src="jQuery.fn.size">
+                    .size()
+                </a>
+            </li>
+            <li>
+                <a class="v1-4 toArray" title="Retrieve all the DOM elements contained in the jQuery set, as an array." href="http://www.jquery123.com/toArray/" data-src="jQuery.fn.toArray">
+                    .toArray()
+                </a>
+            </li>
+        </ul>
+    </section>
+    <section>
+        <h2>Internals</h2>
+        <ul>
+            <li>
+                <a class="v1-0 jquery-2" title="A string containing the jQuery version number." href="http://www.jquery123.com/jquery-2/" data-src="jQuery.fn.jquery">
+                    .jquery
+                </a>
+            </li>
+            <li>
+                <a class="v1-3 context v1-10-d v3-0-r" title="The DOM node context originally passed to jQuery(); if none was passed then context will likely be the document." href="http://www.jquery123.com/context/" data-src="jQuery.fn.context">
+                    .context
+                </a>
+            </li>
+            <li>
+                <a class="v1-4.1 jQuery-error" title="Takes a string and throws an exception containing it." href="http://www.jquery123.com/jQuery.error/" data-src="jQuery.error">
+                    jQuery.error()
+                </a>
+            </li>
+            <li>
+                <a class="v1-0 length" title="The number of elements in the jQuery object." href="http://www.jquery123.com/length/" data-src="jQuery.fn.length">
+                    .length
+                </a>
+            </li>
+            <li>
+                <a class="v1-0 pushStack" title="Add a collection of DOM elements onto the jQuery stack." href="http://www.jquery123.com/pushStack/" data-src="jQuery.fn.pushStack">
+                    .pushStack()
+                </a>
+            </li>
+            <li>
+                <a class="v1-3 selector v1-7-d v3-0-r" title="A selector representing selector originally passed to jQuery()." href="http://www.jquery123.com/selector/" data-src="jQuery.fn.selector">
+                    .selector
+                </a>
+            </li>
+        </ul>
+    </section>
+    <section>
+        <h2>Callbacks Object</h2>
+        <ul>
+            <li>
+                <a class="v1-7 jQuery-Callbacks" title="A multi-purpose callbacks list object that provides a powerful way to manage callback lists." href="http://www.jquery123.com/jQuery.Callbacks/" data-src="jQuery.Callbacks">
+                    jQuery.Callbacks()
+                </a>
+            </li>
+            <li>
+                <a class="v1-7 callbacks-add" title="Add a callback or a collection of callbacks to a callback list." href="http://www.jquery123.com/callbacks.add/" data-src="">
+                    callbacks.add()
+                </a>
+            </li>
+            <li>
+                <a class="v1-7 callbacks-disable" title="Disable a callback list from doing anything more." href="http://www.jquery123.com/callbacks.disable/" data-src="">
+                    callbacks.disable()
+                </a>
+            </li>
+            <li>
+                <a class="v1-7 callbacks-disabled" title="Determine if the callbacks list has been disabled." href="http://www.jquery123.com/callbacks.disabled/" data-src="">
+                    callbacks.disabled()
+                </a>
+            </li>
+            <li>
+                <a class="v1-7 callbacks-empty" title="Remove all of the callbacks from a list." href="http://www.jquery123.com/callbacks.empty/" data-src="">
+                    callbacks.empty()
+                </a>
+            </li>
+            <li>
+                <a class="v1-7 callbacks-fire" title="Call all of the callbacks with the given arguments." href="http://www.jquery123.com/callbacks.fire/" data-src="">
+                    callbacks.fire()
+                </a>
+            </li>
+            <li>
+                <a class="v1-7 callbacks-fired" title="Determine if the callbacks have already been called at least once." href="http://www.jquery123.com/callbacks.fired/" data-src="">
+                    callbacks.fired()
+                </a>
+            </li>
+            <li>
+                <a class="v1-7 callbacks-fireWith" title="Call all callbacks in a list with the given context and arguments." href="http://www.jquery123.com/callbacks.fireWith/" data-src="">
+                    callbacks.fireWith()
+                </a>
+            </li>
+            <li>
+                <a class="v1-7 callbacks-has" title="Determine whether a supplied callback is in a list." href="http://www.jquery123.com/callbacks.has/" data-src="">
+                    callbacks.has()
+                </a>
+            </li>
+            <li>
+                <a class="v1-7 callbacks-lock" title="Lock a callback list in its current state." href="http://www.jquery123.com/callbacks.lock/" data-src="">
+                    callbacks.lock()
+                </a>
+            </li>
+            <li>
+                <a class="v1-7 callbacks-locked" title="Determine if the callbacks list has been locked." href="http://www.jquery123.com/callbacks.locked/" data-src="">
+                    callbacks.locked()
+                </a>
+            </li>
+            <li>
+                <a class="v1-7 callbacks-remove" title="Remove a callback or a collection of callbacks from a callback list." href="http://www.jquery123.com/callbacks.remove/" data-src="">
+                    callbacks.remove()
+                </a>
+            </li>
+        </ul>
+    </section>
+</div>
+</div>
+</article>
+</div>
+<div id="about" class="mfp-hide">
+<fieldset>
+<h4>Open links:</h4>
+<label><input type="radio" name="open_links" value="modal-window"> Modal window</label>
+<label><input type="radio" name="open_links" value="new-window"> New window</label>
+<label><input type="radio" name="open_links" value="same-window"> Same window</label>
+</fieldset>
+<fieldset>
+<h4>Layout:</h4>
+<label><input type="radio" name="layout" value="horizontal"> Horizontal</label>
+<label><input type="radio" name="layout" value="vertical"> Vertical</label>
+</fieldset>
+<p><a href="https://github.com/oscarotero/jquery-cheatsheet" title="Get the code from github">Source code</a> | by <a href="https://twitter.com/misteroom">@misteroom</a></p>
+</div>
+<div id="modal" class="mfp-hide">
+<ul>
+<li class="link-api"><a href="">API doc</a></li>
+<li class="link-src"><a href="http://james.padolsey.com/jquery/" target="_blank">Source viewer</a></li>
+</ul>
+<div>
+<iframe src="about:blank"></iframe>
+</div>
+</div>
+</body>
+<script>
+var _hmt = _hmt || []; (function() {var hm = document.createElement("script"); hm.src = "//hm.baidu.com/hm.js?0435db52f55373800840f04657369845"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })();
+</script>
+</html>

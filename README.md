@@ -7,7 +7,7 @@ Require [gulp.js](http://gulpjs.com/)
     `npm install git://github.com/wilon/gulp-concat-blogdata.git`
 ### Install
 
-1. Notes
+1. Write notes
 
     `data/some_notes.md`
 

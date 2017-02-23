@@ -12,6 +12,26 @@
     export PATH=$PATH:PHP安装目录/php/bin
 ```
 
+### echo
+```shell
+    echo 'aaaaaa' > test.htm
+    echo -n 'aaaaaa' > test.htm    # 没有换行
+```
+
+### docker CONTAINER 镜像
+```shell
+    docker pull <REPOSITORY>
+    docker images    #  查看安装的镜像
+    docker run <REPOSITORY> <COMMAND>    # 在容器内运行镜像
+```
+
+### docker CONTAINER 容器
+```shell
+    docker ps -a    # 查看所有容器
+    docker stop <CONTAINER ID>    # 停止该容器
+    docker rm <CONTAINER ID>    # 删除该容器
+```
+
 ### 定时任务crontab
 ```shell
     # 安装配置
@@ -104,13 +124,16 @@
     cat /proc/version    # 系统详情
 ```
 
-### 查看文件信息
+### 查看文件夹信息
 ```shell
     df -h    # 查看磁盘空间
     du -sh *    # 查看当前目录下个文件（夹）大小
-    ls -l |grep "^-"|wc -l    # 查看当前文件夹下文件的个数
-    ls -lR|grep "^-"|wc -l    # 查看某目录下文件的个数，包括子目录里的。
-    ls -lR|grep "^d"|wc -l    # 查看某文件夹下目录的个数，包括子目录里的。
+    ls | wc -l    # 查看当前文件夹下文件（夹）的个数
+    ls -l | grep "^-" | wc -l    # 查看当前文件夹下文件的个数
+    ls -lR | grep "^-" | wc -l    # 查看某目录下文件的个数，包括子目录里的。
+    ls -lR | grep "^d" | wc -l    # 查看某文件夹下目录的个数，包括子目录里的。
+    ll --full-time    # 查看文件的完整时间信息
+    ll -t | head -n 5    # 查看最新的5个文件
 ```
 
 ### composer安装
@@ -158,11 +181,6 @@
     ntsysv    # 伪图形界面启动服务
 ```
 
-### 一些脚本
-```shell
-    wget http://ocfxac0k9.bkt.clouddn.com/static/f/vpn_centos6.sh && sh vpn_centos6.sh # 搭建vpn
-    wget http://ocfxac0k9.bkt.clouddn.com/static/f/vim_php.sh && sh vim_php.sh # vim无插件补全
-```
 ### 用户相关
 ```shell
     # 用户操作

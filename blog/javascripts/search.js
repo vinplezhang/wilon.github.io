@@ -107,6 +107,12 @@ sreach.prototype = {
             }(arr.tags || [])
         })
     },
+    //获取URL上面的参数
+    getQueryString:function(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = decodeURIComponent(window.location.search.substr(1)).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    },
     // 加载所有li
     creatListHTML: function(num) {
         var arr = this.data,
@@ -131,55 +137,14 @@ sreach.prototype = {
         for (var i = 0; i < arr.length; i++) {
             if (!arr[i]) break;
             if (total > page_size) break;
+            // 能搜到
             if (self.isSreachIndexOF(arr[i].name+arr[i].des, keywolds)) {
-                // 能搜到
-                $('#'+arr[i].id).show();
-            }
-        }
-    },
-    getTagsAll: function() {
-        var arr = this.data,
-            tags = [];
-        if (arr.length > 0) {
-            for (var i = 0; i < arr.length; i++) {
-                if (arr[i].tags && arr[i].tags.length > 0) {
-                    for (a in arr[i].tags) { tags.indexOf(arr[i].tags[a]) === -1 ? tags.push(arr[i].tags[a]) : null }
+                if ($('#'+arr[i].id).length == 0) {
+                    var myLi = self.itemHTML(arr[i]);
+                    $('#list-itme').append("<li id='"+arr[i].id+"'>"+myLi+"<li>")
+                } else {
+                    $('#'+arr[i].id).show();
                 }
-            }
-            this.tags = tags
-        }
-    },
-    createTagsHTML: function(keywolds) {
-        var html_str = "",
-            self = this,
-            elm = this.tagsEml,
-            keywolds = keywolds.replace(/^(:|：)/, ""),
-            reg = new RegExp("(" + keywolds + ")", "ig");
-        elm.innerHTML = "";
-        for (var i = 0; i < this.tags.length; i++) {
-            var mySpan = document.createElement("SPAN");
-            mySpan.innerHTML = this.tags[i].replace(reg, '<i class="kw">' + "$1" + "</i>");
-            if (self.isSreachIndexOF(this.tags[i], keywolds)) { elm.appendChild(mySpan) } else if (keywolds === "") { elm.appendChild(mySpan) }
-            self.bindEvent(mySpan, "click", function(e) {
-                self.inputElm.value = ":" + this.innerText;
-                self.changeKeyworlds(":" + this.innerText)
-            })
-        }
-    },
-    createTagsListHTML: function(keywolds) {
-        var eml = this.boxEml,
-            arr = this.data,
-            self = this,
-            page_size = this.page_size,
-            total = 0,
-            keywolds = keywolds.replace(/^(:|：)/, "");
-        for (var i = 0; i < arr.length; i++) {
-            if (!arr[i]) break;
-            if (total > page_size) break;
-            if (!kw || arr[i] && arr[i].tags && this.isSreachIndexOF(arr[i].tags, keywolds)) {
-                var myLi = self.itemHTML(arr[i], "tags", keywolds);
-                $('#tags').append(myLi);
-                ++total
             }
         }
     },
@@ -187,7 +152,6 @@ sreach.prototype = {
         var kw = $('#search').val();
         if (/^(:|：)/.test(kw)) {
             this.tagsEml.className = "show";
-            this.createTagsHTML(kw);
             return
         } else { this.tagsEml.className = "hide" }
         this.boxEml.innerHTML == "" ? this.error.className = "error" : this.error.className = "hide"
@@ -198,14 +162,14 @@ sreach.prototype = {
     // 列表数据加载
     valToHTML: function(kw) {
         var self = this;
+        if (window.history && window.history.pushState)
+            kw ? history.pushState({},"wilonblog","?kw="+kw) :
+                history.pushState({},"wilonblog","/");
         if (kw) {
-            if (/^(:|：)/.test(kw)) {
-                self.createTagsListHTML(kw);
-            } else {
-                kw = kw.toLowerCase();
-                kw = kw.replace(/[\s\(\)]+/, '(.*?)');
-                self.createSreachListHTML(kw);
-            }
+            $('#list-itme li').hide();
+            kw = kw.toLowerCase();
+            kw = kw.replace(/[\s\(\)]+/, '(.*?)');
+            self.createSreachListHTML(kw);
         } else {
             $('#list-itme li').show();
         }
@@ -236,19 +200,23 @@ sreach.prototype = {
                 newDt.name = newDt.tag.toUpperCase() + ": " + newDt.name;
                 newDt.tags = [newDt.tag];
                 newDt.icon = ["icon-"+newDt.tag];
+                // 打乱顺序
                 var rand = Math.floor(Math.random() * self.data.length);
                 self.data.splice(rand, 0, dt[j]);
             }
-            // 加载完最后一条
             // 右上角
             $('#info').html("共计<i> " + self.data.length + " </i>条微笔记 ｜ ");
-            // 搜索绑定
+            // 搜索绑定事件
             $('#search').on('keyup', function() {
                 var val = $(this).val();
                 self.changeKeyworlds(val);
             });
             // 加载数据html
             self.creatListHTML();
+            // 搜索结果
+            var kw = self.getQueryString('kw');
+            kw && (self.inputElm.value = kw);
+            self.valToHTML(kw);
             // 取消load
             $('#spinner').hide();
         });

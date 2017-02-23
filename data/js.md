@@ -14,6 +14,15 @@
     var resArray = myStr.split(myReg);    // ["a", "bc", "efg"]
 ```
 
+### 字符串 String
+```javascript
+    // trim
+    String.prototype.trim = function() {
+        return this.replace(/(^\s*)|(\s*$)/g, '');
+    };
+
+```
+
 ### 日期 new Date()
 ```javascript
     Date();    // "Wed Nov 09 2016 10:44:34 GMT+0800 (CST)"

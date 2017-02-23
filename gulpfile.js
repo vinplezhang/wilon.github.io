@@ -21,7 +21,7 @@ var wilonBlogdata = require('gulp-concat-blogdata');
 // 合并，压缩 js 文件
 gulp.task('js', function() {
     del('./static/wilonblog-*.min.js');
-    gulp.src('./blog/javascripts/*.js')
+    return gulp.src('./blog/javascripts/*.js')
         .pipe(concat('wilonblog.min.js'))    // 合并
         .pipe(uglify())    // 压缩
         .pipe(rev())    // 重命名hash
@@ -32,7 +32,7 @@ gulp.task('js', function() {
 
 // 缩放图片
 gulp.task('imageresize', function() {
-    gulp.src('blog/images/*.png')
+    return gulp.src('blog/images/*.png')
         .pipe(imageResize({
             width : 18,
             height : 18,
@@ -67,7 +67,7 @@ gulp.task('sprite', ['imageresize'], function () {
 // 合并，压缩 css 文件
 gulp.task('css', ['sprite'], function () {
     del('./static/wilonblog-*.min.css');
-    gulp.src(['./blog/stylesheets/*.css', 'cache/sprite.css'])
+    return gulp.src(['./blog/stylesheets/*.css', 'cache/sprite.css'])
         .pipe(concat('wilonblog.min.css'))    // 合并
         .pipe(minifyCSS())    // 压缩
         .pipe(rev())    // 重命名hash
@@ -80,7 +80,7 @@ gulp.task('css', ['sprite'], function () {
 // 合并md
 gulp.task('md', function() {
     del('./static/wilonblog-*.min.json');
-    gulp.src('./data/*.md')
+    return gulp.src('./data/*.md')
         .pipe(wilonBlogdata('wilonblog.min.json'))
         .pipe(rev())    // 重命名hash
         .pipe(gulp.dest('./static/'))    // 保存
@@ -96,6 +96,6 @@ gulp.task('rev', ['js', 'css', 'md'], function() {
 });
 
 // 默认任务
-gulp.task('default', ['md', 'js', 'imageresize', 'sprite', 'css', 'rev'], function () {
+gulp.task('default', ['rev'], function () {
     // gulp.watch('data/*.md', ['md', 'rev']);
 });

@@ -12,9 +12,8 @@
     $pwdDb = sha1($salt . sha1($pwdUser) . KEY);
 ```
 
-### 比较好的密码存储处理
+### 创建新的空对象
 ```php
-    // 创建新的空对象
     $var1 = new stdClass();
     $var2 = (object)[];
     $var3 = json_decode('{}');

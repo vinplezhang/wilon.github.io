@@ -93,8 +93,8 @@
     git config --global color.diff auto  && git config --global color.status auto && git config --global color.branch auto    # git配置颜色
     git config --global alias.st status    # git配置别名
     git config --global user.name wilon && git config --global user.email wilonx@163.com    # git配置用户名邮箱
-    # 2. 修改配置文件 ~/.gitconfig，若修改部分则打开连接copy
-    wget <a href="http://ocfxac0k9.bkt.clouddn.com/static/f/gitconfig.txt" target="_blank">http://ocfxac0k9.bkt.clouddn.com/static/f/gitconfig.txt</a> -O ~/.gitconfig
+    # 2. 修改配置文件 ~/.gitconfig，已同步在oh-my-zsh项目里
+    wget <a href="https://raw.githubusercontent.com/wilon/oh-my-zsh/master/templates/gitconfig.zsh-template" target="_blank">https://raw.githubusercontent.com/wilon/oh-my-zsh/master/templates/gitconfig.zsh-template</a> -O ~/.gitconfig
 ```
 
 ### 其他

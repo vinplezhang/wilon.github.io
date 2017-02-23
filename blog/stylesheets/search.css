@@ -17,13 +17,17 @@ body {
     overflow-x: hidden;
     padding: 1.75em 1.75em 6.75em 1.75em;
 }
+
+.github-corner:hover .octo-arm{
+    -webkit-animation: octocat-wave 560ms ease-in-out;
+    animation: octocat-wave 560ms ease-in-out
+}
 pre {
     white-space: pre-wrap;
     word-wrap: break-word;
 }
 
-ol,
-ul {
+ol, ul {
     list-style: none
 }
 
@@ -73,10 +77,6 @@ a:hover {
 
 .error h2 {
     font-weight: bold
-}
-
-.github-fork:hover {
-    background-color: #b5d1fe
 }
 
 .header {
@@ -331,3 +331,38 @@ a:hover {
 }
 /*iframe*/
 .bs-callout-warning {display: none; }
+
+
+@-webkit-keyframes octocat-wave {
+    0%,100% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+
+    20%,60% {
+        -webkit-transform: rotate(-25deg);
+        transform: rotate(-25deg)
+    }
+
+    40%,80% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg)
+    }
+}
+
+@keyframes octocat-wave {
+    0%,100% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+
+    20%,60% {
+        -webkit-transform: rotate(-25deg);
+        transform: rotate(-25deg)
+    }
+
+    40%,80% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg)
+    }
+}
