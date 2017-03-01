@@ -3,4 +3,4 @@
 	url = https://github.com/wilon/analysis-phone-number.git
 [submodule "jquery-cheatsheet"]
 	path = jquery-cheatsheet
-	url = git@github.com:wilon/jquery-cheatsheet.git
+	url = https://github.com/wilon/jquery-cheatsheet.git
