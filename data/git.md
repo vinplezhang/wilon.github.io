@@ -1,7 +1,13 @@
 
-### 修改提交信息
+### 修改一些信息
 ```bash
     git commit --amend
+```
+
+### 子模块 submodule
+```shell
+    git submodule add 仓库地址 路径    # 添加子模块
+    git submodule update --init --recursive    # 更新子模块
 ```
 
 ### 初始新仓库流程

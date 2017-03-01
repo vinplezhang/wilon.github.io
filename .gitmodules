@@ -1,0 +1,3 @@
+[submodule "analysis-phone-number"]
+	path = analysis-phone-number
+	url = https://github.com/wilon/analysis-phone-number.git
