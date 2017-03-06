@@ -21,14 +21,10 @@ sreach.prototype = {
     // 字符串-关键字匹配
     isSreachIndexOF: function(oldstr, kw) {
         var istrue = false;
-        if (oldstr && toString.call(oldstr) === "[object Array]") {
-            for (var i = 0; i < oldstr.length; i++) {
-                oldstr[i].toLowerCase() === kw.toLowerCase() ? istrue = true : null
-            }
-            return istrue;
-        }
         if (!oldstr || !kw) return false;
         // 支持正则
+        oldstr = oldstr.replace(/\r\n/g, " ")
+        oldstr = oldstr.replace(/\n/g, " ");
         var regexp = new RegExp(kw, "ig");
         if (regexp.test(oldstr)) return true;
         return oldstr.toLowerCase().indexOf(kw.toLowerCase()) > -1 ? true : false
@@ -120,10 +116,11 @@ sreach.prototype = {
             page_size = this.page_size,
             i = num || 0;
         if (arr && arr.length && toString.call(arr).indexOf("Array") > -1) {
-            for (; i < page_size; i++) {
+            for (; i < arr.length; i++) {
                 if (!arr[i]) break;
                 var myLi = self.itemHTML(arr[i]);
-                $('#list-itme').append("<li id='"+arr[i].id+"'>"+myLi+"<li>")
+                var isHide = i >= this.page_size ? 'style="display:none"' : '';
+                $('#list-itme').append("<li id='"+arr[i].id+"'"+isHide+">"+myLi+"<li>")
             }
         }
     },
@@ -204,6 +201,7 @@ sreach.prototype = {
                 var rand = Math.floor(Math.random() * self.data.length);
                 self.data.splice(rand, 0, dt[j]);
             }
+            console.log(self.data)
             // 右上角
             $('#info').html("共计<i> " + self.data.length + " </i>条微笔记 ｜ ");
             // 搜索绑定事件
