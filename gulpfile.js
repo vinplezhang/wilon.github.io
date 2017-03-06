@@ -94,8 +94,31 @@ gulp.task('rev', ['js', 'css', 'md'], function() {
         .pipe(revCollector())    // 执行文件内js、css名的替换
         .pipe(gulp.dest('./'));    // 替换后的文件输出的目录
 });
+gulp.task('revjs', ['js'], function() {
+    gulp.src(['./cache/*.json', './blog/*.html'])
+        .pipe(revCollector())
+        .pipe(gulp.dest('./'));
+});
+gulp.task('revcss', ['css'], function() {
+    gulp.src(['./cache/*.json', './blog/*.html'])
+        .pipe(revCollector())
+        .pipe(gulp.dest('./'));
+});
+gulp.task('revmd', ['md'], function() {
+    gulp.src(['./cache/*.json', './blog/*.html'])
+        .pipe(revCollector())
+        .pipe(gulp.dest('./'));
+});
+gulp.task('revhtml', function() {
+    gulp.src(['./cache/*.json', './blog/*.html'])
+        .pipe(revCollector())
+        .pipe(gulp.dest('./'));
+});
 
 // 默认任务
 gulp.task('default', ['rev'], function () {
-    // gulp.watch('data/*.md', ['md', 'rev']);
+    gulp.watch('data/*.md', ['revmd']);
+    gulp.watch('blog/javascripts/*.js', ['revjs']);
+    gulp.watch(['blog/stylesheets/*.css','blog/images/*.png'], ['revcss']);
+    gulp.watch('blog/index.html', ['revhtml']);
 });
