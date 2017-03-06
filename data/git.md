@@ -1,13 +1,15 @@
 
 ### 修改一些信息
 ```bash
-    git commit --amend
+    git commit --amend    # 修改commit
+    git reset .    # commit前取消add缓冲
 ```
 
 ### 子模块 submodule
 ```shell
     git submodule add 仓库地址 路径    # 添加子模块
     git submodule update --init --recursive    # 更新子模块
+    git rm ./xxx & rm -rf ./xxx    # 删除子模块
 ```
 
 ### 初始新仓库流程
@@ -20,6 +22,13 @@
     git pull
     git merge origin/master
     git push --set-upstream origin master
+    #-- 或修改 .git/config
+    [remote "origin"]
+        url = https://github.com/wilon/oh-my-zsh.git
+        fetch = +refs/heads/master:refs/remotes/origin/master
+    [branch "master"]
+        remote = origin
+        merge = refs/heads/master
 ```
 
 ### 分支
