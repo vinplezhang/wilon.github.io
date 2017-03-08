@@ -7,9 +7,10 @@
     zsh    # 手动切换
 ```
 
-### php命令加入path
+### PHP相关
 ```shell
-    export PATH=$PATH:PHP安装目录/php/bin
+    export PATH=$PATH:PHP安装目录/php/bin    # php命令加入path
+    wget https://wilon.github.io/static/p.php    # 雅黑PHP探针
 ```
 
 ### echo
