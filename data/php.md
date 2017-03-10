@@ -12,6 +12,18 @@
     $pwdDb = sha1($salt . sha1($pwdUser) . KEY);
 ```
 
+### 字符串函数 string function
+```php
+    // 截取
+    substr('我是王伟龙', -3);    // 取最后一个汉字
+    // 小数处理
+```
+
+### 数组函数函数 array function
+```php
+    max(array_keys($descArr));    // 获取数组最大key
+```
+
 ### 创建新的空对象
 ```php
     $var1 = new stdClass();

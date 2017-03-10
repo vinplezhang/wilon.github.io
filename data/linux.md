@@ -142,7 +142,9 @@
     curl -sS https://getcomposer.org/installer | php    # 下载源码包php执行
     mv composer.phar /usr/local/bin/composer    # 加入到系统命令
     composer config -g repo.packagist composer https://packagist.phpcomposer.com    # 全局配置国内镜像源
-     composer config -l -g    # 查看全局配置信息
+    composer config -l -g    # 查看全局配置信息
+    composer clear-cache    # 清除缓存
+    composer require --no-plugins --no-scripts xxx/xxxx     # root 下安装
 ```
 
 ### 安装php扩展extension
@@ -174,11 +176,13 @@
     service sshd start    # 开启ssh
 ```
 
-### 开机启动
+### 服务开机启动
 ```shell
     vim /etc/inittab    # :id:5:initdefault: 启动级别，5图形界面改，3纯命令行
-    chkconfig 服务名 on    # 设置开机启动，off关闭
+    chkconfig [--level 服务级别] 服务名 on    # 设置开机启动，off关闭
+    chkconfig --level 345 mysqld on    # MySQL开机启动
     chkconfig --list    # 查看自启动列表、级别
+    # 0:off  1:off   2:on    3:off   4:on    5:off   6:off
     ntsysv    # 伪图形界面启动服务
 ```
 

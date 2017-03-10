@@ -65,9 +65,10 @@
 
 ### 私钥与公钥
 ```shell
-    TortoiseGit 使用 id_rsa
-    1. 生成Putty key：puttygen工具，Conversions -> Import key -> Save private key；
-    2. clone时使用
+    # TortoiseGit 使用 id_rsa
+    # 1. 生成Putty key：puttygen工具，Conversions -> Import key -> Save private key；
+    # 2. clone时使用
+    ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa -q -b 2048    # 生成公私钥
 ```
 
 ### 新模块工作流程
