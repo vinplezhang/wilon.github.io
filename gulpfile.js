@@ -1,22 +1,25 @@
 // 引入 gulp
-var gulp = require('gulp');
+const gulp = require('gulp');
 
 // 引入组件
-var del = require('del');
-var minifyCSS = require('gulp-minify-css');
-var concat = require('gulp-concat');    // 合并
-var uglify = require('gulp-uglify');    // 混淆
-var rev = require('gulp-rev');    // 对文件名加MD5后缀
-var revCollector = require('gulp-rev-collector');    // 路径替换
+const del = require('del')
+    minifyCSS = require('gulp-minify-css')
+    concat = require('gulp-concat');    // 合并
+    uglify = require('gulp-uglify');    // 混淆
+    rev = require('gulp-rev');    // 对文件名加MD5后缀
+    revCollector = require('gulp-rev-collector');    // 路径替换
 // 压缩合并图片组件
-var spritesmith = require('gulp.spritesmith');
-var buffer = require('vinyl-buffer');
-var csso = require('gulp-csso');
-var imagemin = require('gulp-imagemin');
-var merge = require('merge-stream');
-var imageResize = require('gulp-image-resize');
+const spritesmith = require('gulp.spritesmith')
+    buffer = require('vinyl-buffer')
+    csso = require('gulp-csso')
+    imagemin = require('gulp-imagemin')
+    merge = require('merge-stream')
+    imageResize = require('gulp-image-resize');
 // wilon md
-var wilonBlogdata = require('gulp-concat-blogdata');
+const wilonBlogdata = require('gulp-concat-blogdata');
+// server
+const sync = require('browser-sync').create()
+     path   = require('path');
 
 // 合并，压缩 js 文件
 gulp.task('js', function() {
@@ -113,6 +116,30 @@ gulp.task('revhtml', function() {
     gulp.src(['./cache/*.json', './blog/*.html'])
         .pipe(revCollector())
         .pipe(gulp.dest('./'));
+});
+
+gulp.task('server', ['default'], function(done) {
+    let watchOptions = {
+        cwd: './',
+        ignoreInitial: true,
+        ignored: [
+            '.DS_Store', 'nohup.out', 'npm-debug.log'
+            ]
+    };
+
+    sync.watch('**', watchOptions, function (event, file) {
+        return sync.reload(path.basename(file));
+    });
+    sync.init({
+        server: './',
+        watchOptions: watchOptions,
+        reloadOnRestart: true,
+        open: false
+    }, function () {
+        if (done) {
+            done();
+        }
+    });
 });
 
 // 默认任务

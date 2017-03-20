@@ -12,6 +12,52 @@
     $pwdDb = sha1($salt . sha1($pwdUser) . KEY);
 ```
 
+### PHP time() date() strtotime()日期函数总结
+```php
+    // 返回时间戳
+    echo time();    // int(1392192781)
+    将其他格式解析为 Unix 时间戳
+    echo strtotime($str);    // 将其他格式解析为 Unix 时间戳
+        /*下括号内格式例：
+             ( "10 September 2000" )
+             ( "+1 day" )   明天
+             ( "+1 days" )  明天
+             ( "+1 week" )
+             ( "+1 week 2 days 4 hours 2 seconds" )
+             ( "next Thursday" )    下周二
+             ( "last Monday" )
+             ( "2011-5-19 14:07" );
+        */
+    echo mktime(12, 0, 0, 12, 30, 2012);     // mktime(时[,分[,秒[,月[,日[,年]]]]]); 都可以超出自然范围，如27月，超出向高位加；若整体数值超出计算机能力范围，返回false。
+    echo microtime();    // 返回微秒精度的时间戳字符串。
+    // 返回一个数组
+    $today = getdate();
+        /* 输出数组： array(11) {
+               ["seconds"]=>int(32)
+               ["minutes"]=>int(27)
+               ["hours"]=>int(8)
+               ["mday"]=>int(12)
+               ["wday"]=>int(3)
+               ["mon"]=>int(2)
+               ["year"]=>int(2014)
+               ["yday"]=>int(42)
+               ["weekday"]=>string(9) "Wednesday"
+               ["month"]=>string(8) "February"
+               [0]=>int(1392193652)
+         } */
+    // 格式化输出时间
+    echo date("Y-m-d H:i:s", 1391919385);    // string(19) "2014-02-09 04:16:25"
+        /*string format 常用：
+            Y：四位数年   m：月01-12   n:月1-12      d：天01-31  j：天1-31
+            H：时24时制   h：小时12制  i：分钟00-59  s：秒00-59  w：星期几0-6
+            A：上午AM或下午PM          a：上午am或下午pm。
+        */
+    // 修改默认时区
+    date.timezone = PRC    # 修php.ini配置文件
+    date_default_timezone_set("PRC");    // 设置当前脚本时区为中国时区
+    date_default_timezone_get();    // 获取当前时区
+```
+
 ### 字符串函数 string function
 ```php
     // 截取

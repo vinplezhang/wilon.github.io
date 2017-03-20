@@ -7,7 +7,7 @@ var sreach = function() {
     this.tagsEml = document.getElementById("tags");
     this.error = document.getElementById("error");
     this.loadingEml = document.getElementById("spinner");
-    this.page_size = 70;
+    this.page_size = 50;
     this.domainReg = /[a-zA-Z0-9]{0,62}.\/\/[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\.?/;
     this.page_no = 1, this.tags = [];
     this.language = {

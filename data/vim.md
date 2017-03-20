@@ -3,27 +3,36 @@
 ```shell
     # 添加
     ctrl+v j    #　选中多行
-    Ｉ    # 插入模式，进行输入
-    esc    # 多行起作用
+    Ｉ    # 大写<i>，插入模式，进行输入
+    Esc    # 多行起作用
     # 删除
     ctrl+v j    #　选中多行
     d [x]    # 删除模式
 ```
 
-### 配置安装.vimrc
+### 配置安装 .vimrc
 ```shell
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    wget https://wilon.github.io/static/vimrc.txt -O ~/.vimrc
+    wget https://raw.githubusercontent.com/wilon/oh-my-zsh/master/templates/vimrc.zsh-template -O ~/.vimrc
     vim +PluginInstall +qall
     # 一键脚本
-    curl -sSL https://wilon.github.io/static/vim.sh | sh
+    已集成到 <a href="https://raw.githubusercontent.com/wilon/oh-my-zsh/master/templates/vimrc.zsh-template" target="_blank">https://raw.githubusercontent.com/wilon/oh-my-zsh/master/templates/vimrc.zsh-template</a>
 ```
 
-### 浏览文件netrw
+### Netrw 快捷键
 ```shell
-    <cr>    # netrw 进入目录或读入文件 |netrw-cr|
-    i    # 在瘦、长、宽和树形的各种列表方式间切换 |netrw-i|
-    t    # 在新标签页里打开光标所在的文件/目录 |netrw-t|
+    <cr>        # 如果光标下为目录，则进入该目录；如果光标下是文件，则用vim打开该文件
+    -           # 返回上级目录
+    c           # 切换vim的当前工作目录为正在浏览的目录
+    i           # 在瘦、长、宽和树形的各种列表方式间切换
+    s           # 选择排序方式
+    p           # 预览文件
+    t           # 在新标签页里打开光标所在的文件/目录
+```
+
+### file 文件操作
+```shell
+    *CTRL-G* *:f* *:fi* *:file*          # 查看文件具体位置
 ```
 
 ### 基本的设置
@@ -37,39 +46,12 @@
 
 ### 单字母动作
 ```shell
-    ma    # 设定标记a
-    `a    # 跳到标记a
-    ``    # 跳转前的位置
-    `[    # 最后修改的位置的开头
-    `]    # 最后修改的位置的结尾
-    :delmarks a    # 删除标签a；
-    :delmarks!    # 删除所有标签，不包括[A-Z]和[0-9]标签。
-```
-
-### 单字母动作
-```shell
     c 删除后插入动作；d 删除动作；y 复制动作；v 选择动作；
     r 单字母替换动作；m 标记动作；z 折叠动作；p 粘贴动作
     i 光标前；I 行首；a 光标后；A行尾；C 删除至行尾
     o 光标下一行；O 光标上一行；s 删光标后一个字符；S 清除全行
 ```
 
-### 移动move
-```shell
-    [num] t [character]    # 匹配到单个字符光标前；f光标后
-    [num] w|b    # 上[下]N个单词
-    /string    # 匹配到string（不包含）
-    H|M|L    # 匹配到窗口的顶部、中间、和底部
-    [num](    # 匹配到句首  )句尾 {段首 }段尾 ]]下一个方法名 [[上一个方法名
-```
-### 括号匹配bracket
-```shell
-    ci{    # 删除{}内容，为插入模式
-    di]    # 删除[]内容
-    di(    # 删除()内容
-    yi'    # 复制''内容
-    vi"    # 选中""内容
-```
 
 ### 删除和替换
 ```shell
@@ -105,4 +87,33 @@
     'N    # 打开N号标记文件
     :ls    # 查看缓冲区文件，同buffers、files
     :bn    # 打开n号缓冲区文件
+```
+
+### 移动move
+```shell
+    [num] t [character]    # 匹配到单个字符光标前；f光标后
+    [num] w|b    # 上[下]N个单词
+    /string    # 匹配到string（不包含）
+    H|M|L    # 匹配到窗口的顶部、中间、和底部
+    [num](    # 匹配到句首  )句尾 {段首 }段尾 ]]下一个方法名 [[上一个方法名
+```
+
+### 单字母动作
+```shell
+    ma    # 设定标记a
+    `a    # 跳到标记a
+    ``    # 跳转前的位置
+    `[    # 最后修改的位置的开头
+    `]    # 最后修改的位置的结尾
+    :delmarks a    # 删除标签a；
+    :delmarks!    # 删除所有标签，不包括[A-Z]和[0-9]标签。
+```
+
+### 括号匹配bracket
+```shell
+    ci{    # 删除{}内容，为插入模式
+    di]    # 删除[]内容
+    di(    # 删除()内容
+    yi'    # 复制''内容
+    vi"    # 选中""内容
 ```
