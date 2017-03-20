@@ -1,20 +1,29 @@
 
 # wilon.github.io
-My notes.
+
+My notes show page.
+
 Fast search, copy.
 
+
+### Install && Start
+
 Require [gulp.js](http://gulpjs.com/)
-    `npm install git://github.com/wilon/gulp-concat-blogdata.git`
-### Install
+
+    git clone https://github.com/wilon/wilon.github.io.git
+    cd wilon.github.io
+    npm install && npm start
+
+Then open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Update Notes
 
 1. Write notes
 
-    `data/some_notes.md`
+    `data/SOME_NOTES.md`
 
 2. Add icon
 
-    `blog/images/some_notes.png`
+    `blog/images/SOME_NOTES.png`
 
-3. Generate html
-
-    `gulp default`
+3. Browser Sync
