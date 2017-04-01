@@ -7,28 +7,59 @@
     zsh    # 手动切换
 ```
 
-### PHP相关
+### PHP help
 ```shell
+    # path
+    php -i | grep configure    # 可以查看【PHP安装目录】位置
+    php -i | grep php.ini    # 可以查看【php.ini】位置
+    ps aux | grep php-fpm.conf    # 可以查看【php-fpm.conf】位置
+    php-fpm -t    # 可以查看【php-fpm.conf】位置
+
     export PATH=$PATH:PHP安装目录/php/bin    # php命令加入path
+    # confi 配置文件
+    php -v
+    # test
     wget https://wilon.github.io/static/p.php    # 雅黑PHP探针
 ```
 
-### echo
+### other
 ```shell
+    echo $PATH    # 查看可以PATH，按优先级排列
     echo 'aaaaaa' > test.htm
     echo -n 'aaaaaa' > test.htm    # 没有换行
 ```
 
-### docker CONTAINER 镜像
+### top 命令详解 help
 ```shell
+    第一行，任务队列信息 — 当前系统时间 — 系统运行时间 — 当前用户登录数 - 负载情况
+    第三行，CPU状态信息 - 用户空间占用CPU的百分比 — 内核空间占用CPU的百分比, id — 空闲CPU百分比 
+    第四行，内存状态 - 物理内存总量 — 使用中的内存总量 — 空闲内存总量 — 缓存的内存量    # 8,000,000 = 8G
+    第五行，SWAP交换分区信息 — 交换区总量 — 使用的交换区总量 — 空闲交换区总量 — 缓冲的交换区总量
+    第七行以下：各进程（任务）的状态监控
+        PID — 进程id
+        USER — 进程所有者
+        PR — 进程优先级
+        NI — nice值。负值表示高优先级，正值表示低优先级
+        VIRT — 进程使用的虚拟内存总量，单位kb。VIRT=SWAP+RES
+        RES — 进程使用的、未被换出的物理内存大小，单位kb。RES=CODE+DATA
+        SHR — 共享内存大小，单位kb
+        S — 进程状态。D=不可中断的睡眠状态 R=运行 S=睡眠 T=跟踪/停止 Z=僵尸进程
+        %CPU — 上次更新到现在的CPU时间占用百分比
+        %MEM — 进程使用的物理内存百分比
+        TIME+ — 进程使用的CPU时间总计，单位1/100秒
+        COMMAND — 进程名称（命令名/命令行）
+```
+
+### docker help
+```shell
+    service docker start    # 启动服务
+    # docker CONTAINER 镜像
     docker pull <REPOSITORY>
     docker images    #  查看安装的镜像
     docker run <REPOSITORY> <COMMAND>    # 在容器内运行镜像
-```
-
-### docker CONTAINER 容器
-```shell
+    # docker CONTAINER 容器
     docker ps -a    # 查看所有容器
+    docker start <CONTAINER ID>    # 开始该容器
     docker stop <CONTAINER ID>    # 停止该容器
     docker rm <CONTAINER ID>    # 删除该容器
 ```
@@ -66,8 +97,9 @@
     service nginxd reload
 ```
 
-### service能识别的目录！直接service httpd start
+### service
 ```shell
+    # 能识别的目录！直接service httpd start
     /etc/rc.d/init.d/
 ```
 

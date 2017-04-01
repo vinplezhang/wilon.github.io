@@ -38,10 +38,27 @@
     1. 属性 -> 字体大小调为36
 ```
 
-### SQLyog
-```shell
+### 破解工具
+```html
+    # SQLyog
     1. 永久试用：HKEY_CURRENT_USER\\SOFTWARE 对应的权限锁死；
     2. 字体改为Consolas,14px；
+    # Datagrip
+    <a href="http://idea.lanyus.com/">http://idea.lanyus.com/</a>
+    <a href="https://hub.docker.com/r/woailuoli993/jblse/">https://hub.docker.com/r/woailuoli993/jblse/</a>
+```
+
+### Sublime Text 更换package包源
+```shell
+    打开命令面板 Ctrl(Command)+Shift+p
+    找到并打开：Preferences: Package Control sublime Settings - User
+    添加一行"channels"字段：
+
+    "channels":
+    [
+    	"http://wilon.github.io/static/channel_v3.json"
+    ],
+
 ```
 
 ### Atom 更换 npm 源

@@ -5,6 +5,11 @@
     file_put_contents(dirname(__FILE__) . '/params.log', json_encode($data), FILE_APPEND);
 ```
 
+### 微信资源搜集
+```php
+    <a href="https://mp.weixin.qq.com/wiki/8/f9a0b8382e0b77d87b3bcc1ce6fbc104.html">公众号验证token方法</a>
+```
+
 ### 比较好的密码存储处理
 ```php
     // sha1/md5都行

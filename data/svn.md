@@ -46,3 +46,8 @@
 ```shell
     svn merge -r 28:25 something    # 回滚到版本号
 ```
+
+### 删库跑路
+```shell
+    find . -type d -name ".svn"|xargs rm -rf    # 回滚到版本号
+```

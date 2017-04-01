@@ -158,6 +158,7 @@ sreach.prototype = {
     },
     // 列表数据加载
     valToHTML: function(kw) {
+        document.title += ' - '+kw
         var self = this;
         if (window.history && window.history.pushState)
             kw ? history.pushState({},"wilonblog","?kw="+kw) :
@@ -193,8 +194,8 @@ sreach.prototype = {
             for (var j = 0; j < dt.length; j++) {
                 var newDt = dt[j];
                 newDt.id = newDt.tag+j;
-                newDt.url = "javascript:;";
                 newDt.name = newDt.tag.toUpperCase() + ": " + newDt.name;
+                newDt.url = "/?kw="+newDt.name;
                 newDt.tags = [newDt.tag];
                 newDt.icon = ["icon-"+newDt.tag];
                 // 打乱顺序
