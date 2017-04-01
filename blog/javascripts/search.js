@@ -158,12 +158,12 @@ sreach.prototype = {
     },
     // 列表数据加载
     valToHTML: function(kw) {
-        document.title += ' - '+kw
         var self = this;
         if (window.history && window.history.pushState)
             kw ? history.pushState({},"wilonblog","?kw="+kw) :
                 history.pushState({},"wilonblog","/");
         if (kw) {
+            document.title += ' - '+kw
             $('#list-itme li').hide();
             kw = kw.toLowerCase();
             kw = kw.replace(/[\s\(\)]+/, '(.*?)');
