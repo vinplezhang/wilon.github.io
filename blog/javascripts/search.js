@@ -228,7 +228,8 @@ $(function() {
     hljs.initHighlightingOnLoad();
     // 搜索框焦点
     $('#search').focus();
-    $('.header,.search,.title,#list-itme li:not(:even)').mouseover(function(event) {
+    //$('.header,.search,.title,#list-itme li:not(:even)').mouseover(function(event) {
+    $('.search').mouseover(function(event) {
         $('#search').select();
     });
     // 托中复制

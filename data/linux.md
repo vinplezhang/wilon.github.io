@@ -7,6 +7,21 @@
     zsh    # 手动切换
 ```
 
+### nodejs + npm + gulp
+```shell
+    # install
+    yum -y install nodejs
+    yum -y install npm
+    npm install gulp -g    # global
+    npm install gulp --save    # save to package.json
+    # Ubuntu install last nodejs
+    curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -    # source
+    sudo apt-get install nodejs
+    # other
+    npm config set registry https://registry.npm.taobao.org    # taobao
+    sudo ln -s /usr/bin/nodejs /usr/bin/node    # Ubuntu
+```
+
 ### PHP help
 ```shell
     # path
@@ -32,7 +47,7 @@
 ### top 命令详解 help
 ```shell
     第一行，任务队列信息 — 当前系统时间 — 系统运行时间 — 当前用户登录数 - 负载情况
-    第三行，CPU状态信息 - 用户空间占用CPU的百分比 — 内核空间占用CPU的百分比, id — 空闲CPU百分比 
+    第三行，CPU状态信息 - 用户空间占用CPU的百分比 — 内核空间占用CPU的百分比, id — 空闲CPU百分比
     第四行，内存状态 - 物理内存总量 — 使用中的内存总量 — 空闲内存总量 — 缓存的内存量    # 8,000,000 = 8G
     第五行，SWAP交换分区信息 — 交换区总量 — 使用的交换区总量 — 空闲交换区总量 — 缓冲的交换区总量
     第七行以下：各进程（任务）的状态监控
@@ -161,6 +176,7 @@
 ```shell
     df -h    # 查看磁盘空间
     du -sh *    # 查看当前目录下个文件（夹）大小
+    du -sh * | sort -rn | grep "M\s"    # sort
     ls | wc -l    # 查看当前文件夹下文件（夹）的个数
     ls -l | grep "^-" | wc -l    # 查看当前文件夹下文件的个数
     ls -lR | grep "^-" | wc -l    # 查看某目录下文件的个数，包括子目录里的。

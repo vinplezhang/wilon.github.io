@@ -1,24 +1,26 @@
+'use strict'
+
 // 引入 gulp
 const gulp = require('gulp');
 
 // 引入组件
-const del = require('del')
-    minifyCSS = require('gulp-minify-css')
-    concat = require('gulp-concat');    // 合并
-    uglify = require('gulp-uglify');    // 混淆
-    rev = require('gulp-rev');    // 对文件名加MD5后缀
-    revCollector = require('gulp-rev-collector');    // 路径替换
+const del = require('del'),
+    minifyCSS = require('gulp-minify-css'),
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify'),
+    rev = require('gulp-rev'),
+    revCollector = require('gulp-rev-collector');
 // 压缩合并图片组件
-const spritesmith = require('gulp.spritesmith')
-    buffer = require('vinyl-buffer')
-    csso = require('gulp-csso')
-    imagemin = require('gulp-imagemin')
-    merge = require('merge-stream')
+const spritesmith = require('gulp.spritesmith'),
+    buffer = require('vinyl-buffer'),
+    csso = require('gulp-csso'),
+    imagemin = require('gulp-imagemin'),
+    merge = require('merge-stream'),
     imageResize = require('gulp-image-resize');
 // wilon md
 const wilonBlogdata = require('gulp-concat-blogdata');
 // server
-const sync = require('browser-sync').create()
+const sync = require('browser-sync').create(),
      path   = require('path');
 
 // 合并，压缩 js 文件
