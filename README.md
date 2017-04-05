@@ -8,11 +8,22 @@ Fast search, copy.
 
 ### Install && Start
 
-Require [gulp.js](http://gulpjs.com/)
+Require Latest `nodejs` + `npm` + `gulp`
 
-    git clone https://github.com/wilon/wilon.github.io.git
-    cd wilon.github.io
-    npm install && npm start
+```shell
+git clone https://github.com/wilon/wilon.github.io.git
+cd wilon.github.io
+npm install && npm start
+```
+
+Ubuntu require:
+
+```shell
+sudo add-apt-repository ppa:dhor/myway
+sudo apt-get update
+sudo apt-get install graphicsmagick
+sudo apt-get install imagemagick
+```
 
 Then open [http://localhost:3000](http://localhost:3000) in your browser.
 

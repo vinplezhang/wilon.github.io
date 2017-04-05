@@ -7,6 +7,21 @@
     zsh    # 手动切换
 ```
 
+### nodejs + npm + gulp
+```shell
+    # install
+    yum -y install nodejs
+    yum -y install npm
+    npm install gulp -g    # global
+    npm install gulp --save    # save to package.json
+    # Ubuntu install last nodejs
+    curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -    # source
+    sudo apt-get install nodejs
+    # other
+    npm config set registry https://registry.npm.taobao.org    # taobao
+    sudo ln -s /usr/bin/nodejs /usr/bin/node    # Ubuntu
+```
+
 ### PHP help
 ```shell
     # path
@@ -162,6 +177,7 @@
 ```shell
     df -h    # 查看磁盘空间
     du -sh *    # 查看当前目录下个文件（夹）大小
+    du -sh * | sort -rn | grep "M\s"    # sort
     ls | wc -l    # 查看当前文件夹下文件（夹）的个数
     ls -l | grep "^-" | wc -l    # 查看当前文件夹下文件的个数
     ls -lR | grep "^-" | wc -l    # 查看某目录下文件的个数，包括子目录里的。
