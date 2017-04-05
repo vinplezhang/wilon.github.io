@@ -85,7 +85,7 @@ gulp.task('css', ['sprite'], function () {
 // 合并md
 gulp.task('md', function() {
     del('./static/wilonblog-*.min.json');
-    return gulp.src('./static/*.md')
+    return gulp.src('./data/*.md')
         .pipe(wilonBlogdata('wilonblog.min.json'))
         .pipe(rev())    // 重命名hash
         .pipe(gulp.dest('./static/'))    // 保存

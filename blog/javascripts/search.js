@@ -163,7 +163,7 @@ sreach.prototype = {
             kw ? history.pushState({},"wilonblog","?kw="+kw) :
                 history.pushState({},"wilonblog","/");
         if (kw) {
-            document.title += ' - '+kw
+            document.title = '王伟龙的微笔记 - '+kw
             $('#list-itme li').hide();
             kw = kw.toLowerCase();
             kw = kw.replace(/[\s\(\)]+/, '(.*?)');
