@@ -32,7 +32,7 @@
 ### top 命令详解 help
 ```shell
     第一行，任务队列信息 — 当前系统时间 — 系统运行时间 — 当前用户登录数 - 负载情况
-    第三行，CPU状态信息 - 用户空间占用CPU的百分比 — 内核空间占用CPU的百分比, id — 空闲CPU百分比 
+    第三行，CPU状态信息 - 用户空间占用CPU的百分比 — 内核空间占用CPU的百分比, id — 空闲CPU百分比
     第四行，内存状态 - 物理内存总量 — 使用中的内存总量 — 空闲内存总量 — 缓存的内存量    # 8,000,000 = 8G
     第五行，SWAP交换分区信息 — 交换区总量 — 使用的交换区总量 — 空闲交换区总量 — 缓冲的交换区总量
     第七行以下：各进程（任务）的状态监控
@@ -53,6 +53,7 @@
 ### docker help
 ```shell
     service docker start    # 启动服务
+    systemctl enable docker    # Centos 开机启动
     # docker CONTAINER 镜像
     docker pull <REPOSITORY>
     docker images    #  查看安装的镜像
