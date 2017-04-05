@@ -84,11 +84,11 @@ gulp.task('css', ['sprite'], function () {
 
 // 合并md
 gulp.task('md', function() {
-    del('./mynote/wilonblog-*.min.json');
-    return gulp.src('./mynote/*.md')
+    del('./static/wilonblog-*.min.json');
+    return gulp.src('./static/*.md')
         .pipe(wilonBlogdata('wilonblog.min.json'))
         .pipe(rev())    // 重命名hash
-        .pipe(gulp.dest('./mynote/'))    // 保存
+        .pipe(gulp.dest('./static/'))    // 保存
         .pipe(rev.manifest('data.json'))    // 生成一个重命名用json
         .pipe(gulp.dest('./cache/'));
 });
