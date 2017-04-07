@@ -87,7 +87,10 @@
     yum -y install crontabs    # 软件包是用来安装、卸装、或列举用来驱动cron守护进程的表格的程序。
     service crond start    # 启动服务
     chkconfig --level 345 crond on    # 配置开机启动
-    vim  /etc/crontab    # 配置文件
+    vim  /etc/jjab    # 配置文件
+    # 日志
+    30 21 * * * php -v > /dev/null 2 > &1    # 不保留输出
+    30 21 * * * php -v >> /tmp/test.log    # 保存日志
     # 定时任务： 分　时　日　月　周　 命令
     30 21 * * * /usr/local/etc/rc.d/lighttpd restart    # 每晚的21:30重启apache。
     45 4 1,10,22 * * /usr/local/etc/rc.d/lighttpd restart    # 每月1、10、22日的4 : 45重启apache。
