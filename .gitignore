@@ -3,3 +3,4 @@ cache/
 npm-debug.log
 nohup.out
 .vscode/
+.DS_Store

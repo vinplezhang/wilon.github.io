@@ -72,18 +72,20 @@ sreach.prototype = {
     },
     itemHTML: function(arr, type, keywolds) {
         var name = arr.name,
-            des = arr.des,
+            des = arr.des.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'),
             self = this,
             reg = new RegExp("(" + keywolds + ")", "ig"),
-            language = self.language[arr.tags[0]];
-        if (type === "search") {
-            name = arr.name.replace(reg, '<i class="kw">' + "$1" + "</i>");
-            des = arr.des.replace(reg, '<i class="kw">' + "$1" + "</i>") || ""
-        }
-        return this.simple(this.ulhtml, {
+            language = arr.lang;
+            // language = self.language[arr.tags[0]];
+
+        var hrefPreg = new RegExp('&lt;a\\s+href(.*?)&lt;\\/a&gt;', 'g');
+        des = des.replace(hrefPreg, function(word){
+            return word.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
+        });
+        var result = this.simple(this.ulhtml, {
             name: name,
             url: arr.url,
-            des: des || "",
+            des: des,
             language: typeof language == 'undefined' ? '' : language,
             icon: function() {
                 var dm = self.domainReg.exec(arr.url);
@@ -101,7 +103,20 @@ sreach.prototype = {
                 var _tags_html = tags.join("</span><span>");
                 return _tags_html && _tags_html != "" ? "<span>" + _tags_html + "</span>" : ""
             }(arr.tags || [])
-        })
+        });
+
+        if (language == 'markdown' || language == 'md') {
+            var mdHtml = window.markdownit({
+                  html: true,
+                  linkify: true,
+                  typographer: true
+                }).render(arr.des);
+            var divEle = $('<div/>');
+            divEle.html(result)
+            divEle.find('.description').html(mdHtml);
+            return divEle.html();
+        }
+        return result;
     },
     //获取URL上面的参数
     getQueryString:function(name) {

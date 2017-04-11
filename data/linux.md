@@ -1,10 +1,18 @@
 
+
 ### zsh + oh-my-zsh
 ```shell
     yum install zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/wilon/oh-my-zsh/master/tools/install.sh)"
     chsh -s /bin/zsh    # 修改默认zsh，需重启。或修改 /etc/passwd
     zsh    # 手动切换
+```
+
+### 查看进程 ps
+```shell
+    pa aux
+    ps aux | grep artisan | grep -v grep | cut -c 9-15 | xargs kill -9     # 杀死‘artisan’的进程
+    nohup php colloct.php &    # 在后台运行
 ```
 
 ### nodejs + npm + gulp
@@ -18,7 +26,8 @@
     curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -    # source
     sudo apt-get install nodejs
     # other
-    npm config set registry https://registry.npm.taobao.org    # taobao
+    npm install -g    # 没有包则下载，有则更新包依赖
+    npm config set registry https://registry.npm.taobao.org    # taobao 镜像
     sudo ln -s /usr/bin/nodejs /usr/bin/node    # Ubuntu
 ```
 
@@ -89,8 +98,9 @@
     chkconfig --level 345 crond on    # 配置开机启动
     vim  /etc/jjab    # 配置文件
     # 日志
-    30 21 * * * php -v > /dev/null 2 > &1    # 不保留输出
+    30 21 * * * php -v > /dev/null 2>&1    # 不保留输出
     30 21 * * * php -v >> /tmp/test.log    # 保存日志
+    */1 * * * * echo $(date +"\%Y-\%m-\%d \%H:\%M:\%S") >> /tmp/crond.log    // 测试服务是否正常
     # 定时任务： 分　时　日　月　周　 命令
     30 21 * * * /usr/local/etc/rc.d/lighttpd restart    # 每晚的21:30重启apache。
     45 4 1,10,22 * * /usr/local/etc/rc.d/lighttpd restart    # 每月1、10、22日的4 : 45重启apache。
