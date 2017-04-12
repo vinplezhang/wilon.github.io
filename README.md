@@ -40,3 +40,4 @@ Then open [http://localhost:3000](http://localhost:3000) in your browser.
     `blog/images/SOME_NOTES.png`
 
 3. Browser Sync
+Wed Apr 12 11:31:00 CST 2017
