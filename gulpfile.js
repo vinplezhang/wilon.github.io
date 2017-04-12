@@ -22,6 +22,9 @@ const wilonBlogdata = require('gulp-concat-blogdata');
 // server
 const sync = require('browser-sync').create(),
      path   = require('path');
+// sitemap
+const sm = require('sitemap'),
+    fs = require('fs');
 
 // 合并，压缩 js 文件
 gulp.task('js', function() {
@@ -93,8 +96,40 @@ gulp.task('md', function() {
         .pipe(gulp.dest('./cache/'));
 });
 
+// sitemap
+gulp.task('sitemap', ['md'], function () {
+    var urls = [];
+    Array.prototype.addUrl = function (url) {
+        return this.push({
+            url: url ,
+            changefreq: 'weekly',
+            priority: 0.8,
+            lastmodrealtime: true,
+            lastmodfile: 'index.html'
+        });
+    };
+    urls.addUrl('/');
+    urls.addUrl('/jquery-cheatsheet/');
+    urls.addUrl('/analysis-phone-number/');
+    var dataFs = fs.readFileSync('cache/data.json'),
+        dataFileName = JSON.parse(dataFs.toString())['wilonblog.min.json'],
+        dataFs = fs.readFileSync('static/' + dataFileName),
+        data = JSON.parse(dataFs.toString());
+    data.map(function(elem) {
+        var title = elem.tag.toUpperCase() + ": " + elem.name
+        urls.addUrl('/?kw=' + title);
+        return;
+    })
+    var sitemap = sm.createSitemap({
+        hostname: 'https://wilon.github.io',
+        cacheTime: 600000,
+        urls: urls
+    });
+    return fs.writeFileSync("sitemap.xml", sitemap.toString());
+});
+
 // 替换模板文件内字符串
-gulp.task('rev', ['js', 'css', 'md'], function() {
+gulp.task('rev', ['js', 'css', 'sitemap'], function() {
     gulp.src(['./cache/*.json', './blog/*.html'])    // 读取需要进行替换的文件
         .pipe(revCollector())    // 执行文件内js、css名的替换
         .pipe(gulp.dest('./'));    // 替换后的文件输出的目录
@@ -109,7 +144,7 @@ gulp.task('revcss', ['css'], function() {
         .pipe(revCollector())
         .pipe(gulp.dest('./'));
 });
-gulp.task('revmd', ['md'], function() {
+gulp.task('revmd', ['sitemap'], function() {
     gulp.src(['./cache/*.json', './blog/*.html'])
         .pipe(revCollector())
         .pipe(gulp.dest('./'));
@@ -118,6 +153,14 @@ gulp.task('revhtml', function() {
     gulp.src(['./cache/*.json', './blog/*.html'])
         .pipe(revCollector())
         .pipe(gulp.dest('./'));
+});
+
+// 默认任务
+gulp.task('default', ['rev'], function () {
+    gulp.watch('data/*.md', ['revmd']);
+    gulp.watch('blog/javascripts/*.js', ['revjs']);
+    gulp.watch(['blog/stylesheets/*.css','blog/images/*.png'], ['revcss']);
+    gulp.watch('blog/index.html', ['revhtml']);
 });
 
 gulp.task('server', ['default'], function(done) {
@@ -142,12 +185,4 @@ gulp.task('server', ['default'], function(done) {
             done();
         }
     });
-});
-
-// 默认任务
-gulp.task('default', ['rev'], function () {
-    gulp.watch('data/*.md', ['revmd']);
-    gulp.watch('blog/javascripts/*.js', ['revjs']);
-    gulp.watch(['blog/stylesheets/*.css','blog/images/*.png'], ['revcss']);
-    gulp.watch('blog/index.html', ['revhtml']);
 });

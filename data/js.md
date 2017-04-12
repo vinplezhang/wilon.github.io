@@ -65,10 +65,6 @@
     var user = {name:'weilong', age:20},
         num = 8;
     var res = `My name is ${user.name}, age ${user.age + num}, num ${num}`;
-```
-
-### 其他
-```javascript
     //检测URL
     String.prototype.checkeUrl = function () {
         return new RegExp('^(https|http|ftp|rtsp|mms)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]', 'g').test(url);
