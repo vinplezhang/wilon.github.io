@@ -1,5 +1,9 @@
 # 用到的静态文件
 
+地址：https://wilon.github.io/static/
+
+镜像：http://wilon.oschina.io/static/
+
 #### channel_v3.json
 
 sublime text 插件库，修改`$packages/User/Package Control.sublime-settings`参数`channels`, add `"http://wilon.github.io/static/channel_v3.json"`
