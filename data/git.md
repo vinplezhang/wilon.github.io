@@ -69,6 +69,7 @@
     # 1. 生成Putty key：puttygen工具，Conversions -> Import key -> Save private key；
     # 2. clone时使用
     ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa -q -b 2048    # 生成公私钥
+    ssh-keygen -l -E md5 -f ~/.ssh/id_rsa.pub    # 查看公钥指纹
 ```
 
 ### 新模块工作流程
