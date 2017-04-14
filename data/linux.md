@@ -78,10 +78,12 @@
 ```shell
     service docker start    # 启动服务
     systemctl enable docker    # Centos 开机启动
+
     # docker CONTAINER 镜像
     docker pull <REPOSITORY>
     docker images    #  查看安装的镜像
-    docker run <REPOSITORY> <COMMAND>    # 在容器内运行镜像
+    docker run <REPOSITORY> <COMMAND>     # 在容器内运行镜像
+            --restart=always    # 随docker启动
     # docker CONTAINER 容器
     docker ps -a    # 查看所有容器
     docker start <CONTAINER ID>    # 开始该容器

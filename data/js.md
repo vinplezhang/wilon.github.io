@@ -56,7 +56,8 @@
         }
         return format;
     }
-    date.format('yyyy-MM-dd hh:mm:ss');    // "2016-11-09 11:02:48"
+    new Date().format('yyyy-MM-dd hh:mm:ss');    // "2016-11-09 11:02:48"
+    new Date(1491983649 * 1000).format('yyyy-MM-dd hh:mm:ss');
 ```
 
 ### 其他
