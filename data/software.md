@@ -33,6 +33,12 @@
     将vmrun.cmd放入开机启动目录startup\\
 ```
 
+### MacOS 实用技巧
+```shell
+    # 更新host，科学上网, 需要sudo
+    */10 * * * * /usr/bin/curl -o /private/etc/hosts https://raw.githubusercontent.com/racaljk/hosts/master/hosts
+```
+
 ### Win 命令提示行美化
 ```shell
     1. 属性 -> 字体大小调为36
