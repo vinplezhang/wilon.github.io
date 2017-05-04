@@ -1,11 +1,15 @@
 
-
 ### zsh + oh-my-zsh
 ```shell
     yum install zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/wilon/oh-my-zsh/master/tools/install.sh)"
     chsh -s /bin/zsh    # 修改默认zsh，需重启。或修改 /etc/passwd
     zsh    # 手动切换
+```
+
+### awk sed 命令合集
+```shell
+    awk ‘!a[$0]++’ your_file    # 去除重复行
 ```
 
 ### 查看进程 ps
@@ -74,21 +78,36 @@
         COMMAND — 进程名称（命令名/命令行）
 ```
 
+### docker run param
+```shell
+    -d    # 使用于服务型，containter将会运行在后台模式(Detached mode)。此时所有I/O数据只能通过网络资源或者共享卷组来进行交互。注意：--rm 和 -d不能共用！
+    --rm    # 使用执行命令型，在container结束时自动清理其所产生的数据。注意：--rm 和 -d不能共用！
+    --restart=always    # 随docker服务自启动
+```
+
 ### docker help
 ```shell
     service docker start    # 启动服务
     systemctl enable docker    # Centos 开机启动
 
     # docker CONTAINER 镜像
-    docker pull <REPOSITORY>
+    docker pull <repository>
     docker images    #  查看安装的镜像
-    docker run <REPOSITORY> <COMMAND>     # 在容器内运行镜像
-            --restart=always    # 随docker启动
+    docker run <repository> <command>     # 在容器内运行镜像
+    docker rmi <image id>    # 删除镜像
+
     # docker CONTAINER 容器
     docker ps -a    # 查看所有容器
-    docker start <CONTAINER ID>    # 开始该容器
-    docker stop <CONTAINER ID>    # 停止该容器
-    docker rm <CONTAINER ID>    # 删除该容器
+    docker start <container id>    # 开始该容器
+    docker stop <container id>    # 停止该容器
+    docker rm <container id>    # 删除该容器
+    docker attach <container id>    # 进入正在运行的容器
+```
+
+### 输出分类、级别
+```shell
+    php -v > /dev/null 2>&1    # 不保留所有输出
+    php -v 2>/dev/null    # 不保留错误输出
 ```
 
 ### 定时任务crontab
@@ -99,6 +118,10 @@
     service crond start    # 启动服务
     chkconfig --level 345 crond on    # 配置开机启动
     vim  /etc/jjab    # 配置文件
+    # 参数
+    crontab [ -u user ] -l    # 列出当前用户(指定用户)的任务
+    crontab [ -u user ] -e    # 编辑当前用户(指定用户)的任务
+    crontab [ -u user ] -r    # 清除当前用户(指定用户)的任务
     # 日志
     30 21 * * * php -v > /dev/null 2>&1    # 不保留输出
     30 21 * * * php -v >> /tmp/test.log    # 保存日志

@@ -51,6 +51,11 @@
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     wget https://raw.githubusercontent.com/wilon/oh-my-zsh/master/templates/vimrc.zsh-template -O ~/.vimrc
     vim +PluginInstall +qall
+    vim +PluginUpdate +qall
+    # 以xx配置操作
+    vim -u ~/.wvimrc 文件
+    vim -u ~/.wvimrc +PluginInstall +qall
+    vim -u ~/.wvimrc +PluginUpdate +qall
     # 一键脚本
     已集成到 <a href="https://raw.githubusercontent.com/wilon/oh-my-zsh/master/templates/vimrc.zsh-template" target="_blank">https://raw.githubusercontent.com/wilon/oh-my-zsh/master/templates/vimrc.zsh-template</a>
 ```
@@ -68,7 +73,7 @@
 
 ### file 文件操作
 ```shell
-    *CTRL-G* *:f* *:fi* *:file*          # 查看文件具体位置
+    CTRL-G :f :fi :file          # 查看文件具体位置
 ```
 
 ### 基本的设置
@@ -88,7 +93,6 @@
     o 光标下一行；O 光标上一行；s 删光标后一个字符；S 清除全行
 ```
 
-
 ### 删除和替换
 ```shell
     [num]dd    # 向下删除[num]1行
@@ -96,6 +100,9 @@
     :g/^\s*$/d    # 删除空行
     :n,$s/vivian/sky/g    # 替换第 n 行开始到最后一行中每一行所有 vivian 为 sky
     :%s/,/\r/g
+    # 删除重复行
+    :sort
+    :g/^\(.*\)$\n\1$/d
 ```
 
 ### 标签页功能

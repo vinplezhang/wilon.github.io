@@ -76,10 +76,10 @@ sreach.prototype = {
             self = this,
             reg = new RegExp("(" + keywolds + ")", "ig"),
             language = arr.lang;
-            // language = self.language[arr.tags[0]];
+        // language = self.language[arr.tags[0]];
 
         var hrefPreg = new RegExp('&lt;a\\s+href(.*?)&lt;\\/a&gt;', 'g');
-        des = des.replace(hrefPreg, function(word){
+        des = des.replace(hrefPreg, function(word) {
             return word.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
         });
         var result = this.simple(this.ulhtml, {
@@ -107,10 +107,10 @@ sreach.prototype = {
 
         if (language == 'markdown' || language == 'md') {
             var mdHtml = window.markdownit({
-                  html: true,
-                  linkify: true,
-                  typographer: true
-                }).render(arr.des);
+                html: true,
+                linkify: true,
+                typographer: true
+            }).render(arr.des);
             var divEle = $('<div/>');
             divEle.html(result)
             divEle.find('.description').html(mdHtml);
@@ -119,10 +119,11 @@ sreach.prototype = {
         return result;
     },
     //获取URL上面的参数
-    getQueryString:function(name) {
+    getQueryString: function(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
         var r = decodeURIComponent(window.location.search.substr(1)).match(reg);
-        if (r != null) return unescape(r[2]); return null;
+        if (r != null) return unescape(r[2]);
+        return null;
     },
     // 加载所有li
     creatListHTML: function(num) {
@@ -135,7 +136,7 @@ sreach.prototype = {
                 if (!arr[i]) break;
                 var myLi = self.itemHTML(arr[i]);
                 var isHide = i >= this.page_size ? 'style="display:none"' : '';
-                $('#list-itme').append("<li id='"+arr[i].id+"'"+isHide+">"+myLi+"<li>")
+                $('#list-itme').append("<li class='li_item' id='" + arr[i].id + "'" + isHide + ">" + myLi + "</li>");
             }
         }
     },
@@ -150,12 +151,12 @@ sreach.prototype = {
             if (!arr[i]) break;
             if (total > page_size) break;
             // 能搜到
-            if (self.isSreachIndexOF(arr[i].name+arr[i].des, keywolds)) {
-                if ($('#'+arr[i].id).length == 0) {
+            if (self.isSreachIndexOF(arr[i].name + arr[i].des, keywolds)) {
+                if ($('#' + arr[i].id).length == 0) {
                     var myLi = self.itemHTML(arr[i]);
-                    $('#list-itme').append("<li id='"+arr[i].id+"'>"+myLi+"<li>")
+                    $('#list-itme').append("<li class='li_item' id='" + arr[i].id + "'>" + myLi + "<li>")
                 } else {
-                    $('#'+arr[i].id).show();
+                    $('#' + arr[i].id).show();
                 }
             }
         }
@@ -175,21 +176,21 @@ sreach.prototype = {
     valToHTML: function(kw) {
         var self = this;
         if (window.history && window.history.pushState)
-            kw ? history.pushState({},"wilonblog","?kw="+kw) :
-                history.pushState({},"wilonblog","/");
+            kw ? history.pushState({}, "wilonblog", "?kw=" + kw) :
+            history.pushState({}, "wilonblog", "/");
         if (kw) {
-            document.title = '王伟龙的微笔记 - '+kw
-            $('#list-itme li').hide();
+            document.title = '王伟龙的微笔记 - ' + kw
+            $('.li_item').hide();
             kw = kw.toLowerCase();
             kw = kw.replace(/[\s\(\)]+/, '(.*?)');
             self.createSreachListHTML(kw);
         } else {
-            $('#list-itme li').show();
+            $('.li_item').show();
         }
         self.isErrorInfo(kw);
     },
     changeKeyworlds: function(val) {
-        $('#list-itme li').hide();
+        $('.li_item').hide();
         this.valToHTML(val)
     },
     // 搜索数据初始化
@@ -208,17 +209,17 @@ sreach.prototype = {
             // 加载成功，处理json数据
             for (var j = 0; j < dt.length; j++) {
                 var newDt = dt[j];
-                newDt.id = newDt.tag+j;
+                newDt.id = newDt.tag + j;
                 newDt.name = newDt.tag.toUpperCase() + ": " + newDt.name;
-                newDt.url = "/?kw="+newDt.name;
+                newDt.url = "/?kw=" + newDt.name;
                 newDt.tags = [newDt.tag];
-                newDt.icon = ["icon-"+newDt.tag];
+                newDt.icon = ["icon-" + newDt.tag];
                 // 打乱顺序
                 var rand = Math.floor(Math.random() * self.data.length);
                 self.data.splice(rand, 0, dt[j]);
             }
             console.log(self.data)
-            // 右上角
+                // 右上角
             $('#info').html("共计<i> " + self.data.length + " </i>条微笔记 ｜ ");
             // 搜索绑定事件
             $('#search').on('keyup', function() {
@@ -228,9 +229,9 @@ sreach.prototype = {
             // 加载数据html
             self.creatListHTML();
             // 搜索结果
-            var kw = self.getQueryString('kw');
-            kw && (self.inputElm.value = kw);
-            self.valToHTML(kw);
+            // var kw = self.getQueryString('kw');
+            // kw && (self.inputElm.value = kw);
+            // self.valToHTML(kw);
             // 取消load
             $('#spinner').hide();
         });
