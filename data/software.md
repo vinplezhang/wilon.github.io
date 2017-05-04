@@ -54,17 +54,13 @@
     <a href="https://hub.docker.com/r/woailuoli993/jblse/">https://hub.docker.com/r/woailuoli993/jblse/</a>
 ```
 
-### Sublime Text 更换package包源
+### Sublime Text 更换 package 包源
 ```shell
-    打开命令面板 Ctrl(Command)+Shift+p
-    找到并打开：Preferences: Package Control sublime Settings - User
-    添加一行"channels"字段：
-
-    "channels":
-    [
-    	"http://wilon.github.io/static/channel_v3.json"
-    ],
-
+    Ctrl (Command) + Shift + p    # 打开命令面板
+    Package Control: Add Channel    # 找到并打开
+    # 添加
+      https://wilon.github.io/static/channel_v3.json    # github
+      http://wilon.oschina.io/static//channel_v3.json    # oschina 国内比较快
 ```
 
 ### Atom 更换 npm 源

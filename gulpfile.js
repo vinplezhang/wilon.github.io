@@ -116,6 +116,10 @@ gulp.task('sitemap', ['md'], function () {
         dataFs = fs.readFileSync('static/' + dataFileName),
         data = JSON.parse(dataFs.toString());
     data.map(function(elem) {
+        if (typeof elem.tag == 'undefined') {
+            console.log(elem)
+            elem.tag = '2333'
+        }
         var title = elem.tag.toUpperCase() + ": " + elem.name
         urls.addUrl('/?kw=' + title);
         return;
