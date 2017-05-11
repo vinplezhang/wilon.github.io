@@ -10,6 +10,7 @@
 ### awk sed 命令合集
 ```shell
     awk ‘!a[$0]++’ your_file    # 去除重复行
+    cat cache/smtp.log | grep "To" | awk '{print $9;}' | sort | uniq -c    # 按列统计次数
 ```
 
 ### 查看进程 ps

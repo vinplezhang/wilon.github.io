@@ -229,9 +229,9 @@ sreach.prototype = {
             // 加载数据html
             self.creatListHTML();
             // 搜索结果
-            // var kw = self.getQueryString('kw');
-            // kw && (self.inputElm.value = kw);
-            // self.valToHTML(kw);
+            var kw = self.getQueryString('kw');
+            kw && (self.inputElm.value = kw);
+            self.valToHTML(kw);
             // 取消load
             $('#spinner').hide();
         });
