@@ -91,6 +91,12 @@
     docker rm <CONTAINER ID>    # 删除该容器
 ```
 
+### 标准化输出
+```shell
+    30 21 * * * php -v > /dev/null 2>&1    # 不保留输出
+    find / -name 'lnmp.conf' 2>/dev/null    # 不显示错误输出（Permission denied）
+```
+
 ### 定时任务crontab
 ```shell
     # 安装配置
@@ -277,6 +283,7 @@
     PasswordAuthentication no    # 不允许密码登陆
     PermitEmptyPasswords no    # 不允许无密码登陆
     PermitRootLogin no   # 不允许root直接登陆
+    AllowUsers weilong    # 允许用户
     # sftp登陆服务器
     Subsystem sftp internal-sftp    # sftp配置
     X11Forwarding no
