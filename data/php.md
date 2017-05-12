@@ -82,13 +82,15 @@
     $var3 = json_decode('{}');
 ```
 
-### 静态方法中只能操作静态属性
+### 类的笔记
 ```php
-    // 静态方法中只能操作静态属性
-    static function p(){
+    // 静态方法没有实例化类，没有$this，没有调用 function __construct()
+    static function someFunc(){
         echo self::$country;
-        // echo $this->name;  ×
+        // echo $this->name;  ❌错误
     }
+    // const 一旦定义不能更改
+    // 静态变量魔术方法不起作用
 ```
 
 ### 一行代码实现两个值交换，不引入第三个变量

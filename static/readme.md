@@ -4,13 +4,17 @@
 
 镜像：http://wilon.oschina.io/static/
 
-#### channel_v3.json
+#### channel_v3.json Package Control 安装插件太慢解决办法
 
-sublime text 插件库，修改`$packages/User/Package Control.sublime-settings`参数`channels`, add `"http://wilon.github.io/static/channel_v3.json"`
+1. `Ctrl (Command)+Shift+p` 打开命令面板
+2. 输入 `Package Control: Add Channel`，enter
+3. 添加地址
 
-更新 `sh ./channel_v3_tool.json`
+`https://wilon.github.io/static/channel_v3.json` （国内速度不稳定）
 
-同步于[packagecontrol](http://packagecontrol.io/channel_v3.json)；
+或 `http://wilon.oschina.io/static/channel_v3.json` （国内很快）
+
+或 本地地址如： `/data/channel_v3.json` 需要下载文件到本地 （快的飞起）
 
 
 #### vpn_centos6.sh
