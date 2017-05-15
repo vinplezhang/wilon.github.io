@@ -51,6 +51,12 @@
     wget https://wilon.github.io/static/p.php    # 雅黑PHP探针
 ```
 
+### 一行脚本检测服务
+```shell
+    if test `pgrep nginx | wc -l` -eq 0; then /usr/sbin/service nginx start > /dev/null; fi;
+    if test `pgrep php-fpm | wc -l` -eq 0; then /usr/sbin/service php7.0-fpm start > /dev/null; fi;
+    if test `pgrep mysql | wc -l` -eq 0; then /usr/sbin/service mysql start > /dev/null; fi;
+```
 ### other
 ```shell
     echo $PATH    # 查看可以PATH，按优先级排列
@@ -293,6 +299,7 @@
     passwd weilong    # 修改用户密码
     userdel [-r|f] weilong    # 删除用户[及目录|强制删除]
     vim /etc/passwd[group|shadow]    # 查看所有用户[组|密码]信息
+    # /etc/passwd 用户名:口令:用户标识号:组标识号:描述:主目录:登录Shell
     # 组操作
     gpasswd -a [-d] 用户名 组名    # 把用户加入[删除]到组
     usermod -a -G groupA user    # 将用户添加到组groupA中，而不必离开其他用户组
