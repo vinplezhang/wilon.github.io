@@ -10,42 +10,6 @@
     d [x]    # 删除模式
 ```
 
-### vim-surround使用指南，vim-surround如何使用
-```markdown
-    *左括号括起来的有空格，输入右括号括起来的没空格*
-    普通模式
-    --------
-    |    | 命令                   | 说明 + 示例                                                                          |
-    |---:|----------------------|:---------------------------------------------------------------------------------|
-    |    | ds                   | 删除括号                                                                             |
-    |  例 | `ds` `"`             | `"Hello world!"` =><br> `Hello world!`                                           |
-    |    | cs                   | 替换括号                                                                             |
-    |  例 | `cs` `"(`            | `"Hello world!"` =><br> `(Hello world!)`                                         |
-    |    | cS                   | 替换括号，括号内文本做新一行                                                                   |
-    |  例 | `cS` `"{`            | `"Hello world!"` =><br> `{` <br> &nbsp;&nbsp;&nbsp;&nbsp;`Hello world!` <br> `}` |
-    |    | ys                   | 添加括号(配合vim光标移动)                                                                  |
-    |  例 | `ys` `w` `[`         | `Hello world!` =><br> `[Hello] world!`                                           |
-    |  例 | `ys` `w` `<em` Enter | `Hello world!` =><br> `<em>Hello<em> world!`                                     |
-    |    | yS                   | 添加括号，括号内文本做新一行                                                                   |
-    |  例 | `yS` `w` `[`         | `Hello world!` =><br> `[` <br> &nbsp;&nbsp;&nbsp;&nbsp; `Hello` <br> `] world!`  |
-    |    | yss                  | 整行括起来                                                                            |
-    |  例 | `yss` `(`            | `Hello world!` =><br> `( Hello world! )`                                         |
-    |    | ySS                  | 整行括起来，括号内文本做新一行                                                                  |
-    |  例 | `ySS` `{`            | `Hello world!` =><br> `{` <br> &nbsp;&nbsp; `Hello world! ` <br> `}`             |
-    |  例 | `ySS` `<div` Enter   | `Hello world!` =><br> `<div>` <br> &nbsp;&nbsp; `Hello world! ` <br> `<div>`     |
-    |    | ySs                  | 与ySs功能相同                                                                         |
-
-    <br>
-    可视模式
-    --------
-    |    | 命令             | 说明 + 示例                                                           |
-    |---:|:---------------|:----------------------------------------------------------------------|
-    |    | S              | 选中的括起来                                                              |
-    |  例 | 选中world: `S(`  | `Hello world!` =><br> `Hello (world)!`                                |
-    |    | gS             | 选中的括起来，括号内文本做新一行                                             |
-    |  例 | 选中world: `gS{` | `Hello world!` =><br> `Hello {` <br> &nbsp;&nbsp; ` world` <br> `}! ` |
-
-```
 
 ### 配置安装 .vimrc
 ```shell
@@ -96,14 +60,33 @@
 
 ### 删除和替换
 ```shell
+    【model】/【preg】/[【str】]/【action】
+    # 【model】
+    g    # 匹配所在行
+    v    # 不匹配
+    【line】s    # 匹配line
+    s    # 匹配当前行
+    9s    # 第9行
+    9,20s    # 9-20行
+    .,20s    # 当前行-20行
+    %s    # 所有行
+    9,$s    # 9行到底部
+    .,$s    # 当前行到底部
+    # 【preg】
+    \c 忽略大小写
+    # 【action】默认操作第一个
+    d    # 删除
+    g    # 全部操作
+    i    # ignore，忽略大小写
+    # 删除示例
     [num]dd    # 向下删除[num]1行
     :g[v]/INSERT.*99cms_news\c/d    # 删除包含[不包含]字串‘INSERT.*99cms_news\c’的行  \c忽略大小写
     :g/^\s*$/d    # 删除空行
+    :g/^\(.*\)$\n\1$/d    # 删除重复行（ 需先 :sort ）
+    :%s/\s\+$//g    # 删除行尾空格
+    # 替换示例
     :n,$s/vivian/sky/g    # 替换第 n 行开始到最后一行中每一行所有 vivian 为 sky
     :%s/,/\r/g
-    # 删除重复行
-    :sort
-    :g/^\(.*\)$\n\1$/d
 ```
 
 ### 标签页功能
@@ -161,4 +144,42 @@
     di(    # 删除()内容
     yi'    # 复制''内容
     vi"    # 选中""内容
+```
+
+
+### vim-surround使用指南，vim-surround如何使用
+```markdown
+    *左括号括起来的有空格，输入右括号括起来的没空格*
+    普通模式
+    --------
+    |    | 命令                   | 说明 + 示例                                                                          |
+    |---:|----------------------|:---------------------------------------------------------------------------------|
+    |    | ds                   | 删除括号                                                                             |
+    |  例 | `ds` `"`             | `"Hello world!"` =><br> `Hello world!`                                           |
+    |    | cs                   | 替换括号                                                                             |
+    |  例 | `cs` `"(`            | `"Hello world!"` =><br> `(Hello world!)`                                         |
+    |    | cS                   | 替换括号，括号内文本做新一行                                                                   |
+    |  例 | `cS` `"{`            | `"Hello world!"` =><br> `{` <br> &nbsp;&nbsp;&nbsp;&nbsp;`Hello world!` <br> `}` |
+    |    | ys                   | 添加括号(配合vim光标移动)                                                                  |
+    |  例 | `ys` `w` `[`         | `Hello world!` =><br> `[Hello] world!`                                           |
+    |  例 | `ys` `w` `<em` Enter | `Hello world!` =><br> `<em>Hello<em> world!`                                     |
+    |    | yS                   | 添加括号，括号内文本做新一行                                                                   |
+    |  例 | `yS` `w` `[`         | `Hello world!` =><br> `[` <br> &nbsp;&nbsp;&nbsp;&nbsp; `Hello` <br> `] world!`  |
+    |    | yss                  | 整行括起来                                                                            |
+    |  例 | `yss` `(`            | `Hello world!` =><br> `( Hello world! )`                                         |
+    |    | ySS                  | 整行括起来，括号内文本做新一行                                                                  |
+    |  例 | `ySS` `{`            | `Hello world!` =><br> `{` <br> &nbsp;&nbsp; `Hello world! ` <br> `}`             |
+    |  例 | `ySS` `<div` Enter   | `Hello world!` =><br> `<div>` <br> &nbsp;&nbsp; `Hello world! ` <br> `<div>`     |
+    |    | ySs                  | 与ySs功能相同                                                                         |
+
+    <br>
+    可视模式
+    --------
+    |    | 命令             | 说明 + 示例                                                           |
+    |---:|:---------------|:----------------------------------------------------------------------|
+    |    | S              | 选中的括起来                                                              |
+    |  例 | 选中world: `S(`  | `Hello world!` =><br> `Hello (world)!`                                |
+    |    | gS             | 选中的括起来，括号内文本做新一行                                             |
+    |  例 | 选中world: `gS{` | `Hello world!` =><br> `Hello {` <br> &nbsp;&nbsp; ` world` <br> `}! ` |
+
 ```
