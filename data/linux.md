@@ -13,6 +13,16 @@
     cat cache/smtp.log | grep "To" | awk '{print $9;}' | sort | uniq -c    # 按列统计次数
 ```
 
+### 一行脚本，作为任务
+```shell
+    # 凌晨备份数据库
+    0 2 * * * /usr/bin/mysqldump -uDUMPUSER -pDUMPUSERPWD DATABASE | gzip > /data/backup/mysql/TABLE_$(date +"\%Y\%m\%d").sql.gz
+    # 只保留最近5天
+    0 2 * * * find /data/backup/mysql/ -name "TABLE_*.sql.gz" -type f -mtime +5 -exec rm {} \; > /dev/null 2>&1
+    # Mac、Linux 更新host，科学上网
+    */10 * * * * /usr/bin/curl -o /private/etc/hosts https://raw.githubusercontent.com/racaljk/hosts/master/hosts
+```
+
 ### 查看进程 ps
 ```shell
     pa aux
