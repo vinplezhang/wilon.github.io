@@ -21,6 +21,10 @@
     0 2 * * * find /data/backup/mysql/ -name "TABLE_*.sql.gz" -type f -mtime +5 -exec rm {} \; > /dev/null 2>&1
     # Mac、Linux 更新host，科学上网
     */10 * * * * /usr/bin/curl -o /private/etc/hosts https://raw.githubusercontent.com/racaljk/hosts/master/hosts
+    # 检测服务
+    if test `pgrep nginx | wc -l` -eq 0; then /usr/sbin/service nginx start > /dev/null; fi;
+    if test `pgrep php-fpm | wc -l` -eq 0; then /usr/sbin/service php7.0-fpm start > /dev/null; fi;
+    if test `pgrep mysql | wc -l` -eq 0; then /usr/sbin/service mysql start > /dev/null; fi;
 ```
 
 ### 查看进程 ps
@@ -61,12 +65,6 @@
     wget https://wilon.github.io/static/p.php    # 雅黑PHP探针
 ```
 
-### 一行脚本检测服务
-```shell
-    if test `pgrep nginx | wc -l` -eq 0; then /usr/sbin/service nginx start > /dev/null; fi;
-    if test `pgrep php-fpm | wc -l` -eq 0; then /usr/sbin/service php7.0-fpm start > /dev/null; fi;
-    if test `pgrep mysql | wc -l` -eq 0; then /usr/sbin/service mysql start > /dev/null; fi;
-```
 ### other
 ```shell
     echo $PATH    # 查看可以PATH，按优先级排列
