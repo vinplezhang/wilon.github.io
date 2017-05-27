@@ -8,6 +8,8 @@
 ### 微信资源搜集
 ```php
     <a href="https://mp.weixin.qq.com/wiki/8/f9a0b8382e0b77d87b3bcc1ce6fbc104.html">公众号验证token方法</a>
+    头像地址（大）：http://wx.qlogo.cn/mmopen/PZI7pLaVibDOjmMHibk6NialWiaLru5XVlTfV207cH6bszhHHicE1Tr4tkF3wyZTvnYdbB2bbhtHxeN77icDalTJ1fOgfye44UUw7a/0
+    头像地址（小）：http://wx.qlogo.cn/mmopen/PZI7pLaVibDOjmMHibk6NialWiaLru5XVlTfV207cH6bszhHHicE1Tr4tkF3wyZTvnYdbB2bbhtHxeN77icDalTJ1fOgfye44UUw7a/46
 ```
 
 ### 比较好的密码存储处理
@@ -161,56 +163,83 @@
      * simple curl
      * @param  string $url
      * @param  array  $param = [
-     *                  'method' => 'get',    // get\post，默认get
-     *                  'data' => [    // get\post data
-     *                      'user' => 'weilong', ...
-     *                  ],
-     *                  'header' = [
-     *                      'Content-type: text/xml;charset=\"utf-8\"',
-     *                      'Accept: text/xml',
-     *                  ]
-     *                  'return' => 'body',    // all\header，默认body
-     *              ]
+     *                   'method' => 'get',    // post
+     *                   'data' => [],    // get/post data
+     *                   'header' = 'chrome 查看到的' or [],    // string or array
+     *                   'cookie' => 'chrome 查看到的' or [],    // string or array
+     *                   'return' => 'body',    // all or header
+     *               ]
      * @return mix
      */
     function simpleCurl($url = '', $param = [])
     {
-        // url
         if (!$url) return false;
-        if (strtolower($param['method']) != 'post' && $param['data']) {
-            $joint = parse_url($url)['query'] ? '&' : '?';
+        $parseUrl = parse_url($url);
+        // 初始化
+        if (!isset($param['method'])) $param['method'] = 'get';
+        $ch = curl_init();
+        if ($param['method'] == 'get' && $param['data']) {
+            $joint = $parseUrl['query'] ? '&' : '?';
             $url .= $joint . http_build_query($param['data']);
         }
-        // 初始化curl
-        $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
-        // 设置https
-        if (preg_match('/^https\:\/\/(.*)$/i', $url)) {
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        // https支持
+        if ($parseUrl['scheme'] == 'https') {
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         }
-        // 设置超时
-        $timeout = intval($param['timeout']);
-        curl_setopt($ch, CURLOPT_TIMEOUT, $timeout > 0 ? $timeout: 15);
-        // http请求头
-        if ($param['header']) {
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $param['header']);
+        // header
+        $header = [];
+        if (strpos(json_encode($param['header']), 'User-Agent') === false) {
+            $header[] = 'User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36';
         }
-        // post发送数据
-        if (strtolower($param['method']) == 'post' && $param['data']) {
+        if (is_string($param['header'])) {
+            foreach (explode("\n", $param['header']) as $v) {
+                $header[] = trim($v);
+            }
+        } else if (is_array($param['header'])) {
+            $header = array_merge($header, $param['header']);
+        }
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+        // cookie保持，session实现
+        if (!isset($_SESSION)) session_start();
+        $curloptCookie = '';
+        $sessionKey = md5($parseUrl['host'] . 'wilon');
+        // $sessionCookie = &$_SESSION[$sessionKey]['cookie'];
+        if (is_string($param['cookie'])) {
+            $curloptCookie .= $param['cookie'];
+        } else if (is_array($param['cookie']) && is_array($sessionCookie)) {
+            $sessionCookie = array_merge($sessionCookie, $param['cookie']);
+        }
+        if ($sessionCookie) {
+            foreach ($sessionCookie as $k => $v) {
+                $curloptCookie .= "$k=$v;";
+            }
+        }
+        curl_setopt($ch, CURLOPT_COOKIE, $curloptCookie);
+        // post
+        if ($param['method'] == 'post') {
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $param['data']);
         }
-        // 返回信息
-        curl_setopt($ch, CURLOPT_HEADER, true);    // 显示头信息
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);    // 获取所有文本，不获取文本则以文件流形式输出
-        $response = curl_exec($ch);    // 获取文本为true则得到字串
-        // body header 分离
+        // response
+        curl_setopt($ch, CURLOPT_HEADER, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
         $headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
         $header = trim(substr($response, 0, $headerSize));
         $body = trim(substr($response, $headerSize));
-        // 结束，返回信息
         curl_close($ch);
+        // 更新cookie
+        preg_match_all('/Set-Cookie:(.*?)\n/', $header, $matchesCookie);
+        foreach ($matchesCookie[1] as $setCookie) {
+            foreach (explode(';', $setCookie) as $cookieStr) {
+                list($key, $value) = explode('=', trim($cookieStr));
+                $sessionCookie[$key] = $value;
+            }
+        }
+        // 返回
         $return = $param['return'] == 'header' ? $header :
             ($param['return'] == 'all' ? [$header, $body] : $body);
         return $return;
