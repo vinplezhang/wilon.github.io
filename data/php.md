@@ -5,6 +5,7 @@
     file_put_contents(dirname(__FILE__) . '/params.log', json_encode($data), FILE_APPEND);
 ```
 
+
 ### 微信资源搜集
 ```php
     <a href="https://mp.weixin.qq.com/wiki/8/f9a0b8382e0b77d87b3bcc1ce6fbc104.html">公众号验证token方法</a>
@@ -74,7 +75,10 @@
 
 ### 数组函数函数 array function
 ```php
-    max(array_keys($descArr));    // 获取数组最大key
+    max(array_keys($descArr));    // 获取数组最大的key
+    array_filter([1, 0, 2, null, 3, 6, 7]);    // 去取数组( == false )的值，保留键值
+    array_unique([1, 0, 2, true, '1', false, null, 2, 7]);    // - 去除数组中重复的元素值 res: [0]=> int(1) [1]=> int(0) [2]=> int(2) [5]=> bool(false) [8]=> int(7)
+    shuffle(array);    # 打乱数组排序
 ```
 
 ### 创建新的空对象

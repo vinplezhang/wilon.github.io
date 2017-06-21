@@ -252,7 +252,7 @@
 
 ### composer安装
 ```shell
-    curl -sS https://getcomposer.org/installer | php    # 下载源码包php执行
+    curl -sS https://install.phpcomposer.com/installer | php    # 下载源码包php执行
     mv composer.phar /usr/local/bin/composer    # 加入到系统命令
     composer config -g repo.packagist composer https://packagist.phpcomposer.com    # 全局配置国内镜像源
     composer config -l -g    # 查看全局配置信息
