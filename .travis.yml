@@ -31,7 +31,6 @@ env:
 
 after_script:
   - git remote set-url origin https://${GH_TOKEN}@${GH_REF}
-  - git remote -v
   - git checkout master
   - git config user.name "wilon"
   - git config user.email "wilonx@163.com"
@@ -39,7 +38,7 @@ after_script:
   - git commit -m "Update docs"
   - cat .git/config
   - git branch -a
-  - git push --force "https://${GH_TOKEN}@${GH_REF}" origin master
+  - git push --force origin master
 
 cache:
   directories:
