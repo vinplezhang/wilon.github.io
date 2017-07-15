@@ -1,5 +1,6 @@
 
 # wilon.github.io
+[![Build Status](https://travis-ci.org/wilon/wilon.github.io.svg?branch=master)](https://travis-ci.org/wilon/wilon.github.io)
 
 My notes show page.
 
