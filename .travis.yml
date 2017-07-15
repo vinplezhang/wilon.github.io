@@ -12,17 +12,17 @@ sudo: required
 
 node_js: 6
 
-before_install:
-  - sudo add-apt-repository -y ppa:dhor/myway
-  - sudo apt-get -qq update
-  - sudo apt-get -y install graphicsmagick
-  - sudo apt-get -y install imagemagick
+# before_install:
+#   - sudo add-apt-repository -y ppa:dhor/myway
+#   - sudo apt-get -qq update
+#   - sudo apt-get -y install graphicsmagick
+#   - sudo apt-get -y install imagemagick
 
-install:
-  - npm install
+# install:
+#   - npm install
 
 script:
-  - npm start
+  # - npm start
   - "/bin/bash ./static/channel_v3_tool.sh"
 
 env:
@@ -30,12 +30,13 @@ env:
    - GH_REF: github.com/wilon/wilon.github.io.git
 
 after_script:
+  - git checkout master
   - git config user.name "wilon"
   - git config user.email "wilonx@163.com"
   - git add .
   - git commit -m "Update docs"
   - cat .git/config
-  - git push --force "https://${GH_TOKEN}@${GH_REF}"
+  - git push --force "https://${GH_TOKEN}@${GH_REF}" origin master
 
 cache:
   directories:
