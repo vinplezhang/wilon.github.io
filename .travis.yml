@@ -27,7 +27,7 @@ script:
 
 env:
  global:
-   - GH_REF: github.com/wilon/wilon.github.io.git</code>
+   - GH_REF: github.com/wilon/wilon.github.io.git
 
 after_script:
   - git config user.name "wilon"
