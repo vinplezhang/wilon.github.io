@@ -23,6 +23,8 @@ node_js: 6
 
 script:
   # - npm start
+  - git remote set-url origin https://${GH_TOKEN}@${GH_REF}
+  - git checkout master
   - "/bin/bash ./static/channel_v3_tool.sh"
 
 env:
@@ -30,8 +32,6 @@ env:
    - GH_REF: github.com/wilon/wilon.github.io.git
 
 after_script:
-  - git remote set-url origin https://${GH_TOKEN}@${GH_REF}
-  - git checkout master
   - git config user.name "wilon"
   - git config user.email "wilonx@163.com"
   - git add .
