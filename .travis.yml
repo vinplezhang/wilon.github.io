@@ -34,6 +34,7 @@ after_script:
   - git config user.email "wilonx@163.com"
   - git add .
   - git commit -m "Update docs"
+  - git show
   - git push --force "https://${GH_TOKEN}@${GH_REF}" master:master
 
 cache:
