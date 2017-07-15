@@ -25,7 +25,7 @@ script:
   - git remote set-url origin https://${GH_TOKEN}@${GH_REF}
   - git checkout master
   - npm start
-  - "/bin/bash ./static/channel_v3_tool.sh"
+  - php ./static/downFile.php
 
 env:
  global:
@@ -35,7 +35,7 @@ after_script:
   - git config user.name "Travis CI"
   - git config user.email "travis@travis-ci.org"
   - git add .
-  - git commit -m "Update docs $(date)"
+  - git commit -m "Travis CI Auto Update"
   - cat .git/config
   - git branch -a
   - git push --force origin master
