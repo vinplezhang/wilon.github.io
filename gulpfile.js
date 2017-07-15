@@ -160,14 +160,19 @@ gulp.task('revhtml', function() {
 });
 
 // 默认任务
-gulp.task('default', ['rev'], function () {
+gulp.task('default', ['rev', 'revmd', 'revjs', 'revcss', 'revhtml'], function () {
+});
+
+// watch任务
+gulp.task('watch', ['rev'], function () {
     gulp.watch('data/*.md', ['revmd']);
     gulp.watch('blog/javascripts/*.js', ['revjs']);
     gulp.watch(['blog/stylesheets/*.css','blog/images/*.png'], ['revcss']);
     gulp.watch('blog/index.html', ['revhtml']);
 });
 
-gulp.task('server', ['default'], function(done) {
+// server任务
+gulp.task('server', ['watch'], function(done) {
     let watchOptions = {
         cwd: './',
         ignoreInitial: true,
