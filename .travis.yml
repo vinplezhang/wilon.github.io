@@ -35,7 +35,7 @@ after_script:
   - git add .
   - git commit -m "Update docs"
   - cat .git/config
-  - git push --force "https://${GH_TOKEN}@${GH_REF}" origin HEAD
+  - git push --force "https://${GH_TOKEN}@${GH_REF}"
 
 cache:
   directories:
