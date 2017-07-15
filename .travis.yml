@@ -1,5 +1,30 @@
+branches:
+  only:
+    - master
+os:
+  - linux
+
 language: node_js
+
 dist: trusty
+
 sudo: required
+
 node_js: 6
-script: npm start
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo add-apt-repository ppa:dhor/myway
+  - sudo apt-get install graphicsmagick
+  - sudo apt-get install imagemagick
+
+install:
+  - npm install
+
+script:
+  - npm start
+  - "/bin/bash ./static/channel_v3_tool.sh"
+
+cache:
+  directories:
+    - node_modules
