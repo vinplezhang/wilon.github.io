@@ -99,6 +99,12 @@ gulp.task('md', function() {
 // sitemap
 gulp.task('sitemap', ['md'], function () {
     var urls = [];
+    var stat = fs.statSync('index.html').mtime;
+    var cha = Date.now() - new Date(stat).getTime();
+    if (cha < (24 * 3600 * 1000)) {
+        console.log('continue sitemap')
+        return;
+    }
     Array.prototype.addUrl = function (url) {
         return this.push({
             url: url ,
