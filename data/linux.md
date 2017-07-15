@@ -10,7 +10,23 @@
 ### awk sed 命令合集
 ```shell
     awk ‘!a[$0]++’ your_file    # 去除重复行
-    cat cache/smtp.log | grep "To" | awk '{print $9;}' | sort | uniq -c    # 按列统计次数
+    cat cache/smtp.log | grep "To" | awk '{print $9;}' | sort | uniq -c    # 统计邮件日志给谁发了多少次
+    for i in `ls`; do cp -f $i `echo $i | sed 's/^\([0-9]\..*md\)$/0\1/'`; done    # 目录下 1.xx.md 2.xx.md 复制为 01.xx.md 02.xx.md
+    for i in `ls`; do cp -f $i `echo $i | sed 's/\..*px_.*_.*.net.png$/.png/'`; done    # 批量修改多余文件后缀
+```
+
+### 一行脚本，作为任务
+```shell
+    # 凌晨备份数据库
+    0 2 * * * /usr/bin/mysqldump -uDUMPUSER -pDUMPUSERPWD DATABASE | gzip > /data/backup/mysql/TABLE_$(date +"\%Y\%m\%d").sql.gz
+    # 只保留最近5天
+    0 2 * * * find /data/backup/mysql/ -name "TABLE_*.sql.gz" -type f -mtime +5 -exec rm {} \; > /dev/null 2>&1
+    # Mac、Linux 更新host，科学上网
+    */10 * * * * /usr/bin/curl -o /private/etc/hosts https://raw.githubusercontent.com/racaljk/hosts/master/hosts
+    # 检测服务
+    if test `pgrep nginx | wc -l` -eq 0; then /usr/sbin/service nginx start > /dev/null; fi;
+    if test `pgrep php-fpm | wc -l` -eq 0; then /usr/sbin/service php7.0-fpm start > /dev/null; fi;
+    if test `pgrep mysql | wc -l` -eq 0; then /usr/sbin/service mysql start > /dev/null; fi;
 ```
 
 ### 查看进程 ps
@@ -51,12 +67,6 @@
     wget https://wilon.github.io/static/p.php    # 雅黑PHP探针
 ```
 
-### 一行脚本检测服务
-```shell
-    if test `pgrep nginx | wc -l` -eq 0; then /usr/sbin/service nginx start > /dev/null; fi;
-    if test `pgrep php-fpm | wc -l` -eq 0; then /usr/sbin/service php7.0-fpm start > /dev/null; fi;
-    if test `pgrep mysql | wc -l` -eq 0; then /usr/sbin/service mysql start > /dev/null; fi;
-```
 ### other
 ```shell
     echo $PATH    # 查看可以PATH，按优先级排列
@@ -242,7 +252,7 @@
 
 ### composer安装
 ```shell
-    curl -sS https://getcomposer.org/installer | php    # 下载源码包php执行
+    curl -sS https://install.phpcomposer.com/installer | php    # 下载源码包php执行
     mv composer.phar /usr/local/bin/composer    # 加入到系统命令
     composer config -g repo.packagist composer https://packagist.phpcomposer.com    # 全局配置国内镜像源
     composer config -l -g    # 查看全局配置信息
@@ -356,6 +366,10 @@
     -n # 顺便输出行号
     -v # 反向选择，亦即显示出没有 '搜寻字符串' 内容的那一行！
     --color=auto # 可以将找到的关键词部分加上颜色的显示喔！
+    # 管道符 grep
+    ##正则  .   []   \(\)  \{3\}  \+   *  \|
+    ##字符  \.  \[\]  ()   {}      +  \*   |
+    cat cache/smtp.log | grep '\([0-9]\+\.\)\{3\}[0-9]\+'    # ip
 ```
 
 ### 终端快捷操作

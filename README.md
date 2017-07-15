@@ -5,7 +5,7 @@ My notes show page.
 
 Fast search, copy.
 
-![de0513d0-1a1c-11e7-9b86-9200f3b3ba63 1](https://cloud.githubusercontent.com/assets/7512755/24697169/bc5ab936-1a1e-11e7-91f4-9c449892e51c.gif)
+![show-gif](https://user-images.githubusercontent.com/7512755/27375951-40603768-56a3-11e7-9b1e-a7b66927dc98.gif)
 
 
 ### Install && Start
