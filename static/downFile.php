@@ -28,6 +28,11 @@ function downComposer()
     return true;
 }
 
+function d($t = 0)
+{
+    return date('Y-m-d H:i:s', $t > 1 ? $t : time());
+}
+
 function beUpdate($file = '')
 {
     if (!file_exists($file)) {
@@ -35,6 +40,7 @@ function beUpdate($file = '')
     }
 
     if (filemtime($file) > (time() - 24 * 3600)) {
+        var_dump(d(filemtime($file)), d());
         return false;
     }
 
