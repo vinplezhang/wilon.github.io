@@ -321,6 +321,7 @@
     // 正则修饰符e，自 PHP 5.5.0 起废弃。改用 preg_replace_callback
     namespace Foo\Bar\somenamespace;    // php-v >= 5.3
     // php匿名函数 php-v >= 5.3
+    yield $output[$ln];    // 生成器 php-v >= 5.5
 ```
 
 ### 文件上传后print_r($_FILES);
