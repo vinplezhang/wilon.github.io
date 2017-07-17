@@ -342,6 +342,11 @@
     yum -y install lrzsz
 ```
 
+### bash 技巧
+```shell
+    wget https://raw.githubusercontent.com/wilon/oh-my-zsh/master/templates/inputrc.zsh-template -O ~/.inputrc
+```
+
 ### scp文件传输
 ```shell
     cp LOCAL_FILE REMOTE_USERNAME@REMOTE_IP:REMOTE_FOLDER

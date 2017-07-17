@@ -99,6 +99,12 @@ gulp.task('md', function() {
 // sitemap
 gulp.task('sitemap', ['md'], function () {
     var urls = [];
+    var stat = fs.statSync('index.html').mtime;
+    var cha = Date.now() - new Date(stat).getTime();
+    if (cha < (24 * 3600 * 1000)) {
+        console.log('continue sitemap')
+        return;
+    }
     Array.prototype.addUrl = function (url) {
         return this.push({
             url: url ,
@@ -160,14 +166,19 @@ gulp.task('revhtml', function() {
 });
 
 // 默认任务
-gulp.task('default', ['rev'], function () {
+gulp.task('default', ['rev', 'revmd', 'revjs', 'revcss', 'revhtml'], function () {
+});
+
+// watch任务
+gulp.task('watch', ['rev'], function () {
     gulp.watch('data/*.md', ['revmd']);
     gulp.watch('blog/javascripts/*.js', ['revjs']);
     gulp.watch(['blog/stylesheets/*.css','blog/images/*.png'], ['revcss']);
     gulp.watch('blog/index.html', ['revhtml']);
 });
 
-gulp.task('server', ['default'], function(done) {
+// server任务
+gulp.task('server', ['watch'], function(done) {
     let watchOptions = {
         cwd: './',
         ignoreInitial: true,
