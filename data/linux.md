@@ -252,9 +252,15 @@
 
 ### composer安装
 ```shell
+    # 国内安装-1
     curl -sS https://install.phpcomposer.com/installer | php    # 下载源码包php执行
     mv composer.phar /usr/local/bin/composer    # 加入到系统命令
     composer config -g repo.packagist composer https://packagist.phpcomposer.com    # 全局配置国内镜像源
+    # 国内安装-2
+    wget https://dl.laravel-china.org/composer.phar -O /usr/local/bin/composer
+    chmod a+x /usr/local/bin/composer
+    composer config -g repo.packagist composer https://packagist.laravel-china.org
+    # 使用
     composer config -l -g    # 查看全局配置信息
     composer clear-cache    # 清除缓存
     composer require --no-plugins --no-scripts xxx/xxxx     # root 下安装

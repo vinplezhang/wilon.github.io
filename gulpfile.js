@@ -29,7 +29,7 @@ const sm = require('sitemap'),
 // 合并，压缩 js 文件
 gulp.task('js', function() {
     del('./static/wilonblog-*.min.js');
-    return gulp.src('./blog/javascripts/*.js')
+    return gulp.src('./src/javascripts/*.js')
         .pipe(concat('wilonblog.min.js'))    // 合并
         .pipe(uglify())    // 压缩
         .pipe(rev())    // 重命名hash
@@ -75,7 +75,7 @@ gulp.task('sprite', ['imageresize'], function () {
 // 合并，压缩 css 文件
 gulp.task('css', ['sprite'], function () {
     del('./static/wilonblog-*.min.css');
-    return gulp.src(['./blog/stylesheets/*.css', 'cache/sprite.css'])
+    return gulp.src(['./src/stylesheets/*.css', 'cache/sprite.css'])
         .pipe(concat('wilonblog.min.css'))    // 合并
         .pipe(minifyCSS())    // 压缩
         .pipe(rev())    // 重命名hash
@@ -140,27 +140,27 @@ gulp.task('sitemap', ['md'], function () {
 
 // 替换模板文件内字符串
 gulp.task('rev', ['js', 'css', 'sitemap'], function() {
-    gulp.src(['./cache/*.json', './blog/*.html'])    // 读取需要进行替换的文件
+    gulp.src(['./cache/*.json', './src/*.html'])    // 读取需要进行替换的文件
         .pipe(revCollector())    // 执行文件内js、css名的替换
         .pipe(gulp.dest('./'));    // 替换后的文件输出的目录
 });
 gulp.task('revjs', ['js'], function() {
-    gulp.src(['./cache/*.json', './blog/*.html'])
+    gulp.src(['./cache/*.json', './src/*.html'])
         .pipe(revCollector())
         .pipe(gulp.dest('./'));
 });
 gulp.task('revcss', ['css'], function() {
-    gulp.src(['./cache/*.json', './blog/*.html'])
+    gulp.src(['./cache/*.json', './src/*.html'])
         .pipe(revCollector())
         .pipe(gulp.dest('./'));
 });
 gulp.task('revmd', ['sitemap'], function() {
-    gulp.src(['./cache/*.json', './blog/*.html'])
+    gulp.src(['./cache/*.json', './src/*.html'])
         .pipe(revCollector())
         .pipe(gulp.dest('./'));
 });
 gulp.task('revhtml', function() {
-    gulp.src(['./cache/*.json', './blog/*.html'])
+    gulp.src(['./cache/*.json', './src/*.html'])
         .pipe(revCollector())
         .pipe(gulp.dest('./'));
 });
