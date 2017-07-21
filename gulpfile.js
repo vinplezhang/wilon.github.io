@@ -40,7 +40,7 @@ gulp.task('js', function() {
 
 // 缩放图片
 gulp.task('imageresize', function() {
-    return gulp.src('blog/images/*.png')
+    return gulp.src('src/images/*.png')
         .pipe(imageResize({
             width : 18,
             height : 18,
@@ -53,7 +53,7 @@ gulp.task('imageresize', function() {
 // 合并、压缩图片
 gulp.task('sprite', ['imageresize'], function () {
     // Generate our spritesheet
-    var spriteData = gulp.src(['blog/images/logo.png', 'cache/*.png', "!cache/logo.png"])
+    var spriteData = gulp.src(['src/images/logo.png', 'cache/*.png', "!cache/logo.png"])
         .pipe(spritesmith({
             imgName: 'sprite.png',
             cssName: 'sprite.css'
@@ -99,12 +99,6 @@ gulp.task('md', function() {
 // sitemap
 gulp.task('sitemap', ['md'], function () {
     var urls = [];
-    var stat = fs.statSync('index.html').mtime;
-    var cha = Date.now() - new Date(stat).getTime();
-    if (cha < (24 * 3600 * 1000)) {
-        console.log('continue sitemap')
-        return;
-    }
     Array.prototype.addUrl = function (url) {
         return this.push({
             url: url ,
@@ -139,7 +133,7 @@ gulp.task('sitemap', ['md'], function () {
 });
 
 // 替换模板文件内字符串
-gulp.task('rev', ['js', 'css', 'sitemap'], function() {
+gulp.task('rev', ['js', 'css', 'md'], function() {
     gulp.src(['./cache/*.json', './src/*.html'])    // 读取需要进行替换的文件
         .pipe(revCollector())    // 执行文件内js、css名的替换
         .pipe(gulp.dest('./'));    // 替换后的文件输出的目录
@@ -154,7 +148,7 @@ gulp.task('revcss', ['css'], function() {
         .pipe(revCollector())
         .pipe(gulp.dest('./'));
 });
-gulp.task('revmd', ['sitemap'], function() {
+gulp.task('revmd', ['md'], function() {
     gulp.src(['./cache/*.json', './src/*.html'])
         .pipe(revCollector())
         .pipe(gulp.dest('./'));
@@ -172,9 +166,9 @@ gulp.task('default', ['rev', 'revmd', 'revjs', 'revcss', 'revhtml'], function ()
 // watch任务
 gulp.task('watch', ['rev'], function () {
     gulp.watch('data/*.md', ['revmd']);
-    gulp.watch('blog/javascripts/*.js', ['revjs']);
-    gulp.watch(['blog/stylesheets/*.css','blog/images/*.png'], ['revcss']);
-    gulp.watch('blog/index.html', ['revhtml']);
+    gulp.watch('src/javascripts/*.js', ['revjs']);
+    gulp.watch(['src/stylesheets/*.css','src/images/*.png'], ['revcss']);
+    gulp.watch('src/index.html', ['revhtml']);
 });
 
 // server任务

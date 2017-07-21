@@ -25,7 +25,8 @@ script:
   - git remote set-url origin https://${GH_TOKEN}@${GH_REF}
   - git checkout master
   - npm start
-  - php ./static/downFile.php
+  - git show | grep 'travis@travis-ci.org' || php ./static/downFile.php
+  - git show | grep 'travis@travis-ci.org' || gulp sitemap
 
 env:
  global:

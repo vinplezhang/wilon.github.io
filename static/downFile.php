@@ -8,7 +8,6 @@ echo 'Down Composer ', intval(downComposer()), PHP_EOL;
 function downChannel()
 {
     $file = __DIR__ . '/channel_v3.json';
-    if (beUpdate($file) == false) return false;
 
     $url = 'https://packagecontrol.io/channel_v3.json';
     @file_put_contents($file, simpleCurl($url));
@@ -18,7 +17,6 @@ function downChannel()
 function downComposer()
 {
     $file = __DIR__ . '/composer.phar';
-    if (beUpdate($file) == false) return false;
 
     $baseUrl = 'https://getcomposer.org';
     $api = "$baseUrl/versions";
@@ -26,24 +24,6 @@ function downComposer()
     $url = $baseUrl . $res['stable'][0]['path'];
     @file_put_contents($file, simpleCurl($url));
     return true;
-}
-
-function d($t = 0)
-{
-    return date('Y-m-d H:i:s', $t > 1 ? $t : time());
-}
-
-function beUpdate($file = '')
-{
-    if (!file_exists($file)) {
-        return true;
-    }
-
-    if (filemtime($file) > (time() - 24 * 3600)) {
-        var_dump(d(filemtime($file)), d());
-        return false;
-    }
-
 }
 
 /**
