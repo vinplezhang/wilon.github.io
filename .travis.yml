@@ -25,8 +25,9 @@ script:
   - git remote set-url origin https://${GH_TOKEN}@${GH_REF}
   - git checkout master
   - npm start
-  - git show | grep 'travis@travis-ci.org' || php ./static/downFile.php
-  - git show | grep 'travis@travis-ci.org' || gulp sitemap
+  # 没有 '<travis@travis-ci.org>' 的提交才更新一些文件，避免无限update
+  - git show | grep '<travis@travis-ci.org>' || php ./static/downFile.php
+  - git show | grep '<travis@travis-ci.org>' || gulp sitemap
 
 env:
  global:
