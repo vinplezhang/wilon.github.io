@@ -33,7 +33,7 @@ script:
   - git show | grep '<travis@travis-ci.org>' || gulp sitemap
   # 提交
   - git add .
-  - git commit -m "Travis CI Auto Update" 2>&1
+  - git commit -m "Travis CI Auto Update" &
   - git push --force origin master
 
 env:
