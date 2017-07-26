@@ -22,24 +22,31 @@ install:
   - npm install
 
 script:
+  # 设置git
+  - git config --global user.name "Travis CI"
+  - git config --global user.email "travis@travis-ci.org"
   - git remote set-url origin https://${GH_TOKEN}@${GH_REF}
   - git checkout master
+  # 更新文件，没有 '<travis@travis-ci.org>' 的提交才更新一些文件，避免无限update
   - npm start
-  # 没有 '<travis@travis-ci.org>' 的提交才更新一些文件，避免无限update
-  - git show | grep '<travis@travis-ci.org>' || php ./static/downFile.php
+  - git show | grep '<travis@travis-ci.org>' || wget -O static/channel_v3.json https://packagecontrol.io/channel_v3.json
   - git show | grep '<travis@travis-ci.org>' || gulp sitemap
+  # 提交
+  - git add .
+  - git commit -m "Travis CI Auto Update"
+  - git push --force origin master
 
 env:
  global:
    - GH_REF: github.com/wilon/wilon.github.io.git
+   - OC_REF: git.oschina.net/wilon/static.git
 
 after_script:
-  - git config user.name "Travis CI"
-  - git config user.email "travis@travis-ci.org"
+  - git clone --depth=50 --branch=master https://${OC_TOKEN}@${OC_REF} static-tmp
+  - cd static-tmp
+  - cp -rf ../static/* .
   - git add .
   - git commit -m "Travis CI Auto Update"
-  - cat .git/config
-  - git branch -a
   - git push --force origin master
 
 cache:
