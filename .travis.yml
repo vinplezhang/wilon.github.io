@@ -52,3 +52,10 @@ after_script:
 cache:
   directories:
     - node_modules
+
+notifications:
+  email:
+    recipients:
+      - wilonx@163.com
+    on_success: never
+    on_failure: always
