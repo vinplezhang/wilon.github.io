@@ -119,6 +119,9 @@
     docker stop <container id>    # 停止该容器
     docker rm <container id>    # 删除该容器
     docker attach <container id>    # 进入正在运行的容器
+
+    # Dockerfile
+    docker build -t <image name> .
 ```
 
 ### 输出分类、级别
