@@ -30,6 +30,8 @@ script:
   # 更新文件，没有 '<travis@travis-ci.org>' 的提交才更新一些文件，避免无限update
   - npm start
   - git show | grep '<travis@travis-ci.org>' || wget -O static/channel_v3.json https://packagecontrol.io/channel_v3.json
+  - git show | grep '<travis@travis-ci.org>' || wget -O static/lantern-installer.exe https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer.exe
+  - git show | grep '<travis@travis-ci.org>' || wget -O static/lantern-installer-64-bit.deb https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb
   - git show | grep '<travis@travis-ci.org>' || gulp sitemap
   # 提交
   - git add .

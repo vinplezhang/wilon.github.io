@@ -33,6 +33,23 @@
     将vmrun.cmd放入开机启动目录startup\\
 ```
 
+### VMware 设置CentOS虚拟机网络
+```shell
+    # 查看网卡信息
+    控制面板 -> 网络 -> 更改适配器配置 -> 状态 -> 详细信息
+    # 设置eth0
+    vim /etc/sysconfig/network-scripts/ifcfg-eth0
+    DEVICE=eth0
+    IPADDR={ip}.{ip}.{ip}.188    # 即为连接IP
+    NETMASK=255.255.255.0
+    GATEWAY={ip}.{ip}.{ip}.2
+    BROADCAST={ip}.{ip}.{ip}.255
+    ONBOOT=yes
+    NAME=loopback
+    # 设置dns
+    echo "nameserver 114.114.114.114" >> /etc/resolv.conf
+```
+
 ### MacOS 实用技巧
 ```shell
     # 更新host，科学上网, 需要sudo
