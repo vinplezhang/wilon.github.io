@@ -1,5 +1,6 @@
 node_modules/
 cache/
+static-tmp/
 npm-debug.log
 nohup.out
 .vscode/

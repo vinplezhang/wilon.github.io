@@ -21,6 +21,12 @@ before_install:
 install:
   - npm install
 
+env:
+ global:
+   - GH_REF: github.com/wilon/wilon.github.io.git
+   - OC_REF: git.oschina.net/wilon/static.git
+   - IS_TRAVIS: git show | grep '<travis@travis-ci.org>'
+
 script:
   # 设置git
   - git config --global user.name "Travis CI"
@@ -29,27 +35,24 @@ script:
   - git checkout master
   # 更新文件，没有 '<travis@travis-ci.org>' 的提交才更新一些文件，避免无限update
   - npm start
-  - git show | grep '<travis@travis-ci.org>' || wget -O static/channel_v3.json https://packagecontrol.io/channel_v3.json
-  - git show | grep '<travis@travis-ci.org>' || wget -O static/lantern-installer.exe https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer.exe
-  - git show | grep '<travis@travis-ci.org>' || wget -O static/lantern-installer-64-bit.deb https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb
-  - git show | grep '<travis@travis-ci.org>' || gulp sitemap
-  # 提交
-  - git add .
-  - git commit -m "Travis CI Auto Update" &
-  - git push --force origin master
-
-env:
- global:
-   - GH_REF: github.com/wilon/wilon.github.io.git
-   - OC_REF: git.oschina.net/wilon/static.git
-
-after_script:
+  - ${IS_TRAVIS} || wget -P static/ https://packagecontrol.io/channel_v3.json
+  - ${IS_TRAVIS} || wget -P static/ https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer.exe
+  - ${IS_TRAVIS} || wget -P static/ https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb
+  - ${IS_TRAVIS} || gulp sitemap
+  # 提交到oschina
   - git clone --depth=50 --branch=master https://${OC_TOKEN}@${OC_REF} static-tmp
   - cd static-tmp
   - cp -rf ../static/* .
   - git add .
   - git commit -m "Travis CI Auto Update"
   - git push --force "https://${OC_TOKEN}@git.oschina.net/wilon/static.git"
+
+after_script:
+  # 提交
+  - cd ..
+  - git add .
+  - git commit -m "Travis CI Auto Update" &
+  - git push --force origin master
 
 cache:
   directories:
