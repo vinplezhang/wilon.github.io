@@ -35,9 +35,9 @@ script:
   - git checkout master
   # 更新文件，没有 '<travis@travis-ci.org>' 的提交才更新一些文件，避免无限update
   - npm start
-  - ${IS_TRAVIS} || wget -P static/ https://packagecontrol.io/channel_v3.json
-  - ${IS_TRAVIS} || wget -P static/ https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer.exe
-  - ${IS_TRAVIS} || wget -P static/ https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb
+  - ${IS_TRAVIS} || wget -O static/channel_v3.json https://packagecontrol.io/channel_v3.json
+  - ${IS_TRAVIS} || wget -O static/lantern-installer.exe https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer.exe
+  - ${IS_TRAVIS} || wget -O static/lantern-installer-64-bit.deb https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb
   - ${IS_TRAVIS} || gulp sitemap
   # 提交到oschina
   - git clone --depth=50 --branch=master https://${OC_TOKEN}@${OC_REF} static-tmp
