@@ -42,6 +42,7 @@ script:
   # 提交到oschina
   - git clone --depth=50 --branch=master https://${OC_TOKEN}@${OC_REF} static-tmp
   - cd static-tmp
+  - rm -rf ./wilonblog-*
   - cp -rf ../static/* .
   - git add .
   - git commit -m "Travis CI Auto Update"
