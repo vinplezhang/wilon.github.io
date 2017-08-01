@@ -1,8 +1,14 @@
+
 node_modules/
 cache/
 static-tmp/
+
 npm-debug.log
 nohup.out
+
 .vscode/
 .DS_Store
+
 composer.phpar
+
+static/lantern-installer.exe

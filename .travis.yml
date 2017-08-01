@@ -44,7 +44,7 @@ script:
   - rm -rf ./wilonblog-*
   - cp -rf ../static/* .
   - git add .
-  - git commit -m "Travis CI Auto Update"
+  - git commit -m "Travis CI Auto Update" &
   - git push --force "https://${OC_TOKEN}@git.oschina.net/wilon/static.git"
 
 after_script:
