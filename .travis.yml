@@ -42,12 +42,12 @@ script:
   - mkdir static-tmp/ && cd static-tmp/
   - git init
   - git remote add origin https://${OC_TOKEN}@${OC_REF}
-  - git pull
+  - git pull &
   - git checkout master
   - rm -rf ./wilonblog-*
   - cp -rf ../static/* .
   - git add .
-  - git commit -m "Travis CI Auto Update" &
+  - git commit -m "Travis CI Auto Update OC" &
   - git push --force origin master
 
 after_script:
