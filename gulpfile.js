@@ -21,7 +21,7 @@ const spritesmith = require('gulp.spritesmith'),
 const wilonBlogdata = require('gulp-concat-blogdata');
 // server
 const sync = require('browser-sync').create(),
-     path   = require('path');
+    path = require('path');
 // sitemap
 const sm = require('sitemap'),
     fs = require('fs');
@@ -30,11 +30,11 @@ const sm = require('sitemap'),
 gulp.task('js', function() {
     del('./static/wilonblog-*.min.js');
     return gulp.src('./src/javascripts/*.js')
-        .pipe(concat('wilonblog.min.js'))    // 合并
-        .pipe(uglify())    // 压缩
-        .pipe(rev())    // 重命名hash
-        .pipe(gulp.dest('./static/'))    // 保存
-        .pipe(rev.manifest('js.json'))    // 生成一个重命名用json
+        .pipe(concat('wilonblog.min.js')) // 合并
+        .pipe(uglify()) // 压缩
+        .pipe(rev()) // 重命名hash
+        .pipe(gulp.dest('./static/')) // 保存
+        .pipe(rev.manifest('js.json')) // 生成一个重命名用json
         .pipe(gulp.dest('./cache/'));
 });
 
@@ -42,16 +42,16 @@ gulp.task('js', function() {
 gulp.task('imageresize', function() {
     return gulp.src('src/images/*.png')
         .pipe(imageResize({
-            width : 18,
-            height : 18,
-            crop : true,
-            upscale : false
+            width: 18,
+            height: 18,
+            crop: true,
+            upscale: false
         }))
         .pipe(gulp.dest('cache/'))
 });
 
 // 合并、压缩图片
-gulp.task('sprite', ['imageresize'], function () {
+gulp.task('sprite', ['imageresize'], function() {
     // Generate our spritesheet
     var spriteData = gulp.src(['src/images/logo.png', 'cache/*.png', "!cache/logo.png"])
         .pipe(spritesmith({
@@ -60,7 +60,7 @@ gulp.task('sprite', ['imageresize'], function () {
         }));
     // Pipe image stream through image optimizer and onto disk
     var imgStream = spriteData.img
-    // DEV: We must buffer our stream into a Buffer for `imagemin`
+        // DEV: We must buffer our stream into a Buffer for `imagemin`
         .pipe(buffer())
         .pipe(imagemin())
         .pipe(gulp.dest('static/'));
@@ -73,14 +73,14 @@ gulp.task('sprite', ['imageresize'], function () {
 });
 
 // 合并，压缩 css 文件
-gulp.task('css', ['sprite'], function () {
+gulp.task('css', ['sprite'], function() {
     del('./static/wilonblog-*.min.css');
     return gulp.src(['./src/stylesheets/*.css', 'cache/sprite.css'])
-        .pipe(concat('wilonblog.min.css'))    // 合并
-        .pipe(minifyCSS())    // 压缩
-        .pipe(rev())    // 重命名hash
-        .pipe(gulp.dest('./static/'))    // 保存
-        .pipe(rev.manifest('css.json'))    // 生成一个重命名用json
+        .pipe(concat('wilonblog.min.css')) // 合并
+        .pipe(minifyCSS()) // 压缩
+        .pipe(rev()) // 重命名hash
+        .pipe(gulp.dest('./static/')) // 保存
+        .pipe(rev.manifest('css.json')) // 生成一个重命名用json
         .pipe(gulp.dest('./cache/'));
 });
 
@@ -90,18 +90,18 @@ gulp.task('md', function() {
     del('./static/wilonblog-*.min.json');
     return gulp.src('./data/*.md')
         .pipe(wilonBlogdata('wilonblog.min.json'))
-        .pipe(rev())    // 重命名hash
-        .pipe(gulp.dest('./static/'))    // 保存
-        .pipe(rev.manifest('data.json'))    // 生成一个重命名用json
+        .pipe(rev()) // 重命名hash
+        .pipe(gulp.dest('./static/')) // 保存
+        .pipe(rev.manifest('data.json')) // 生成一个重命名用json
         .pipe(gulp.dest('./cache/'));
 });
 
 // sitemap
-gulp.task('sitemap', ['md'], function () {
+gulp.task('sitemap', ['md'], function() {
     var urls = [];
-    Array.prototype.addUrl = function (url) {
+    Array.prototype.addUrl = function(url) {
         return this.push({
-            url: url ,
+            url: url,
             changefreq: 'weekly',
             priority: 0.8,
             lastmodrealtime: true,
@@ -134,9 +134,9 @@ gulp.task('sitemap', ['md'], function () {
 
 // 替换模板文件内字符串
 gulp.task('rev', ['js', 'css', 'md'], function() {
-    gulp.src(['./cache/*.json', './src/*.html'])    // 读取需要进行替换的文件
-        .pipe(revCollector())    // 执行文件内js、css名的替换
-        .pipe(gulp.dest('./'));    // 替换后的文件输出的目录
+    gulp.src(['./cache/*.json', './src/*.html']) // 读取需要进行替换的文件
+        .pipe(revCollector()) // 执行文件内js、css名的替换
+        .pipe(gulp.dest('./')); // 替换后的文件输出的目录
 });
 gulp.task('revjs', ['js'], function() {
     gulp.src(['./cache/*.json', './src/*.html'])
@@ -160,14 +160,13 @@ gulp.task('revhtml', function() {
 });
 
 // 默认任务
-gulp.task('default', ['rev', 'revmd', 'revjs', 'revcss', 'revhtml'], function () {
-});
+gulp.task('default', ['rev', 'revmd', 'revjs', 'revcss', 'revhtml'], function() {});
 
 // watch任务
-gulp.task('watch', ['rev'], function () {
+gulp.task('watch', ['default'], function() {
     gulp.watch('data/*.md', ['revmd']);
     gulp.watch('src/javascripts/*.js', ['revjs']);
-    gulp.watch(['src/stylesheets/*.css','src/images/*.png'], ['revcss']);
+    gulp.watch(['src/stylesheets/*.css', 'src/images/*.png'], ['revcss']);
     gulp.watch('src/index.html', ['revhtml']);
 });
 
@@ -178,10 +177,10 @@ gulp.task('server', ['watch'], function(done) {
         ignoreInitial: true,
         ignored: [
             '.DS_Store', 'nohup.out', 'npm-debug.log'
-            ]
+        ]
     };
 
-    sync.watch('**', watchOptions, function (event, file) {
+    sync.watch('**', watchOptions, function(event, file) {
         return sync.reload(path.basename(file));
     });
     sync.init({
@@ -189,7 +188,7 @@ gulp.task('server', ['watch'], function(done) {
         watchOptions: watchOptions,
         reloadOnRestart: true,
         open: false
-    }, function () {
+    }, function() {
         if (done) {
             done();
         }

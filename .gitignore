@@ -12,3 +12,5 @@ nohup.out
 composer.phpar
 
 static/lantern-installer.exe
+
+package-lock.json
