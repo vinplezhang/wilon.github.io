@@ -91,6 +91,15 @@
     git push [origin master]    # 提交到远程库，默认master
 ```
 
+### tag 管理
+```shell
+    git tag                 # 列出所有 tag
+    git tag v1.0.1          # 创建 tag: v1.0.1
+    git push origin --tags  # 将 tag 推送到远库
+    git tag -d v1.0.1       # 删除本地 tag
+    git push origin :refs/tags/v1.0.1    # 删除远程仓库 tag
+```
+
 ### 查看一些东西
 ```shell
     vim .git/config    # 查看项目皮配置

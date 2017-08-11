@@ -7,6 +7,13 @@
     zsh    # 手动切换
 ```
 
+### 查找文件及目录
+```shell
+    find ./    # 列出所有文件及目录
+    find ./ -type f -size +50M -print0 | xargs -0 du -h | sort -nr
+    #  { 列出大于50M的文件 }        { 且显示文件大小 }        { 并排序 }
+```
+
 ### awk sed 命令合集
 ```shell
     awk ‘!a[$0]++’ your_file    # 去除重复行
