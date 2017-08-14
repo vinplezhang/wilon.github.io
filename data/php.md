@@ -17,7 +17,8 @@
 ```
 
 ### 微信资源搜集
-```php
+```html
+    <script src="https://gist.github.com/wilon/38807f3e9323040a5fe0251a45144023.js"></script>
     <a href="https://mp.weixin.qq.com/wiki/8/f9a0b8382e0b77d87b3bcc1ce6fbc104.html">公众号验证token方法</a>
     头像地址（大）：http://wx.qlogo.cn/mmopen/PZI7pLaVibDOjmMHibk6NialWiaLru5XVlTfV207cH6bszhHHicE1Tr4tkF3wyZTvnYdbB2bbhtHxeN77icDalTJ1fOgfye44UUw7a/0
     头像地址（小）：http://wx.qlogo.cn/mmopen/PZI7pLaVibDOjmMHibk6NialWiaLru5XVlTfV207cH6bszhHHicE1Tr4tkF3wyZTvnYdbB2bbhtHxeN77icDalTJ1fOgfye44UUw7a/46

@@ -133,10 +133,16 @@ sreach.prototype = {
             i = num || 0;
         if (arr && arr.length && toString.call(arr).indexOf("Array") > -1) {
             for (; i < arr.length; i++) {
+                if (arr[i].des == 'hidden') continue;
                 if (!arr[i]) break;
                 var myLi = self.itemHTML(arr[i]);
                 var isHide = i >= this.page_size ? 'style="display:none"' : '';
-                $('#list-itme').append("<li class='li_item' id='" + arr[i].id + "'" + isHide + ">" + myLi + "</li>");
+                var liHtml = "<li class='li_item' id='" + arr[i].id + "'" + isHide + ">" + myLi + "</li>";
+                if (Math.random() * 10 > 5) {
+                    $('#list-itme').prepend(liHtml);
+                } else {
+                    $('#list-itme').append(liHtml);
+                }
             }
         }
     },
@@ -154,7 +160,7 @@ sreach.prototype = {
             if (self.isSreachIndexOF(arr[i].name + arr[i].des, keywolds)) {
                 if ($('#' + arr[i].id).length == 0) {
                     var myLi = self.itemHTML(arr[i]);
-                    $('#list-itme').append("<li class='li_item' id='" + arr[i].id + "'>" + myLi + "<li>")
+                    // $('#list-itme').append("<li class='li_item' id='" + arr[i].id + "'>" + myLi + "<li>")
                 } else {
                     $('#' + arr[i].id).show();
                 }
@@ -206,6 +212,17 @@ sreach.prototype = {
             dataType: 'json',
             async: false
         }).done(function(dt) {
+            $("#list-itme li").each(function(index) {
+                var li = $(this)[index]
+                var oldDt = {
+                    tag: $(li).find('.tags').text().replace(/(^\s*)|(\s*$)/g, ''),
+                    name: $(li).find('.title').text().replace(/(^\s*)|(\s*$)/g, ''),
+                    lang: $(li).find('.tags').text().replace(/(^\s*)|(\s*$)/g, ''),
+                    des: 'hidden'
+                };
+                dt.push(oldDt);
+                $(li).attr('id', oldDt.tag + (dt.length - 1));
+            });
             // 加载成功，处理json数据
             for (var j = 0; j < dt.length; j++) {
                 var newDt = dt[j];
@@ -214,9 +231,7 @@ sreach.prototype = {
                 newDt.url = "/?kw=" + newDt.name;
                 newDt.tags = [newDt.tag];
                 newDt.icon = ["icon-" + newDt.tag];
-                // 打乱顺序
-                var rand = Math.floor(Math.random() * self.data.length);
-                self.data.splice(rand, 0, dt[j]);
+                self.data.push(dt[j]);
             }
             console.log(self.data)
                 // 右上角

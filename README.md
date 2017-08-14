@@ -41,3 +41,10 @@ Then open [http://localhost:3000](http://localhost:3000) in your browser.
     `blog/images/SOME_NOTES.png`
 
 3. Browser Sync
+
+### Notice
+
+1. `.md` language.
+
+2. Github gist add in `src/index.html`.
+
