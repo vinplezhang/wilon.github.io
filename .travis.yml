@@ -45,7 +45,7 @@ script:
   - cp -rf ../static/* .
   - git add .
   - git commit -m "Travis CI Auto Update OC" &
-  - git push --force "https://wilon:${OC_PASSWD}@${OC_REF}"
+  - git push --force origin master
 
 after_script:
   # 提交
