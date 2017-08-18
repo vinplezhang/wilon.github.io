@@ -43,9 +43,9 @@ script:
   - cd static-tmp
   - rm -rf ./wilonblog-*
   - cp -rf ../static/* .
-  - git add .
-  - git commit -m "Travis CI Auto Update OC"
-  - git push --force origin master
+  - git show | grep '<travis@travis-ci.org>' || git add .
+  - git show | grep '<travis@travis-ci.org>' || git commit -m "Travis CI Auto Update OC"
+  - git show | grep '<travis@travis-ci.org>' || git push --force origin master
 
 after_script:
   # 提交
