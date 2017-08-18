@@ -39,13 +39,13 @@ script:
   - git show | grep '<travis@travis-ci.org>' || wget -O static/lantern-installer-64-bit.deb https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb
   - git show | grep '<travis@travis-ci.org>' || gulp sitemap
   # 提交到oschina
-  - git clone --depth=50 --branch=master https://${OC_TOKEN}@${OC_REF} static-tmp
+  - git clone --depth=50 --branch=master https://wilon:${OC_PASSWD}@${OC_REF} static-tmp
   - cd static-tmp
   - rm -rf ./wilonblog-*
   - cp -rf ../static/* .
   - git add .
   - git commit -m "Travis CI Auto Update OC" &
-  - git push --force "https://${OC_TOKEN}@git.oschina.net/wilon/static.git"
+  - git push --force "https://wilon:${OC_PASSWD}@${OC_REF}"
 
 after_script:
   # 提交
