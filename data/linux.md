@@ -17,6 +17,7 @@
     for i in `ls`; do cp -f $i `echo $i | sed 's/\..*px_.*_.*.net.png$/.png/'`; done    # 批量修改多余文件后缀
     find . -type d -name ".svn" | xargs rm -rf    # 找出所有“.svn”文件夹 | 并删除
     find . -name .DS_Store | xargs rm    # 找出所有“.DS_Store”文件 | 并删除
+    find /data/logs/nginx -type f -name "*.gz" -ctime -5 | xargs zcat | grep 'HTTP/1.1" 500'
 ```
 
 ### 一行脚本，作为任务
@@ -234,6 +235,15 @@
     /var/log/           # 系统日志位置
     /var/spool/mail/    # 系统默认邮箱位置
     /var/lib/mysql/     # 默认安装的mysql的库文件目录
+```
+
+### curl 使用
+```shell
+    curl -o ~/baidu.html https://www.baidu.com    # 下载到指定文件
+    curl -x 127.0.0.1:3128 https://www.google.com/humans.txt    # 指定代理
+    curl -k https://www.baidu.com    # 允许不使用证书到SSL站点
+    curl -v https://www.baidu.com    # 显示详情
+    curl -s https://www.baidu.com    # 静默模式
 ```
 
 ### 查看系统信息
