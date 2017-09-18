@@ -24,7 +24,7 @@ install:
 env:
  global:
    - GH_REF: github.com/wilon/wilon.github.io.git
-   - OC_REF: git.oschina.net/wilon/static.git
+   - OC_REF: git.oschina.net/wilon/wilon.git
 
 script:
   # 设置git
