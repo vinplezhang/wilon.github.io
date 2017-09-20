@@ -107,6 +107,13 @@
     --restart=always    # 随docker服务自启动
 ```
 
+### docker 安装
+```shell
+    # centos 6.8
+    rpm -Uvh http://ftp.riken.jp/Linux/fedora/epel/6Server/x86_64/epel-release-6-8.noarch.rpm
+    yum -y install docker-io
+```
+
 ### docker help
 ```shell
     service docker start    # 启动服务
