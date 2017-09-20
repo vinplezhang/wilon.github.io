@@ -1,7 +1,7 @@
 
 ### zsh + oh-my-zsh
 ```shell
-    yum install zsh
+    yum -y install zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/wilon/oh-my-zsh/master/tools/install.sh)"
     chsh -s /bin/zsh    # 修改默认zsh，需重启。或修改 /etc/passwd
     zsh    # 手动切换

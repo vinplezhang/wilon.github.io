@@ -43,10 +43,11 @@
     IPADDR={ip}.{ip}.{ip}.188    # 即为连接IP
     NETMASK=255.255.255.0
     GATEWAY={ip}.{ip}.{ip}.2
+    DNS1=114.114.114.114
     BROADCAST={ip}.{ip}.{ip}.255
     ONBOOT=yes
     NAME=loopback
-    # 设置dns
+    # 设置临时 dns
     echo "nameserver 114.114.114.114" >> /etc/resolv.conf
 ```
 
