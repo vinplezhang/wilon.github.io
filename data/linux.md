@@ -14,6 +14,8 @@
     for i in `ls`; do cp -f $i `echo $i | sed 's/^\([0-9]\..*md\)$/0\1/'`; done    # 目录下 1.xx.md 2.xx.md 复制为 01.xx.md 02.xx.md
     for i in `ls`; do cp -f $i `echo $i | sed 's/\..*px_.*_.*.net.png$/.png/'`; done    # 批量修改多余文件后缀
     sed -i "s/oldstring/newstring/g" `grep oldstring -rl yourdir`    # 把目录下所有文件的 oldstring 替换为 newstring
+    sed -i "s/garden/mirGarden/g" ./readme.md    # 将文件内的字符替换
+    sed -i "s/garden/mirGarden/g" `ls`    # 将当前文件夹下所有文件内的字符替换
 ```
 
 ### ind 文件及目录操作

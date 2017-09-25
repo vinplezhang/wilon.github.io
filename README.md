@@ -16,7 +16,7 @@ Require Latest `nodejs` + `npm` + `gulp`
 ```shell
 git clone https://github.com/wilon/wilon.github.io.git
 cd wilon.github.io
-npm install && npm start
+npm install && gulp server
 ```
 
 Ubuntu require:
@@ -45,6 +45,3 @@ Then open [http://localhost:3000](http://localhost:3000) in your browser.
 ### Notice
 
 1. `.md` language.
-
-2. Github gist add in `src/index.html`.
-
