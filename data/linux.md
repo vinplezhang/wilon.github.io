@@ -7,14 +7,19 @@
     zsh    # 手动切换
 ```
 
-### awk sed find 文件及目录操作
+### awk sed 文件操作
 ```shell
-    find .    # 列出所有文件及目录
-    find . -type f -size +50M -print0 | xargs -0 du -h | sort -nr    # 列出大于50M的文件 | 且显示文件大小 | 并排序
     awk ‘!a[$0]++’ path/to/file    # 去除重复行
     cat cache/smtp.log | grep "To" | awk '{print $9;}' | sort | uniq -c    # 查看邮件日志 | 有“To”的行 | 列出用户 | 排序 | 统计用户出现次数
     for i in `ls`; do cp -f $i `echo $i | sed 's/^\([0-9]\..*md\)$/0\1/'`; done    # 目录下 1.xx.md 2.xx.md 复制为 01.xx.md 02.xx.md
     for i in `ls`; do cp -f $i `echo $i | sed 's/\..*px_.*_.*.net.png$/.png/'`; done    # 批量修改多余文件后缀
+    sed -i "s/oldstring/newstring/g" `grep oldstring -rl yourdir`    # 把目录下所有文件的 oldstring 替换为 newstring
+```
+
+### ind 文件及目录操作
+```shell
+    find .    # 列出所有文件及目录
+    find . -type f -size +50M -print0 | xargs -0 du -h | sort -nr    # 列出大于50M的文件 | 且显示文件大小 | 并排序
     find . -type d -name ".svn" | xargs rm -rf    # 找出所有“.svn”文件夹 | 并删除
     find . -name .DS_Store | xargs rm    # 找出所有“.DS_Store”文件 | 并删除
     find /data/logs/nginx -type f -name "*.gz" -ctime -5 | xargs zcat | grep 'HTTP/1.1" 500'
@@ -32,6 +37,8 @@
     if test `pgrep nginx | wc -l` -eq 0; then /usr/sbin/service nginx start > /dev/null; fi;
     if test `pgrep php-fpm | wc -l` -eq 0; then /usr/sbin/service php7.0-fpm start > /dev/null; fi;
     if test `pgrep mysql | wc -l` -eq 0; then /usr/sbin/service mysql start > /dev/null; fi;
+    # 检测 URL
+    */10 7-23 * * * (/usr/bin/wget -O /tmp/wechat.check http://wx.baitongshiji.com/wechat/check || /usr/sbin/service docker restart) >> /tmp/wechat.check.log 2>&1
 ```
 
 ### 查看进程 ps
